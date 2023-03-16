@@ -1,12 +1,8 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import HomePage from './pages/HomePage'
+import { useState } from "react";
+import HomePage from "./pages/HomePage";
 
 function App() {
-
-  return (
-    <HomePage />
-  )
+ return <HomePage />;
 }
 
-export default App
+export default App;
