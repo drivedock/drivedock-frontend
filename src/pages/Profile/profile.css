@@ -1,0 +1,47 @@
+.searchIcon {
+ border: 1px solid rgba(128, 128, 128, 0.286);
+ padding: 0.5rem;
+ border: 1px solid rgba(128, 128, 128, 0.273);
+ border-radius: 50%;
+ color: #36a644;
+}
+.indetailProfile {
+ margin-left: 2rem;
+}
+.indetailTop {
+ margin-top: 1rem;
+}
+
+.ProfileSetting {
+ border: 1px solid rgba(128, 128, 128, 0.247);
+ border-radius: 0.5rem;
+ margin-top: 2rem;
+}
+.eachElemLi {
+ margin-right: 3rem;
+ padding: 0rem 0.7rem;
+}
+.eachElemLiHighLight {
+ border-bottom: 1.5px solid #36a644;
+ border-radius: 0.12rem;
+}
+.profileInputDiv {
+ border: 1px solid rgba(128, 128, 128, 0.47);
+ padding: 0.5rem;
+ border-radius: 0.5rem;
+ margin-top: 1rem;
+}
+.profileInputDiv label {
+ display: block;
+ opacity: 50%;
+}
+.profileInputDiv input {
+ border: none;
+ width: 100%;
+ outline: none;
+ font-weight: 400;
+ letter-spacing: 0.1rem;
+ font-size: 1rem;
+ opacity: 70%;
+ margin-top: 0.2rem;
+}
