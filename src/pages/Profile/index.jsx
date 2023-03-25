@@ -1,12 +1,15 @@
 import React from "react";
 import SideNavBar from "../SideNavBar";
 import IndetailProfile from "./IndetailProfile";
+import { UserDashboard } from "../UserDashboard";
+import { WorkshopsListPage } from "../WorkshopsListPage";
 import "../Profile/profile.css";
+
 
 function Profile() {
  return (
-  <section className="container">
-   <div className="display__Flex">
+  <section className="">
+   <div className=" flex ">
     <SideNavBar />
     <IndetailProfile />
    </div>

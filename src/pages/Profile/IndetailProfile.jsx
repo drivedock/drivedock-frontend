@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../Profile/profile.css";
 import ProfileForm from "./ProfileForm";
 import ProfilePic from "../Profile/assets/profile.png";
+import { ProfileHeader } from "./ProfileHeader";
 
 function IndetailProfile() {
  let value = ["Personal Details", "Notification", "Privacy", "Payment"];
@@ -105,7 +106,7 @@ function IndetailProfile() {
     </div>
    </div>
 
-   <div className="ProfileSetting">
+   {/* <div className="ProfileSetting">
     <h2 style={{ fontSize: "2rem", marginTop: "1rem" }}>Profile Setting</h2>
     <ul className="display__Flex flexColum" style={{ marginTop: "1.5rem" }}>
      {value.map((each) => (
@@ -123,7 +124,9 @@ function IndetailProfile() {
     <div style={{ minHeight: "73vh", padding: "0rem 2rem" }}>
      {page == "Personal Details" ? <ProfileForm /> : null}
     </div>
-   </div>
+   </div> */}
+   <ProfileHeader />
+   <ProfileForm />
   </section>
  );
 }

@@ -1,5 +1,5 @@
-
 import React from "react";
+import { Link } from "react-router-dom";
 
 const UserSignUpPage = () => {
   return (
@@ -110,16 +110,15 @@ const UserSignUpPage = () => {
             <h2 className="text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl">
               Sign Up
             </h2>
-            <p className="mt-2 text-base text-gray-600 dark:text-gray-300">
-              Already have an account?{" "}
-              <a
-                href="#"
-                title=""
-                className="font-medium text-indigo-600 transition-all duration-200 hover:text-indigo-700 hover:underline focus:text-indigo-700"
-              >
-                Sign In
-              </a>
-            </p>
+            <Link to='/signin'>
+              <p className="mt-2 text-base text-gray-600 dark:text-gray-300">
+                Already have an account?{" "}
+                <span className="font-medium text-indigo-600 transition-all duration-200 hover:text-indigo-700 hover:underline focus:text-indigo-700">
+                  {" "}
+                  Sign In
+                </span>
+              </p>
+            </Link>
 
             <form action="#" method="POST" className="mt-8">
               <div className="space-y-5">
@@ -211,7 +210,6 @@ const UserSignUpPage = () => {
                   </div>
                 </div>
 
-
                 {/* <div>
                   <button className="w-full inline-flex items-center justify-center rounded-md bg-indigo-600 px-3.5 py-2.5 text-base font-semibold leading-7 text-white hover:bg-indigo-500">
                     Get started
@@ -269,24 +267,24 @@ const UserSignUpPage = () => {
                 Sign up with Facebook
               </button> */}
               <div>
-                  <button className="w-full inline-flex items-center justify-center rounded-md bg-indigo-600 px-3.5 py-2.5 text-base font-semibold leading-7 text-white hover:bg-indigo-500">
-                    Register
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-4 h-4 ml-2"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-                      />
-                    </svg>
-                  </button>
-                </div>
+                <button className="w-full inline-flex items-center justify-center rounded-md bg-indigo-600 px-3.5 py-2.5 text-base font-semibold leading-7 text-white hover:bg-indigo-500">
+                  Register
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-4 h-4 ml-2"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
+                    />
+                  </svg>
+                </button>
+              </div>
               <p>
                 <span className="text-gray-500 dark:text-gray-400 text-sm">
                   Read our{" "}
@@ -309,5 +307,3 @@ const UserSignUpPage = () => {
 };
 
 export default UserSignUpPage;
-
-
