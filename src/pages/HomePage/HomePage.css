@@ -1,0 +1,94 @@
+.header {
+ margin-top: 0.6rem;
+}
+.product__heading {
+ font-size: 2.2rem;
+ font-weight: 600;
+}
+.navFlexLing {
+ margin-left: 5rem;
+}
+.each_Nav_value {
+ border-radius: 1rem;
+ padding: 0.5rem 1.2rem;
+}
+.each_Nav_value:first-child {
+ background-color: rgba(128, 128, 128, 0.453);
+ color: white;
+}
+.each_Nav_value:hover {
+ background-color: rgba(128, 128, 128, 0.453);
+ color: white;
+ transition: all 0.5s ease-in-out;
+}
+.signInValues:nth-child(2) {
+ padding: 0.5rem 1.2rem;
+ border-radius: 0.5rem;
+ color: white;
+ background-color: #36a644;
+ margin-left: 0.5rem;
+}
+/* header styles ending */
+
+/* Hero styles start */
+.hero {
+ margin-top: 3rem;
+}
+.hero_heading {
+ width: 80%;
+ font-size: 3rem;
+ font-weight: 600;
+}
+.hero_content {
+ width: 85%;
+ margin-top: 1.5rem;
+ font-size: 1.3rem;
+ line-height: 1.5;
+}
+.downloadBtn {
+ padding: 0.8rem 1.2rem;
+ margin-right: 0.5rem;
+}
+.downloadBtn:first-child {
+ background-color: #36a644;
+ color: white;
+ border-radius: 0.2rem;
+}
+.downloadBtn:nth-child(2) {
+ border: 1px solid rgba(128, 128, 128, 0.419);
+ border-radius: 0.2rem;
+}
+
+.downloadIcon {
+ margin-left: 6rem;
+ font-size: 1.3rem;
+ margin-top: -10rem;
+ position: relative;
+ border: 1px solid rgba(128, 128, 128, 0.36);
+ padding: 0.5rem;
+ border-radius: 0.3rem;
+ opacity: 70%;
+}
+/* card */
+.cardImg {
+ padding: 0.3rem;
+ /* border-radius: 50%; */
+}
+.eachCard {
+ border-radius: 0.3rem;
+ border: 1px solid rgba(128, 128, 128, 0.31);
+ padding: 3rem 0.2rem;
+ background-color: rgb(244, 240, 237);
+}
+.EachSmallCard {
+ border-radius: 0.3rem;
+ background-color: rgba(128, 128, 128, 0.071);
+}
+.footer {
+ padding: 1rem 0rem;
+ background-color: rgb(244, 240, 237);
+}
+.socialMedia {
+ font-size: 1.3rem;
+ margin-left: 1rem;
+}

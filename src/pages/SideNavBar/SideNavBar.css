@@ -1,0 +1,20 @@
+.sideNavbar {
+ padding: 0.5rem 0rem;
+ border: 1px solid rgba(128, 128, 128, 0.155);
+ border-radius: 0.5rem;
+}
+
+.EachElementPara {
+ color: gray;
+ font-size: 1.4rem;
+ margin-left: 1rem;
+}
+.SideUl {
+ width: 70%;
+ margin: auto;
+ margin-top: 3rem;
+}
+.eachElement {
+ margin: auto;
+ margin-top: 1.5rem;
+}
