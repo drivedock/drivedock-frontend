@@ -1,11 +1,12 @@
 import React from "react";
+import { Link, NavLink } from "react-router-dom";
 
 const UserSignInPage = () => {
   return (
-    <section>
-      <div className="grid grid-cols-1 lg:grid-cols-2">
+    <section className="h-screen">
+      <div className="grid grid-cols-1 h-screen lg:grid-cols-2">
         <div className="relative flex items-end px-4 pb-10 pt-60 sm:pb-16 md:justify-center lg:pb-24 sm:px-6 lg:px-8">
-          <div className="absolute inset-0">
+          <div className="absolute h-full inset-0">
             <img
               className="object-cover object-top w-full h-full"
               src="https://images.unsplash.com/photo-1534120247760-c44c3e4a62f1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTk0fHxkZXNpZ25lcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
@@ -104,21 +105,41 @@ const UserSignInPage = () => {
             </div>
           </div>
         </div>
-        <div className="flex items-center justify-center px-4 py-10 sm:px-6 lg:px-8 sm:py-16 lg:py-24">
+        <div className="flex items-center gap-11 flex-col  px-4 py-10 sm:px-6 lg:px-8 sm:py-16 lg:py-24">
+          <div className="flex justify-end w-full">
+             <NavLink to='/'>
+             <button className="inline-flex items-center rounded-md bg-blue-500 px-3.5 py-1.5 text-base font-semibold leading-7 text-white hover:bg-green-500">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-4 h-4"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+                />
+              </svg>
+              Back to home
+            </button>
+             </NavLink>
+          </div>
           <div className="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto">
             <h2 className="text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl">
               Sign in
             </h2>
-            <p className="mt-2 text-base text-gray-600 dark:text-gray-300">
-              Don&apos;t have an account?{" "}
-              <a
-                href="#"
-                title=""
-                className="font-medium text-indigo-600 transition-all duration-200 hover:text-indigo-700 hover:underline focus:text-indigo-700"
-              >
-                Create a free account
-              </a>
-            </p>
+            <Link to="/signup">
+              <p className="mt-2 text-base text-gray-600 dark:text-gray-300">
+                Don&apos;t have an account?{" "}
+                <span className="font-medium text-indigo-600 transition-all duration-200 hover:text-indigo-700 hover:underline focus:text-indigo-700">
+                  {" "}
+                  Create a free account
+                </span>
+              </p>
+            </Link>
 
             <form action="#" method="POST" className="mt-8">
               <div className="space-y-5">
@@ -168,7 +189,7 @@ const UserSignInPage = () => {
                 </div>
 
                 <div>
-                  <button className="w-full inline-flex items-center justify-center rounded-md bg-indigo-600 px-3.5 py-2.5 text-base font-semibold leading-7 text-white hover:bg-indigo-500">
+                  <button className="w-full inline-flex items-center justify-center rounded-md bg-indigo-600 px-3.5 py-2.5 text-base font-semibold leading-7 text-white hover:bg-green-500">
                     Get started
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
