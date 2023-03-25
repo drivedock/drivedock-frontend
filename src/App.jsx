@@ -1,7 +1,6 @@
 import { useState } from "react";
 import HomePage from "./pages/HomePage";
 import { Switch, Route } from "react-router-dom";
-import SideNavBar from "./pages/SideNavBar";
 import Profile from "./pages/Profile";
 
 function App() {
@@ -12,7 +11,7 @@ function App() {
      <HomePage />
     </Route>
 
-    <Route path="/profile">
+    <Route path="/profile" exact>
      <Profile />
     </Route>
 
