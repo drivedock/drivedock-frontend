@@ -18,7 +18,7 @@ function IndetailProfile() {
      ></i>
     </div> */}
 
-    {/* <div class="">
+    <div class="">
      <nav class="relative px-8 py-4 flex justify-between items-center border-y border-gray-400 dark:border-gray-700">
       {/* <a
        class="text-3xl font-bold leading-none flex items-center space-x-4"
@@ -103,7 +103,7 @@ function IndetailProfile() {
        </svg>
       </div>
      </nav>
-    </div> */}
+    </div>
    </div>
 
    {/* <div className="ProfileSetting">
