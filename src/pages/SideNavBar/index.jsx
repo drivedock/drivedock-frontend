@@ -12,7 +12,8 @@ import SettingImg from "../SideNavBar/assets/settings.png";
 import SideEndLogoImg from "../SideNavBar/assets/sideEndLogo.png";
 import { NavLink } from "react-router-dom";
 
-function SideNavBar() {
+function SideNavBar(props) {
+ const { handlePage } = props;
  let sideNavBarArray = [
   {
    name: "Dashboard",
@@ -44,39 +45,17 @@ function SideNavBar() {
   },
  ];
  return (
-  //   <nav className="flex23 sideNavbar">
-  //    <div>
-  //     <figure style={{ width: "20%", margin: "auto" }}>
-  //      <img className="widthFull" src={LogoImg} alt="" />
-  //     </figure>
-  //     <div style={{ width: "63.5%", margin: "auto", marginTop: "0.5rem" }}>
-  //      <h1 className="product__heading">Drive Dock</h1>
-  //      <span style={{ marginLeft: "1rem", float: "right" }}>Groups</span>
-  //      <span style={{ float: "clear" }}></span>
-  //     </div>
-  //    </div>
-  //    <ul className="SideUl">
-  //     {sideNavBarArray.map((each) => (
-  //      <li className="display__Flex eachElement">
-  //       <img style={{ width: "1.4rem" }} src={each.image} alt="" />
-  //       <p className="EachElementPara">{each.name}</p>
-  //      </li>
-  //     ))}
-  //    </ul>
-
-  //    <figure style={{ width: "80%", margin: "auto", marginTop: "3rem" }}>
-  //     <img className="widthFull" src={SideEndLogoImg} alt="" />
-  //    </figure>
-  //   </nav>
-  <aside class="flex flex-col  w-1/6 h-screen px-5 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700 border rounded-md">
+  <aside class="flex flex-col w-96 h-screen px-5 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700 border rounded-md">
    <NavLink to="/">
     <img className="w-12 h-12" src={LogoImg} alt="" />
    </NavLink>
+
    <div class="flex flex-col justify-between flex-1 mt-6">
     <nav class="flex-1 -mx-3 space-y-3">
      <a
       class="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-      href="#"
+      href=" javascript:void(0)"
+      onClick={() => handlePage("dashboard")}
      >
       <svg
        xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +76,8 @@ function SideNavBar() {
      </a>
      <a
       class="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-      href="#"
+      href="javascript:void(0)"
+      onClick={() => handlePage("workshops")}
      >
       <svg
        xmlns="http://www.w3.org/2000/svg"
@@ -160,7 +140,8 @@ function SideNavBar() {
      </a>
      <a
       class="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-      href="#"
+      href="javascript:void(0)"
+      onClick={() => handlePage("profileSetting")}
      >
       <svg
        xmlns="http://www.w3.org/2000/svg"
