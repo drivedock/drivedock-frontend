@@ -63,6 +63,7 @@ const UserSignUpPage = () => {
       anyError = true;
     }
 
+    // make a API call
     if (!anyError) return false;
     localStorage.setItem("isAuthenticated", true);
     history.push("/profile");
