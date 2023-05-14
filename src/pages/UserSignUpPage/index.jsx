@@ -300,6 +300,11 @@ const UserSignUpPage = () => {
                   </div>
                 </div>
               </div>
+              {errors["backendError"] && (
+                <div className="mt-2 text-red-400 text-sm">
+                  {errors["backendError"]}
+                </div>
+              )}
               <div className="mt-3 space-y-3">
                 <div>
                   <button
