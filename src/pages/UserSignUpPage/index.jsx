@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { EMAIL_REGEX } from "../../constants";
 import { isValidPassword } from "../../helper";
+import { registerUser } from "../../api/auth";
 
 const UserSignUpPage = () => {
   const [inputs, setInputs] = useState({
@@ -16,6 +17,7 @@ const UserSignUpPage = () => {
     email: "",
     password: "",
     mobileNumber: "",
+    backendError: "",
   });
 
   let history = useHistory();
@@ -27,7 +29,7 @@ const UserSignUpPage = () => {
     setErrors((values) => ({ ...values, [name]: "" }));
   };
 
-  const handleSignUp = (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
     const { fullName, email, password, mobileNumber } = inputs;
     let anyError = false;
@@ -63,10 +65,18 @@ const UserSignUpPage = () => {
       anyError = true;
     }
 
+    if (anyError) return false;
     // make a API call
-    if (!anyError) return false;
-    localStorage.setItem("isAuthenticated", true);
-    history.push("/profile");
+    const response = await registerUser(inputs);
+    if (response.success) {
+      localStorage.setItem("isAuthenticated", response.token);
+      history.push("/profile");
+    } else {
+      setErrors((values) => ({
+        ...values,
+        backendError: "Something went wrong! Please try after sometime",
+      }));
+    }
   };
 
   return (

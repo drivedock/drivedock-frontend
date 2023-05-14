@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, NavLink, useHistory } from "react-router-dom";
+import { loginUser } from "../../api/auth";
 
 const UserSignInPage = () => {
   const [inputs, setInputs] = useState({
@@ -17,7 +18,7 @@ const UserSignInPage = () => {
     setErrorMsg("");
   };
 
-  const handleSignIn = (e) => {
+  const handleSignIn = async (e) => {
     e.preventDefault();
     const { email, password } = inputs;
     let anyError = false;
@@ -28,9 +29,15 @@ const UserSignInPage = () => {
       setErrorMsg("Please provide valid credentials");
       return;
     }
+
     // make api call
-    localStorage.setItem("isAuthenticated", true);
-    history.push("/profile");
+    const response = await loginUser(inputs);
+    if (response.success) {
+      localStorage.setItem("isAuthenticated", response.token);
+      history.push("/profile");
+    } else {
+      setErrorMsg("Something went wrong! Please try after sometime");
+    }
   };
 
   return (
