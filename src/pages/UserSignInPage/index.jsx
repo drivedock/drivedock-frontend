@@ -31,12 +31,16 @@ const UserSignInPage = () => {
     }
 
     // make api call
-    const response = await loginUser(inputs);
-    if (response.success) {
-      localStorage.setItem("isAuthenticated", response.token);
-      history.push("/profile");
-    } else {
-      setErrorMsg("Something went wrong! Please try after sometime");
+    try {
+      const response = await loginUser(inputs);
+      if (response.success) {
+        localStorage.setItem("isAuthenticated", response.token);
+        history.push("/profile");
+      } else {
+        setErrorMsg(response.message);
+      }
+    } catch (e) {
+      setErrorMsg(e.message);
     }
   };
 
