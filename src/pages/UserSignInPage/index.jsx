@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, NavLink, useHistory } from "react-router-dom";
 import { loginUser } from "../../api/auth";
 
@@ -10,6 +10,13 @@ const UserSignInPage = () => {
 
   const [errorMsg, setErrorMsg] = useState("");
   let history = useHistory();
+
+  useEffect(() => {
+    const token = localStorage.getItem("isAuthenticated");
+    if (token) {
+      history.push("/profile");
+    }
+  }, []);
 
   const handleChange = (event) => {
     const name = event.target.name;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { EMAIL_REGEX } from "../../constants";
 import { isValidPassword } from "../../helper";
@@ -21,6 +21,13 @@ const UserSignUpPage = () => {
   });
 
   let history = useHistory();
+
+  useEffect(() => {
+    const token = localStorage.getItem("isAuthenticated");
+    if (token) {
+      history.push("/profile");
+    }
+  }, []);
 
   const handleChange = (event) => {
     const name = event.target.name;
