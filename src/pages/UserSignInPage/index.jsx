@@ -40,7 +40,7 @@ const UserSignInPage = () => {
         setErrorMsg(response.message);
       }
     } catch (e) {
-      setErrorMsg(e.message);
+      setErrorMsg("Something went wrong! Please try after sometime");
     }
   };
 
