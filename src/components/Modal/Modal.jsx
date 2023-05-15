@@ -78,7 +78,7 @@ export default function Modal() {
     // make update api call
     const response = await updateProfileStatus(inputs);
     if (response.success) {
-      toggleShow(false);
+      toggleShow();
     } else {
       setErrors((values) => ({
         ...values,
@@ -88,8 +88,13 @@ export default function Modal() {
   };
   return (
     <>
-      <MDBModal show={basicModal} setShow={setBasicModal} tabIndex="-1">
-        <MDBModalDialog>
+      <MDBModal
+        closeOnEsc={false}
+        show={basicModal}
+        setShow={setBasicModal}
+        tabIndex="-1"
+      >
+        <MDBModalDialog centered>
           <MDBModalContent>
             <MDBModalHeader>
               <MDBModalTitle>
