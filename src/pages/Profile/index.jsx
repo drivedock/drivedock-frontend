@@ -3,7 +3,7 @@ import SideNavBar from "../SideNavBar";
 import IndetailProfile from "./IndetailProfile";
 import { UserDashboard } from "../UserDashboard";
 import { WorkshopsListPage } from "../WorkshopsListPage";
-import Modal from "../../components/Modal/Modal";
+import AdditionalDetailsModal from "../../components/AdditionalDetailsModal/AdditionalDetailsModal";
 
 import "../Profile/profile.css";
 import { getProfileStatus } from "../../api/profile";
@@ -15,7 +15,7 @@ function Profile() {
   const makeProfileAPI = async () => {
     const response = await getProfileStatus();
     if (response.success) {
-      setShowDetailsModal(response.results);
+      setShowDetailsModal(!response.results);
     }
   };
 
@@ -34,12 +34,9 @@ function Profile() {
     <section className="">
       <div className="flex">
         <SideNavBar handlePage={handlePage} />
-
+        {showDetailsModal && <AdditionalDetailsModal />}
         {pageDecide == "dashboard" ? (
-          <>
-            <Modal />
-            <UserDashboard />
-          </>
+          <UserDashboard />
         ) : pageDecide == "workshops" ? (
           <WorkshopsListPage />
         ) : pageDecide == "profileSetting" ? (

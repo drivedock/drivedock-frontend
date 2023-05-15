@@ -94,7 +94,7 @@ export default function Modal() {
         setShow={setBasicModal}
         tabIndex="-1"
       >
-        <MDBModalDialog centered>
+        <MDBModalDialog>
           <MDBModalContent>
             <MDBModalHeader>
               <MDBModalTitle>
