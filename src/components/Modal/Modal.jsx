@@ -10,6 +10,7 @@ import {
   MDBModalFooter,
   MDBInput,
 } from "mdb-react-ui-kit";
+import { updateProfileStatus } from "../../api/profile";
 
 export default function Modal() {
   const [basicModal, setBasicModal] = useState(true);
@@ -20,15 +21,70 @@ export default function Modal() {
     passoutYear: "",
   });
 
+  const [errors, setErrors] = useState({
+    collegeName: "",
+    branch: "",
+    semester: "",
+    passoutYear: "",
+    backendError: "",
+  });
+
   const toggleShow = () => setBasicModal(!basicModal);
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
+    setErrors((values) => ({ ...values, [name]: "" }));
   };
 
-  const handleSave = () => {
-    console.log(inputs);
+  const handleSave = async (e) => {
+    e.preventDefault();
+    const { collegeName, branch, semester, passoutYear } = inputs;
+    let anyError = false;
+    if (collegeName.length == 0) {
+      setErrors((values) => ({
+        ...values,
+        collegeName: "Please enter a valid college name",
+      }));
+      anyError = true;
+    }
+
+    if (branch.length == 0) {
+      setErrors((values) => ({
+        ...values,
+        branch: "Please enter a valid branch name",
+      }));
+      anyError = true;
+    }
+
+    if (semester.length == 0) {
+      setErrors((values) => ({
+        ...values,
+        semester: "Please enter a valid semester",
+      }));
+      anyError = true;
+    }
+
+    if (passoutYear.length == 0) {
+      setErrors((values) => ({
+        ...values,
+        passoutYear: "Please enter a valid passout year",
+      }));
+      anyError = true;
+    }
+
+    if (anyError) return;
+
+    // make update api call
+    const response = await updateProfileStatus(inputs);
+    if (response.success) {
+      toggleShow(false);
+    } else {
+      setErrors((values) => ({
+        ...values,
+        backendError: "Please try again after sometime",
+      }));
+    }
   };
   return (
     <>
@@ -39,41 +95,68 @@ export default function Modal() {
               <MDBModalTitle>
                 Please provide your education details
               </MDBModalTitle>
-              <MDBBtn
-                className="btn-close"
-                color="none"
-                onClick={toggleShow}
-              ></MDBBtn>
             </MDBModalHeader>
             <MDBModalBody>
-              <MDBInput
-                className="mb-3"
-                label="Name of the college"
-                type="text"
-                name="collegeName"
-                onChange={handleChange}
-              />
-              <MDBInput
-                className="mb-3"
-                label="Branch"
-                type="text"
-                name="branch"
-                onChange={handleChange}
-              />
-              <MDBInput
-                className="mb-3"
-                label="Semester"
-                type="text"
-                name="semester"
-                onChange={handleChange}
-              />
-              <MDBInput
-                className="mb-3"
-                label="Passout year"
-                type="text"
-                name="passoutYear"
-                onChange={handleChange}
-              />
+              <div className="mb-3">
+                <MDBInput
+                  label="Name of the college"
+                  type="text"
+                  name="collegeName"
+                  onChange={handleChange}
+                />
+                {errors["collegeName"] && (
+                  <div className="mt-0.5 text-red-400 text-sm">
+                    {errors["collegeName"]}
+                  </div>
+                )}
+              </div>
+              <div className="mb-3">
+                <MDBInput
+                  label="Branch"
+                  type="text"
+                  name="branch"
+                  onChange={handleChange}
+                />
+                {errors["branch"] && (
+                  <div className="mt-0.5 text-red-400 text-sm">
+                    {errors["branch"]}
+                  </div>
+                )}
+              </div>
+              <div className="mb-3">
+                <MDBInput
+                  label="Semester"
+                  type="text"
+                  name="semester"
+                  onChange={handleChange}
+                />
+                {errors["semester"] && (
+                  <div className="mt-0.5 text-red-400 text-sm">
+                    {errors["semester"]}
+                  </div>
+                )}
+              </div>
+              <div className="mb-3">
+                <MDBInput
+                  label="Passout year"
+                  type="text"
+                  name="passoutYear"
+                  onChange={handleChange}
+                />
+                {errors["passoutYear"] && (
+                  <div className="mt-0.5 text-red-400 text-sm">
+                    {errors["passoutYear"]}
+                  </div>
+                )}
+              </div>
+
+              <div>
+                {errors["backendError"] && (
+                  <div className="mt-1 text-red-400 text-sm">
+                    {errors["backendError"]}
+                  </div>
+                )}
+              </div>
             </MDBModalBody>
 
             <MDBModalFooter>
