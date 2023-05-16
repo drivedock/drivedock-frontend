@@ -9,6 +9,8 @@ import "../Profile/profile.css";
 import { getProfileStatus } from "../../api/profile";
 
 function Profile() {
+  // to make the useeffect to be called once
+  let initialized = false;
   let [pageDecide, setPageDecide] = useState("dashboard");
   const [showDetailsModal, setShowDetailsModal] = useState(false);
 
@@ -20,7 +22,8 @@ function Profile() {
   };
 
   useEffect(() => {
-    if (!showDetailsModal) {
+    if (!showDetailsModal && !initialized) {
+      initialized = true;
       makeProfileAPI();
     }
     return () => {};

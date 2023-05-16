@@ -91,6 +91,7 @@ export default function Modal() {
       <MDBModal
         closeOnEsc={false}
         show={basicModal}
+        staticBackdrop={true}
         setShow={setBasicModal}
         tabIndex="-1"
       >
