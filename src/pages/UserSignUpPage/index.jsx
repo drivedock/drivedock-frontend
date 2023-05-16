@@ -86,8 +86,8 @@ const UserSignUpPage = () => {
         }));
       }
     } catch (e) {
-      const errMsg = e.response.data.message;
-      if (errMsg.includes("Duplicate entry")) {
+      const errMsg = e.response?.data?.message;
+      if (errMsg && errMsg.includes("Duplicate entry")) {
         setErrors((values) => ({
           ...values,
           backendError: "User already registered",
