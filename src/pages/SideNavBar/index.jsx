@@ -1,4 +1,6 @@
 import React from "react";
+import { NavLink, useHistory } from "react-router-dom";
+
 import "../SideNavBar/SideNavBar.css";
 import LogoImg from "../../assets/logo.png";
 // import ProductLogo from "../../../assets/logo.png";
@@ -10,10 +12,10 @@ import TodoImg from "../SideNavBar/assets/todo.png";
 import ProfileImg from "../SideNavBar/assets/user.png";
 import SettingImg from "../SideNavBar/assets/settings.png";
 import SideEndLogoImg from "../SideNavBar/assets/sideEndLogo.png";
-import { NavLink } from "react-router-dom";
 
 function SideNavBar(props) {
   const { handlePage } = props;
+  useHistory;
   let sideNavBarArray = [
     {
       name: "Dashboard",
@@ -44,6 +46,12 @@ function SideNavBar(props) {
       image: SettingImg,
     },
   ];
+
+  const handleLogOut = () => {
+    localStorage.removeItem("isAuthenticated");
+    history.push("/signin");
+  };
+
   return (
     <aside className="flex flex-col w-96 h-screen px-5 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700 border rounded-md">
       <NavLink to="/">
@@ -198,6 +206,7 @@ function SideNavBar(props) {
             <a
               href="#"
               className="text-gray-500 transition-colors duration-200 rotate-180 dark:text-gray-400 rtl:rotate-0 hover:text-blue-500 dark:hover:text-blue-400"
+              onClick={handleLogOut}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
