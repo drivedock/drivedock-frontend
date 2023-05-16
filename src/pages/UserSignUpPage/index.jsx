@@ -104,7 +104,7 @@ const UserSignUpPage = () => {
   return (
     <section>
       <div className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="relative flex items-end px-4 pb-10 pt-60 sm:pb-16 md:justify-center lg:pb-24 sm:px-6 lg:px-8">
+        <div className="relative flex items-end px-4 pb-10 pt-60 sm:pb-16 md:justify-center lg:pb-24 sm:px-6 lg:px-8" style={{height: '100vh'}}>
           <div className="absolute inset-0">
             <img
               className="object-cover object-top w-full h-full"
