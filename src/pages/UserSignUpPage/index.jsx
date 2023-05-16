@@ -40,7 +40,7 @@ const UserSignUpPage = () => {
     e.preventDefault();
     const { fullName, email, password, mobileNumber } = inputs;
     let anyError = false;
-    if (fullName.length == 0) {
+    if (fullName.length === 0) {
       setErrors((values) => ({
         ...values,
         fullName: "Please enter a valid full name",
@@ -48,7 +48,7 @@ const UserSignUpPage = () => {
       anyError = true;
     }
 
-    if (email.length == 0 || !EMAIL_REGEX.test(email)) {
+    if (email.length === 0) {
       setErrors((values) => ({
         ...values,
         email: "Please enter a valid email",
@@ -56,7 +56,7 @@ const UserSignUpPage = () => {
       anyError = true;
     }
 
-    if (password.length == 0 || !isValidPassword(password)) {
+    if (password.length === 0 || !isValidPassword(password)) {
       setErrors((values) => ({
         ...values,
         password:
@@ -64,7 +64,7 @@ const UserSignUpPage = () => {
       }));
       anyError = true;
     }
-    if (mobileNumber.length == 0) {
+    if (mobileNumber.length === 0) {
       setErrors((values) => ({
         ...values,
         mobileNumber: "Please enter a valid mobile number",
@@ -72,17 +72,32 @@ const UserSignUpPage = () => {
       anyError = true;
     }
 
-    if (anyError) return false;
+    if (anyError) return;
     // make a API call
-    const response = await registerUser(inputs);
-    if (response.success) {
-      localStorage.setItem("isAuthenticated", response.token);
-      history.push("/profile");
-    } else {
-      setErrors((values) => ({
-        ...values,
-        backendError: "Something went wrong! Please try after sometime",
-      }));
+    try {
+      const response = await registerUser(inputs);
+      if (response.success) {
+        localStorage.setItem("isAuthenticated", response.token);
+        history.push("/profile");
+      } else {
+        setErrors((values) => ({
+          ...values,
+          backendError: "Something went wrong! Please try after sometime",
+        }));
+      }
+    } catch (e) {
+      const errMsg = e.response.data.message;
+      if (errMsg.includes("Duplicate entry")) {
+        setErrors((values) => ({
+          ...values,
+          backendError: "User already registered",
+        }));
+      } else {
+        setErrors((values) => ({
+          ...values,
+          backendError: "Something went wrong! Please try after sometime",
+        }));
+      }
     }
   };
 
