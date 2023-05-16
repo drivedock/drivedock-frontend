@@ -11,6 +11,6 @@ export const getProfileStatus = async () => {
 export const updateProfileStatus = async () => {
   const token = localStorage.getItem("isAuthenticated");
   axios.defaults.headers.common = { token: token };
-  const response = await axios.post(`${API_URL}/profile/additionalInfo`);
+  const response = await axios.post(`${API_URL}/profile/additionalinfo`);
   return response.data;
 };
