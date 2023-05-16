@@ -1,16 +1,19 @@
 import React from "react";
-import ReactDom from "react-dom";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+
 import App from "./App";
 import "./index.css";
 import "./stylesheets/default.css";
-import "../src/index.css";
-import { BrowserRouter } from "react-router-dom";
+import "mdb-react-ui-kit/dist/css/mdb.min.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
-ReactDom.render(
- <React.StrictMode>
-  <BrowserRouter>
-   <App />
-  </BrowserRouter>
- </React.StrictMode>,
- document.getElementById("root")
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>
 );
