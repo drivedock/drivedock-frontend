@@ -15,8 +15,8 @@ function Header() {
 
           <ul className="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-6">
             {navNames.map((each, index) => (
-              <div key={index}>
-                <li>
+              <div key={index} style={{display: 'contents'}}>
+                <li>ad
                   <a
                     className="text-md hover:text-green-500 hover:transition-all text-gray-500 hover:font-bold dark:text-gray-300"
                     href="#"
