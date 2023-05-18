@@ -10,12 +10,18 @@ import NotePadImg from "../SideNavBar/assets/notepad.png";
 import ChatImg from "../SideNavBar/assets/chat.png";
 import TodoImg from "../SideNavBar/assets/todo.png";
 import ProfileImg from "../SideNavBar/assets/user.png";
+import dummyUserImg from '../SideNavBar/assets/dummy_user_profile_pic.png';
 import SettingImg from "../SideNavBar/assets/settings.png";
 import SideEndLogoImg from "../SideNavBar/assets/sideEndLogo.png";
 
 function SideNavBar(props) {
   const { handlePage } = props;
-  useHistory;
+  let userEmail = localStorage.getItem('DDUserEmail');
+  if(userEmail) {
+    userEmail = userEmail.split('@')[0];
+  }
+
+  const history = useHistory();
   let sideNavBarArray = [
     {
       name: "Dashboard",
@@ -180,12 +186,12 @@ function SideNavBar(props) {
         <div className="mt-6">
           <div className="p-3 bg-gray-100 rounded-lg dark:bg-gray-800 letSdisable">
             <h2 className="text-sm font-medium text-gray-800 ">
-              New feature availabel!
+              New feature available!
             </h2>
-            <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+            {/* <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
               harum officia eligendi velit.
-            </p>
+            </p> */}
             <img
               className="object-cover w-full h-32 mt-2 rounded-lg"
               src="https://images.unsplash.com/photo-1605379399642-870262d3d051?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1806&amp;q=80"
@@ -196,11 +202,11 @@ function SideNavBar(props) {
             <a href="#" className="flex items-center gap-x-2 flexColum    ">
               <img
                 className="object-cover rounded-full h-7 w-7"
-                src="https://overreacted.io/static/profile-pic-c715447ce38098828758e525a1128b87.jpg"
+                src={dummyUserImg}
                 alt="avatar"
               />
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-200">
-                Dan Abromov
+              <span className="text-sm font-medium text-gray-700">
+                {userEmail}
               </span>
             </a>
             <a

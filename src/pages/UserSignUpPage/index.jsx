@@ -77,6 +77,7 @@ const UserSignUpPage = () => {
     try {
       const response = await registerUser(inputs);
       if (response.success) {
+        localStorage.setItem("DDUserEmail", email);
         localStorage.setItem("isAuthenticated", response.token);
         history.push("/profile");
       } else {

@@ -41,6 +41,7 @@ const UserSignInPage = () => {
     try {
       const response = await loginUser(inputs);
       if (response.success) {
+        localStorage.setItem("DDUserEmail", email);
         localStorage.setItem("isAuthenticated", response.token);
         history.push("/profile");
       } else {
