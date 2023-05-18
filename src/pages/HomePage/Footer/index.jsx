@@ -51,7 +51,7 @@ function Footer() {
           </h1>
         </div>
       </div>
-      <div className="flex space-x-6 mt-8">
+      <div className="flex space-x-6 my-3">
         <span>
           <svg
             width="24"
@@ -78,7 +78,7 @@ function Footer() {
             </defs>
           </svg>
         </span>
-        <span>
+        {/* <span>
           <svg
             width="24"
             height="25"
@@ -103,7 +103,7 @@ function Footer() {
               </clipPath>
             </defs>
           </svg>
-        </span>
+        </span> */}
         <span>
           <svg
             width="24"
