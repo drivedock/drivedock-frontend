@@ -113,7 +113,7 @@ export const SideFilters = () => {
             <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
               {/* Head */}
               <div className="flex items-center justify-center lg:justify-between">
-                <h2 className="text-2xl z-10 w-full  font-bold text-gray-900 dark:text-white sm:text-3xl">
+                <h2 className="text-2xl z-10 w-full  font-bold text-gray-900  sm:text-3xl">
                   Upcoming workshops
                 </h2>
               </div>
@@ -159,7 +159,7 @@ export const SideFilters = () => {
                         <p className="text-xs font-medium tracking-widest text-gray-500 dark:text-gray-300 uppercase">
                           {product.brand}
                         </p>
-                        <h3 className="mt-2 text-sm font-medium text-gray-900 dark:text-white">
+                        <h3 className="mt-2 text-sm font-medium text-gray-900 ">
                           <a href="#" title="">
                             {product.name}
                           </a>
@@ -182,7 +182,7 @@ export const SideFilters = () => {
                             ({product.ratings})
                           </p>
                         </div>
-                        <p className="mt-5 text-sm font-bold text-gray-900 dark:text-white">
+                        <p className="mt-5 text-sm font-bold text-gray-900 ">
                           {product.price}
                         </p>
                       </div>

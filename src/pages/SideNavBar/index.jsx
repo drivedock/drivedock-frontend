@@ -179,7 +179,7 @@ function SideNavBar(props) {
         </nav>
         <div className="mt-6">
           <div className="p-3 bg-gray-100 rounded-lg dark:bg-gray-800 letSdisable">
-            <h2 className="text-sm font-medium text-gray-800 dark:text-white">
+            <h2 className="text-sm font-medium text-gray-800 ">
               New feature availabel!
             </h2>
             <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">

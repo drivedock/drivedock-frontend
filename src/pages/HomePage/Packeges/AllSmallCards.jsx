@@ -4,7 +4,7 @@ function AllSmallCards() {
   return (
     <div className="container mx-auto px-10 md:px-0 py-5">
       <div className="flex flex-col items-center space-y-4 text-center">
-        <h1 className="text-black dark:text-white">
+        <h1 className="text-gray font-extrabold">
           Innovation needs Imagination
         </h1>
       </div>
@@ -26,7 +26,7 @@ function AllSmallCards() {
                   src="https://images.unsplash.com/photo-1601412436009-d964bd02edbc?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGh1bWFufGVufDB8fDB8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60"
                   alt=""
                 />
-                <p className="mt-8 text-lg font-semibold leading-tight text-black dark:text-white">
+                <p className="mt-8 text-lg font-semibold leading-tight text-black ">
                   Deepu Saladi
                 </p>
                 <p className="mt-1 text-base leading-tight text-gray-600 dark:text-gray-200">
@@ -41,7 +41,7 @@ function AllSmallCards() {
                   src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGh1bWFufGVufDB8fDB8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60"
                   alt=""
                 />
-                <p className="mt-8 text-lg font-semibold leading-tight text-black dark:text-white">
+                <p className="mt-8 text-lg font-semibold leading-tight text-black ">
                  Lasya Gunam
                 </p>
                 <p className="mt-1 text-base leading-tight text-gray-600 dark:text-gray-200">
@@ -56,7 +56,7 @@ function AllSmallCards() {
                   src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8dXNlcnN8ZW58MHx8MHx8&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60"
                   alt=""
                 />
-                <p className="mt-8 text-lg font-semibold leading-tight text-black dark:text-white">
+                <p className="mt-8 text-lg font-semibold leading-tight text-black ">
                   Dr. Bhrma Raju
                 </p>
                 <p className="mt-1 text-base leading-tight text-gray-600 dark:text-gray-200">

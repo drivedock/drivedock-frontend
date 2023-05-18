@@ -67,7 +67,7 @@ const UserSignInPage = () => {
           <div className="relative">
             <div className="w-full max-w-xl xl:w-full xl:mx-auto xl:pr-24 xl:max-w-xl">
               <h3 className="text-4xl font-bold text-white">
-              We deal with manufacturing and management of electric vehicles in India. With Project Electric we're doing R&D on diesel hybrid vehicles.
+              Register and connect with professional profiles. <br />Get a chance to work on R&D projects.
               </h3>
             </div>
           </div>
@@ -95,7 +95,7 @@ const UserSignInPage = () => {
             </NavLink>
           </div>
           <div className="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto">
-            <h2 className="text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl">
+            <h2 className="text-3xl font-bold leading-tight text-black  sm:text-4xl">
               Sign in
             </h2>
             <Link to="/signup">
