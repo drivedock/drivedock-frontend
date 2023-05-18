@@ -5,7 +5,7 @@ import heroBG from "../../../assets/heroBg.png";
 function Hero() {
   let heading = "Education in way we always thrive for practical";
   let content =
-    "we are going liveon this website soon, keep on eye out for an incredible online experience!";
+    "we are going live on this website soon, keep on eye out for an incredible online experience!";
   return (
     //   <section className="container">
     //    <div className="display__Flex justifyCenter alignCenter hero">
