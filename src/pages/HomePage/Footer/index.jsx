@@ -153,7 +153,7 @@ function Footer() {
           </svg>
         </span>
       </div>
-      <div className="mt-8">
+      {/* <div className="mt-8">
         <ul className="flex flex-col space-y-4 md:space-y-0 md:flex-row md:space-x-6 lg:space-x-12 items-start md:items-center font-semibold text-base text-gray-700">
           <li>About us</li>
           <li>Company History</li>
@@ -161,7 +161,7 @@ function Footer() {
           <li>Our Vision</li>
           <li>Press Release</li>
         </ul>
-      </div>
+      </div> */}
     </footer>
   );
 }
