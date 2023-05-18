@@ -2,7 +2,7 @@ import React from "react";
 
 function AllSmallCards() {
   return (
-    <div className="container mx-auto px-10 md:px-0 py-5">
+    <div className="container mx-auto px-10 md:px-0 pt-5">
       <div className="flex flex-col items-center space-y-4 text-center">
         <h1 className="text-gray font-extrabold">
           Innovation needs Imagination
@@ -29,7 +29,7 @@ function AllSmallCards() {
                 <p className="mt-8 text-lg font-semibold leading-tight text-black ">
                   Deepu Saladi
                 </p>
-                <p className="mt-1 text-base leading-tight text-gray-600 dark:text-gray-200">
+                <p className="mt-1 text-base leading-tight text-gray-600 dark:text-gray-400">
                   Chair Person Advisory Board
                 </p>
               </div>
@@ -44,7 +44,7 @@ function AllSmallCards() {
                 <p className="mt-8 text-lg font-semibold leading-tight text-black ">
                  Lasya Gunam
                 </p>
-                <p className="mt-1 text-base leading-tight text-gray-600 dark:text-gray-200">
+                <p className="mt-1 text-base leading-tight text-gray-600 dark:text-gray-400">
                   Head of Operations
                 </p>
               </div>
@@ -59,7 +59,7 @@ function AllSmallCards() {
                 <p className="mt-8 text-lg font-semibold leading-tight text-black ">
                   Dr. Bhrma Raju
                 </p>
-                <p className="mt-1 text-base leading-tight text-gray-600 dark:text-gray-200">
+                <p className="mt-1 text-base leading-tight text-gray-600 dark:text-gray-400">
                   Advisor
                 </p>
               </div>

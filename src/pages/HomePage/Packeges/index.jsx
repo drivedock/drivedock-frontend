@@ -3,7 +3,7 @@ import AllSmallCards from "./AllSmallCards";
 
 function Packeges() {
  return (
-  <section className="container" style={{ marginTop: "5rem" }}>
+  <section className="container" style={{ marginTop: "3rem" }}>
    {/* <div style={{ width: "50%", margin: "auto" }}>
     <h2 style={{ textAlign: "center", fontSize: "2.5rem", fontWeight: "700" }}>
      International package tracking

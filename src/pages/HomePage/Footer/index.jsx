@@ -40,7 +40,7 @@ function Footer() {
     //    </div>
     //   </footer>
 
-    <footer className="container mx-auto px-10 md:px-0 py-10">
+    <footer className="container mx-auto px-10 md:px-0">
       <div className="flex items-center space-x-2">
         <div>
           <img className="w-8 h-8" src={ProductLogo} alt="Logo" />
