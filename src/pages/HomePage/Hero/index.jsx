@@ -7,33 +7,6 @@ function Hero() {
   let content =
     "we are going live on this website soon, keep on eye out for an incredible online experience!";
   return (
-    //   <section className="container">
-    //    <div className="display__Flex justifyCenter alignCenter hero">
-    //     <div className="flex45 hero__Left">
-    //      <h2 className="hero_heading">{heading}</h2>
-    //      <p className="hero_content">
-    //       we are going liveon this website soon, keep on eye out for an incredible
-    //       online experience!
-    //      </p>
-    //      <div className="display__Flex" style={{ marginTop: "2rem" }}>
-    //       <div className="downloadBtn">DOWNLOAD MOBILE APP</div>
-    //       <div className="downloadBtn">CREATE AN ACCOUNT</div>
-    //      </div>
-    //     </div>
-
-    //     <figure className="flex40 display__Flex">
-    //      <img
-    //       className="widthFull alignEnd"
-    //       style={{ width: "100%" }}
-    //       src={heroBG}
-    //       alt="hero BG"
-    //      />
-    //     </figure>
-    //    </div>
-    //    <div>
-    //     <i className="fa-solid fa-arrow-down downloadIcon"></i>
-    //    </div>
-    //   </section>
     <>
       <section className="bg-white dark:bg-gray-900">
         <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
@@ -45,8 +18,7 @@ function Hero() {
               {content}
             </p>
             <NavLink to="/profile">
-              <a
-                href="javascript:void(0)"
+              <div
                 className="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-green-500 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
               >
                 Get started
@@ -62,7 +34,7 @@ function Hero() {
                     clipRule="evenodd"
                   ></path>
                 </svg>
-              </a>
+              </div>
             </NavLink>
             <a
               href="#"

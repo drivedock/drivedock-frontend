@@ -7,40 +7,6 @@ function Header() {
   const LoginValues = ["Login", "SignUp"];
   return (
     <header className="container">
-      {/* <div className="display__Flex alignCenter header">
-    <div className="display__Flex alignCenter">
-     <div className="display__Flex flex25">
-      <figure className="" style={{ width: "25%" }}>
-       <img className="widthFull" src={ProductLogo} alt="Logo" />
-      </figure>
-      <div>
-       <h1 className="product__heading">Drive Dock</h1>
-       <span style={{ marginLeft: "1rem", float: "right" }}>Groups</span>
-       <span style={{ float: "clear" }}></span>
-      </div>
-     </div>
-
-     <nav className="flex40 navFlexLing">
-      <ul className="display__Flex spaceBetween alignCenter">
-       {navNames.map((each, index) => (
-        <li className="each_Nav_value" key={index}>
-         {each}
-        </li>
-       ))}
-      </ul>
-     </nav>
-    </div>
-
-    <nav>
-     <ul className="display__Flex alignCenter">
-      {LoginValues.map((each, index) => (
-       <li className="signInValues" key={index}>
-        {each}
-       </li>
-      ))}
-     </ul>
-    </nav>
-   </div> */}
       <div>
         <nav className="relative px-4 py-4 flex justify-between items-center border-y border-gray-400 dark:border-gray-700">
           <a className="text-3xl font-bold leading-none" href="#">
@@ -48,8 +14,8 @@ function Header() {
           </a>
 
           <ul className="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-6">
-            {navNames.map((each) => (
-              <>
+            {navNames.map((each, index) => (
+              <div key={index}>
                 <li>
                   <a
                     className="text-md hover:text-green-500 hover:transition-all text-gray-500 hover:font-bold dark:text-gray-300"
@@ -74,7 +40,7 @@ function Header() {
                     ></path>
                   </svg>
                 </li>
-              </>
+              </div>
             ))}
           </ul>
 

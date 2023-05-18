@@ -6,34 +6,6 @@ function ThirdHeroSec() {
   let content =
     "we are going live on this website soon, keep on eye out for an incredible online experience!";
   return (
-    //   <section className="container">
-    //    <div
-    //     className="display__Flex justifyCenter alignCenter"
-    //     style={{ marginTop: "-1rem" }}
-    //    >
-    //     <div className="flex45 hero__Left" style={{ marginTop: "3rem" }}>
-    //      <h2 className="hero_heading">
-    //       we are going liveon this website soon, keep on eye out
-    //      </h2>
-    //      <p className="hero_content">
-    //       we are going liveon this website soon, keep on eye out for an incredible
-    //       online experience! we are going liveon this website soon, keep on eye out
-    //       for an incredible online experience! we are going liveon this website
-    //       soon, keep on eye out for an incredible online experience!
-    //      </p>
-    //     </div>
-
-    //     <figure className="flex40 display__Flex">
-    //      <img
-    //       className="widthFull"
-    //       style={{ width: "100%" }}
-    //       src={ThirdHeroSecImg}
-    //       alt="hero BG"
-    //      />
-    //     </figure>
-    //    </div>
-    //   </section>
-
     <>
       <section className="bg-white dark:bg-gray-900 container">
         <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
