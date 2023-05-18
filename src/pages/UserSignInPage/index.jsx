@@ -67,7 +67,7 @@ const UserSignInPage = () => {
           <div className="relative">
             <div className="w-full max-w-xl xl:w-full xl:mx-auto xl:pr-24 xl:max-w-xl">
               <h3 className="text-4xl font-bold text-white">
-              Register and connect with professional profiles. <br />Get a chance to work on R&D projects.
+                Register and attend various workshops, have a chance to work with DriveDock R&D projects
               </h3>
             </div>
           </div>
@@ -99,7 +99,7 @@ const UserSignInPage = () => {
               Sign in
             </h2>
             <Link to="/signup">
-              <p className="mt-2 text-base text-gray-600 dark:text-gray-300">
+              <p className="mt-2 text-base text-gray-600">
                 Don&apos;t have an account?{" "}
                 <span className="font-medium text-indigo-600 transition-all duration-200 hover:text-indigo-700 hover:underline focus:text-indigo-700">
                   {" "}
@@ -113,14 +113,14 @@ const UserSignInPage = () => {
                 <div>
                   <label
                     htmlFor=""
-                    className="text-base font-medium text-gray-900 dark:text-gray-200"
+                    className="text-base font-medium text-gray-900"
                   >
                     {" "}
                     Email address{" "}
                   </label>
                   <div className="mt-2.5">
                     <input
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
+                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="email"
                       placeholder="Email"
                       name="email"
@@ -133,7 +133,7 @@ const UserSignInPage = () => {
                   <div className="flex items-center justify-between">
                     <label
                       htmlFor=""
-                      className="text-base font-medium text-gray-900 dark:text-gray-200"
+                      className="text-base font-medium text-gray-900"
                     >
                       {" "}
                       Password{" "}
@@ -150,7 +150,7 @@ const UserSignInPage = () => {
                   </div>
                   <div className="mt-2.5">
                     <input
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
+                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="password"
                       placeholder="Password"
                       name="password"

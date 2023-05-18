@@ -8,7 +8,7 @@ function Header() {
   return (
     <header className="container">
       <div>
-        <nav className="relative px-4 py-4 flex justify-between items-center border-y border-gray-400 dark:border-gray-700">
+        <nav className="relative px-4 py-4 flex justify-between items-center border-y border-gray-400">
           <a className="text-3xl font-bold leading-none" href="#">
             <img className="w-12 h-12" src={ProductLogo} alt="" />
           </a>
@@ -18,7 +18,7 @@ function Header() {
               <React.Fragment key={index}>
                 <li>
                   <a
-                    className="text-md hover:text-green-500 hover:transition-all text-gray-500 hover:font-bold dark:text-gray-300"
+                    className="text-md hover:text-green-500 hover:transition-all text-gray-500 hover:font-bold"
                     href="#"
                   >
                     {each}

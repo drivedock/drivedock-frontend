@@ -117,7 +117,7 @@ const UserSignUpPage = () => {
           <div className="relative">
             <div className="w-full max-w-xl xl:w-full xl:mx-auto xl:pr-24 xl:max-w-xl">
               <h3 className="text-4xl font-bold text-white">
-              This portal allows students to register and attend different workshops, have a chance to work in research and development of Drivedock groups
+                Register and connect with professional profiles. <br />Get a chance to work on R&D projects.
               </h3>
             </div>
           </div>
@@ -129,7 +129,7 @@ const UserSignUpPage = () => {
               Sign Up
             </h2>
             <Link to="/signin">
-              <p className="mt-2 text-base text-gray-600 dark:text-gray-300">
+              <p className="mt-2 text-base text-gray-600">
                 Already have an account?{" "}
                 <span className="font-medium text-indigo-600 transition-all duration-200 hover:text-indigo-700 hover:underline focus:text-indigo-700">
                   {" "}
@@ -143,14 +143,14 @@ const UserSignUpPage = () => {
                 <div>
                   <label
                     htmlFor="fullName"
-                    className="text-base font-medium text-gray-900 dark:text-gray-200"
+                    className="text-base font-medium text-gray-900"
                   >
                     {" "}
                     Full Name{" "}
                   </label>
                   <div className="mt-2.5">
                     <input
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
+                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="text"
                       placeholder="Enter You Full Name"
                       id="fullName"
@@ -168,14 +168,14 @@ const UserSignUpPage = () => {
                 <div>
                   <label
                     htmlFor="email"
-                    className="text-base font-medium text-gray-900 dark:text-gray-200"
+                    className="text-base font-medium text-gray-900"
                   >
                     {" "}
                     Email address{" "}
                   </label>
                   <div className="mt-2.5">
                     <input
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
+                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="email"
                       name="email"
                       placeholder="Enter Your Email"
@@ -193,14 +193,14 @@ const UserSignUpPage = () => {
                 <div>
                   <label
                     htmlFor="password"
-                    className="text-base font-medium text-gray-900 dark:text-gray-200"
+                    className="text-base font-medium text-gray-900"
                   >
                     {" "}
                     Password{" "}
                   </label>
                   <div className="mt-2.5">
                     <input
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
+                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="password"
                       name="password"
                       placeholder="Enter Your Password"
@@ -218,14 +218,14 @@ const UserSignUpPage = () => {
                 <div>
                   <label
                     htmlFor="number"
-                    className="text-base font-medium text-gray-900 dark:text-gray-200"
+                    className="text-base font-medium text-gray-900"
                   >
                     {" "}
                     Mobile Number{" "}
                   </label>
                   <div className="mt-2.5">
                     <input
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
+                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="tel"
                       name="mobileNumber"
                       placeholder="Mobile Number"
@@ -269,7 +269,7 @@ const UserSignUpPage = () => {
                   </button>
                 </div>
                 <p>
-                  <span className="text-gray-500 dark:text-gray-400 text-sm">
+                  <span className="text-gray-500 text-sm">
                     Read our{" "}
                     <span className="capitalize text-indigo-600">
                       privacy policy

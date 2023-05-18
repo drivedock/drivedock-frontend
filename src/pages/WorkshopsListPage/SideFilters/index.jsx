@@ -8,7 +8,7 @@ export const SideFilters = () => {
     <section className="pt-8  w-full max-h-screen  sm:py-16 lg:py-10">
       <div className="">
         <div className="">
-          <nav className="relative px-8 pb-4 flex justify-between items-center border-y border-gray-400 dark:border-gray-700">
+          <nav className="relative px-8 pb-4 flex justify-between items-center border-y border-gray-400">
             <ul className=" lg:flex lg:items-center lg:justify-end grow mr-4">
               <li>
                 <div className="relative">
@@ -30,7 +30,7 @@ export const SideFilters = () => {
                   </span>
                   <input
                     type="text"
-                    className="py-2 pl-10 pr-4 text-sm text-gray-700 bg-gray-100 dark:bg-gray-800 rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
+                    className="py-2 pl-10 pr-4 text-sm text-gray-700 bg-gray-100 rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
                     placeholder="Search"
                   />
                 </div>
