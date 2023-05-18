@@ -92,7 +92,8 @@ export const UserDashboard = () => {
         {Data.map((item) => (
           <div
             key={item.id}
-            className="col-span-6 flex flex-col items-center text-center lg:col-span-1 lg:items-start lg:text-left"
+            className="col-span-6 flex flex-col items-center text-center lg:col-span-1 lg:items-start lg:text-left rounded"
+            style={{height: 250, backgroundColor: 'gray'}}
           >
             <div
               className="flex  h-full w-full flex-col justify-end rounded-md relative overflow-hidden"
@@ -102,19 +103,19 @@ export const UserDashboard = () => {
                 backgroundRepeat: "no-repeat",
               }}
             >
-              <img
+              {/* <img
                 src={item.image}
                 alt={item.title}
                 className="object-cover w-full h-full rounded-[10px] z-0"
-              />
+              /> */}
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
               <div className="absolute p-4 bottom-4 text-left">
                 <h1 className="text-2xl text-green-100 font-semibold">
                   {item.title}
                 </h1>
-                <p className="text-gray-300 mt-2 leading-6">
+                {/* <p className="text-gray-300 mt-2 leading-6">
                   {item.description}
-                </p>
+                </p> */}
                 <button className="text-base text-green-200 hover:text-green-600 cursor-pointer mt-2 font-semibold">
                   Know more &rarr;
                 </button>
