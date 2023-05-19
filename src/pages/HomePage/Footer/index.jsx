@@ -5,41 +5,6 @@ function Footer() {
   const navNames = ["Home", "Career", "Features", "About Us"];
   const LoginValues = ["Login", "SignUp"];
   return (
-    //   <footer className="footer" style={{ marginTop: "3rem" }}>
-    //    <div className="container display__Flex alignCenter header ">
-    //     <div className="display__Flex alignCenter">
-    //      <div className="display__Flex flex25">
-    //       <figure className="" style={{ width: "25%" }}>
-    //        <img className="widthFull" src={ProductLogo} alt="Logo" />
-    //       </figure>
-    //       <div>
-    //        <h1 className="product__heading">Drive Dock</h1>
-    //        <span style={{ marginLeft: "1rem", float: "right" }}>Groups</span>
-    //        <span style={{ float: "clear" }}></span>
-    //       </div>
-    //      </div>
-
-    //      <nav className="flex40 navFlexLing">
-    //       <ul className="display__Flex spaceBetween alignCenter">
-    //        {navNames.map((each, index) => (
-    //         <li className="each_Nav_value" key={index}>
-    //          {each}
-    //         </li>
-    //        ))}
-    //       </ul>
-    //      </nav>
-    //     </div>
-
-    //     <nav>
-    //      <ul className="display__Flex alignCenter">
-    //       <i className="fa-brands fa-twitter socialMedia"></i>
-    //       <i className="fa-brands fa-youtube socialMedia"></i>
-    //       <i className="fa-brands fa-instagram socialMedia"></i>
-    //      </ul>
-    //     </nav>
-    //    </div>
-    //   </footer>
-
     <footer className="container mx-auto px-10 md:px-0">
       <div className="flex items-center space-x-2">
         <div>
@@ -52,7 +17,7 @@ function Footer() {
         </div>
       </div>
       <div className="flex space-x-6 my-3">
-        <span>
+        <a href="https://www.facebook.com/SDMOTORSPEED" target="_blank">
           <svg
             width="24"
             height="25"
@@ -77,7 +42,7 @@ function Footer() {
               </clipPath>
             </defs>
           </svg>
-        </span>
+        </a>
         {/* <span>
           <svg
             width="24"
@@ -104,12 +69,11 @@ function Footer() {
             </defs>
           </svg>
         </span> */}
-        <span>
+        <a href="https://www.instagram.com/deepu_saladi/" target="_blank">
           <svg
             width="24"
             height="25"
             viewBox="0 0 24 25"
-            fill="currentColor"
             xmlns="http://www.w3.org/2000/svg"
           >
             <g clipPath="url(#clip0_65_10032)">
@@ -137,11 +101,12 @@ function Footer() {
               </clipPath>
             </defs>
           </svg>
-        </span>
-        <span>
+        </a>
+        <a href="https://www.youtube.com/@ddstudio4461" target="_blank">
           <svg
             width="24"
             height="25"
+            style={{color: 'red'}}
             viewBox="0 0 24 25"
             fill="currentColor"
             xmlns="http://www.w3.org/2000/svg"
@@ -151,7 +116,7 @@ function Footer() {
               fill="currentColor"
             ></path>
           </svg>
-        </span>
+        </a>
       </div>
       {/* <div className="mt-8">
         <ul className="flex flex-col space-y-4 md:space-y-0 md:flex-row md:space-x-6 lg:space-x-12 items-start md:items-center font-semibold text-base text-gray-700">

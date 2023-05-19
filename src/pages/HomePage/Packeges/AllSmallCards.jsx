@@ -1,5 +1,9 @@
 import React from "react";
 
+import DeepuImage from '../assets/deepu_saladi.png';
+import LasyaImage from '../assets/lasya_gunam.png';
+import drBhrmaRaju from '../assets/dr_bhrma_raju.png';
+
 function AllSmallCards() {
   return (
     <div className="container mx-auto px-10 md:px-0 pt-5">
@@ -22,13 +26,13 @@ function AllSmallCards() {
               <div className="hidden lg:block"></div>
               <div>
                 <img
-                  className="object-cover mx-auto rounded-lg w-28 h-28"
-                  src="https://images.unsplash.com/photo-1601412436009-d964bd02edbc?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGh1bWFufGVufDB8fDB8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60"
+                  className="object-cover mx-auto rounded-lg w-28 h-28 mb-4"
+                  src={DeepuImage}
                   alt=""
                 />
-                <p className="mt-8 text-lg font-semibold leading-tight text-black ">
+                <a href="https://www.linkedin.com/in/deepu-saladi/" className=" text-lg font-semibold leading-tight text-black cursor-pointer">
                   Deepu Saladi
-                </p>
+                </a>
                 <p className="mt-1 text-base leading-tight text-gray-600 dark:text-gray-400">
                   Chair Person Advisory Board
                 </p>
@@ -37,13 +41,13 @@ function AllSmallCards() {
               <div className="hidden lg:block"></div>
               <div>
                 <img
-                  className="object-cover mx-auto rounded-lg w-28 h-28"
-                  src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGh1bWFufGVufDB8fDB8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60"
+                  className="object-cover mx-auto rounded-lg w-28 h-28 mb-4"
+                  src={LasyaImage}
                   alt=""
                 />
-                <p className="mt-8 text-lg font-semibold leading-tight text-black ">
-                 Lasya Gunam
-                </p>
+                <a href="https://www.linkedin.com/in/lasya-srinivas-b86112170/" className=" text-lg font-semibold leading-tight text-black cursor-pointer">
+                  Lasya Gunam
+                </a>
                 <p className="mt-1 text-base leading-tight text-gray-600 dark:text-gray-400">
                   Head of Operations
                 </p>
@@ -52,13 +56,13 @@ function AllSmallCards() {
               <div className="hidden lg:block"></div>
               <div>
                 <img
-                  className="object-cover mx-auto rounded-lg w-28 h-28"
-                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8dXNlcnN8ZW58MHx8MHx8&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60"
+                  className="object-cover mx-auto rounded-lg w-28 h-28 mb-4"
+                  src={drBhrmaRaju}
                   alt=""
                 />
-                <p className="mt-8 text-lg font-semibold leading-tight text-black ">
-                  Dr. Bhrma Raju
-                </p>
+                <a href="https://www.linkedin.com/in/brahma-raju-8bb10215/" className=" text-lg font-semibold leading-tight text-black cursor-pointer">
+                  Dr. K. Brahma Raju
+                </a>
                 <p className="mt-1 text-base leading-tight text-gray-600 dark:text-gray-400">
                   Advisor
                 </p>
