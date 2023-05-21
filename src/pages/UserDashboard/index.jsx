@@ -4,7 +4,7 @@ import { InfoBanner } from "../../components/InfoBanner";
 const Data = [
   {
     id: 1,
-    title: "Online/Offline Workshop",
+    title: "Status tracking",
     image:
       "https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
     description:
@@ -13,7 +13,7 @@ const Data = [
   },
   {
     id: 2,
-    title: "R & D",
+    title: "Register for a workshop",
     image:
       "https://images.unsplash.com/photo-1543508282-6319a3e2621f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDd8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
     description:
@@ -22,7 +22,7 @@ const Data = [
   },
   {
     id: 3,
-    title: "Register upcoming workshop",
+    title: "Idea dropbox",
     image:
       "https://images.unsplash.com/photo-1512374382149-233c42b6a83b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDN8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
     description:
@@ -31,7 +31,7 @@ const Data = [
   },
   {
     id: 4,
-    title: "Volunteer for upcoming workshop",
+    title: "R&D projects",
     image:
       "https://images.unsplash.com/photo-1512374382149-233c42b6a83b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDN8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
     description:
@@ -93,7 +93,7 @@ export const UserDashboard = () => {
           <div
             key={item.id}
             className="col-span-6 flex flex-col items-center text-center lg:col-span-1 lg:items-start lg:text-left rounded"
-            style={{height: 250, backgroundColor: 'gray'}}
+            style={{ height: 250, backgroundColor: "gray" }}
           >
             <div
               className="flex  h-full w-full flex-col justify-end rounded-md relative overflow-hidden"
