@@ -4,8 +4,6 @@ import secondHeroSecImg from "../../../assets/secondHeroSecImg.png";
 function SecondHeroSec() {
   let heading =
     "Creativity is seeing what everyone else has seen and thinking what no one else has thought";
-  // let content =
-  //   "we are going live on this website soon, keep on eye out for an incredible online experience!";
   return (
     <section className="bg-white dark:bg-gray-900 container">
       <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">

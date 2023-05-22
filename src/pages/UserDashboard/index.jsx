@@ -40,7 +40,7 @@ const Data = [
   },
 ];
 
-export const UserDashboard = () => {
+export const UserDashboard = ({ handlePage }) => {
   return (
     <section className="flex flex-col  h-80 p-5 w-full">
       <div className="">
@@ -94,6 +94,7 @@ export const UserDashboard = () => {
             key={item.id}
             className="col-span-6 flex flex-col items-center text-center lg:col-span-1 lg:items-start lg:text-left rounded"
             style={{ height: 250, backgroundColor: "gray" }}
+            onClick={() => handlePage("workshops")}
           >
             <div
               className="flex  h-full w-full flex-col justify-end rounded-md relative overflow-hidden"

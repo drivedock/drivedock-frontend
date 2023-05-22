@@ -39,7 +39,7 @@ function Profile() {
         <SideNavBar handlePage={handlePage} />
         {showDetailsModal && <AdditionalDetailsModal />}
         {pageDecide == "dashboard" ? (
-          <UserDashboard />
+          <UserDashboard handlePage={handlePage} />
         ) : pageDecide == "workshops" ? (
           <WorkshopsListPage />
         ) : pageDecide == "profileSetting" ? (

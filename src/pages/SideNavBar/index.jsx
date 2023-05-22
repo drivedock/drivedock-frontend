@@ -68,7 +68,6 @@ function SideNavBar(props) {
         <nav className="flex-1 -mx-3 space-y-3">
           <a
             className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-            href=" javascript:void(0)"
             onClick={() => handlePage("dashboard")}
           >
             <svg
@@ -92,7 +91,6 @@ function SideNavBar(props) {
           </a>
           <a
             className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-            href="javascript:void(0)"
             // onClick={() => handlePage("workshops")}
           >
             <svg
@@ -116,7 +114,6 @@ function SideNavBar(props) {
           </a>
           <a
             className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-            href="javascript:void(0)"
             onClick={() => handlePage("profileSetting")}
           >
             <svg
