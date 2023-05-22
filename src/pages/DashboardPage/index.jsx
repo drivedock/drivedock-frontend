@@ -14,6 +14,7 @@ function DashboardPage() {
   // to make the useeffect to be called once
   let initialized = false;
   let [pageDecide, setPageDecide] = useState("dashboard");
+  const isAuthenticated = localStorage.getItem("isAuthenticated");
   const [showDetailsModal, setShowDetailsModal] = useState(false);
 
   const makeProfileAPI = async () => {
@@ -24,7 +25,7 @@ function DashboardPage() {
   };
 
   useEffect(() => {
-    if (!showDetailsModal && !initialized) {
+    if (!showDetailsModal && !initialized && isAuthenticated) {
       initialized = true;
       makeProfileAPI();
     }
