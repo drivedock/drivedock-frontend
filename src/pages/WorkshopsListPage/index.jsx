@@ -1,11 +1,8 @@
-import React from 'react'
-import { SideFilters } from './SideFilters'
+import React from "react";
+import { SideFilters } from "./SideFilters";
 
+const WorkshopsListPage = () => {
+  return <SideFilters />;
+};
 
-export const WorkshopsListPage = () => {
-    return (
-       <SideFilters />
-    )
-}
-
-WorkshopsListPage.displayName = 'WorkshopsListPage'
+export default WorkshopsListPage;

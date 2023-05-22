@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import ProtectedRoute from "../../components/auth/ProtectedRoute";
 import SideNavBar from "../SideNavBar";
-import IndetailProfile from "./IndetailProfile";
-import { DashboardTab } from "../DashboardTab";
-import { WorkshopsListPage } from "../WorkshopsListPage";
+import ProfileSettings from "./ProfileSettings";
+import DashboardTab from "../DashboardTab";
+import WorkshopsListPage from "../WorkshopsListPage";
+import MeetExperts from "../MeetExperts";
 import AdditionalDetailsModal from "../../components/AdditionalDetailsModal/AdditionalDetailsModal";
 
 import "./profile.css";
@@ -33,18 +35,42 @@ function DashboardPage() {
     setPageDecide(value);
   };
 
+  const renderActiveTab = () => {
+    switch (pageDecide) {
+      case "dashboard":
+        return <DashboardTab handlePage={handlePage} />;
+      case "workshops":
+        return <WorkshopsListPage />;
+      case "meetExperts":
+        return <MeetExperts />;
+      case "profileSetting":
+        return <ProfileSettings />;
+      default:
+        return <DashboardTab handlePage={handlePage} />;
+    }
+  };
+
   return (
     <section className="">
       <div className="flex">
         <SideNavBar handlePage={handlePage} />
         {showDetailsModal && <AdditionalDetailsModal />}
-        {pageDecide == "dashboard" ? (
-          <DashboardTab handlePage={handlePage} />
-        ) : pageDecide == "workshops" ? (
-          <WorkshopsListPage />
-        ) : pageDecide == "profileSetting" ? (
-          <IndetailProfile />
-        ) : null}
+        <ProtectedRoute path="/dashboard/home" component={DashboardTab} />
+        <ProtectedRoute
+          path="/dashboard/workshops"
+          exact
+          component={WorkshopsListPage}
+        />
+        <ProtectedRoute
+          path="/dashboard/meetExperts"
+          exact
+          component={MeetExperts}
+        />
+        <ProtectedRoute
+          path="/dashboard/profileSettings"
+          exact
+          component={ProfileSettings}
+        />
       </div>
     </section>
   );

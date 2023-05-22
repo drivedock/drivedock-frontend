@@ -3,7 +3,7 @@ import "./profile.css";
 import ProfileForm from "./ProfileForm";
 import { ProfileHeader } from "./ProfileHeader";
 
-function IndetailProfile() {
+function ProfileSettings() {
   let value = ["Personal Details", "Notification", "Privacy", "Payment"];
   const [page, setPage] = useState("Personal Details");
   return (
@@ -14,4 +14,4 @@ function IndetailProfile() {
   );
 }
 
-export default IndetailProfile;
+export default ProfileSettings;

@@ -58,6 +58,10 @@ function SideNavBar(props) {
     history.push("/signin");
   };
 
+  const handleNavigation = (routeName) => {
+    history.push(routeName);
+  };
+
   return (
     <aside className="flex flex-col w-96 h-screen px-5 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700 border rounded-md">
       <NavLink to="/">
@@ -68,7 +72,7 @@ function SideNavBar(props) {
         <nav className="flex-1 -mx-3 space-y-3">
           <a
             className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-            onClick={() => handlePage("dashboard")}
+            onClick={() => handleNavigation("/dashboard/home")}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -91,7 +95,7 @@ function SideNavBar(props) {
           </a>
           <a
             className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-            // onClick={() => handlePage("workshops")}
+            onClick={() => handleNavigation("/dashboard/meetExperts")}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -114,7 +118,7 @@ function SideNavBar(props) {
           </a>
           <a
             className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-            onClick={() => handlePage("profileSetting")}
+            onClick={() => handleNavigation("/dashboard/profileSettings")}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

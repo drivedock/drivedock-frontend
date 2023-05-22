@@ -4,12 +4,12 @@ import HomePage from "./pages/HomePage";
 import UserSignInPage from "./pages/UserSignInPage";
 import UserSignUpPage from "./pages/UserSignUpPage";
 import DashboardPage from "./pages/DashboardPage";
-import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 import "./index.css";
 export const AuthContext = createContext(null);
 
 function App() {
+  const isAuthenticated = localStorage.getItem("isAuthenticated");
   return (
     <>
       <AuthContext.Provider value={{ isAuthenticated: true }}>
@@ -25,8 +25,7 @@ function App() {
           <Route path="/signup" exact>
             <UserSignUpPage />
           </Route>
-
-          <ProtectedRoute path="/dashboard" exact component={DashboardPage} />
+          {isAuthenticated && <DashboardPage />}
 
           <Route path="*" exact>
             {"No Data"}

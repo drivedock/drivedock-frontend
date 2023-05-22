@@ -40,7 +40,7 @@ const Data = [
   },
 ];
 
-export const DashboardTab = ({ handlePage }) => {
+const DashboardTab = ({ handlePage }) => {
   return (
     <section className="flex flex-col  h-80 p-5 w-full">
       <InfoBanner />
@@ -85,4 +85,4 @@ export const DashboardTab = ({ handlePage }) => {
   );
 };
 
-DashboardTab.displayName = "DashboardTab";
+export default DashboardTab;
