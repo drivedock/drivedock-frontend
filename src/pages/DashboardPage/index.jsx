@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import SideNavBar from "../SideNavBar";
 import IndetailProfile from "./IndetailProfile";
-import { UserDashboard } from "../UserDashboard";
+import { DashboardTab } from "../DashboardTab";
 import { WorkshopsListPage } from "../WorkshopsListPage";
 import AdditionalDetailsModal from "../../components/AdditionalDetailsModal/AdditionalDetailsModal";
 
-import "../Profile/profile.css";
+import "./profile.css";
 import { getProfileStatus } from "../../api/profile";
 
-function Profile() {
+function DashboardPage() {
   // to make the useeffect to be called once
   let initialized = false;
   let [pageDecide, setPageDecide] = useState("dashboard");
@@ -39,7 +39,7 @@ function Profile() {
         <SideNavBar handlePage={handlePage} />
         {showDetailsModal && <AdditionalDetailsModal />}
         {pageDecide == "dashboard" ? (
-          <UserDashboard handlePage={handlePage} />
+          <DashboardTab handlePage={handlePage} />
         ) : pageDecide == "workshops" ? (
           <WorkshopsListPage />
         ) : pageDecide == "profileSetting" ? (
@@ -50,4 +50,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default DashboardPage;

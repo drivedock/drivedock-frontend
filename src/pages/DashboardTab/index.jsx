@@ -40,7 +40,7 @@ const Data = [
   },
 ];
 
-export const UserDashboard = ({ handlePage }) => {
+export const DashboardTab = ({ handlePage }) => {
   return (
     <section className="flex flex-col  h-80 p-5 w-full">
       <InfoBanner />
@@ -85,4 +85,4 @@ export const UserDashboard = ({ handlePage }) => {
   );
 };
 
-UserDashboard.displayName = "UserDashboard";
+DashboardTab.displayName = "DashboardTab";

@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import UserSignInPage from "./pages/UserSignInPage";
 import UserSignUpPage from "./pages/UserSignUpPage";
-import Profile from "./pages/Profile";
+import DashboardPage from "./pages/DashboardPage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 import "./index.css";
@@ -26,7 +26,7 @@ function App() {
             <UserSignUpPage />
           </Route>
 
-          <ProtectedRoute path="/dashboard" exact component={Profile} />
+          <ProtectedRoute path="/dashboard" exact component={DashboardPage} />
 
           <Route path="*" exact>
             {"No Data"}

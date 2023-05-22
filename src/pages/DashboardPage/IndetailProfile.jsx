@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import "../Profile/profile.css";
+import "./profile.css";
 import ProfileForm from "./ProfileForm";
-import ProfilePic from "../Profile/assets/profile.png";
 import { ProfileHeader } from "./ProfileHeader";
 
 function IndetailProfile() {
