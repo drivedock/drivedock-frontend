@@ -26,7 +26,7 @@ function App() {
             <UserSignUpPage />
           </Route>
 
-          <ProtectedRoute path="/profile" exact component={Profile} />
+          <ProtectedRoute path="/dashboard" exact component={Profile} />
 
           <Route path="*" exact>
             {"No Data"}

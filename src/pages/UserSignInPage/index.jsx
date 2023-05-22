@@ -14,7 +14,7 @@ const UserSignInPage = () => {
   useEffect(() => {
     const token = localStorage.getItem("isAuthenticated");
     if (token) {
-      history.push("/profile");
+      history.push("/dashboard");
     }
   }, []);
 
@@ -43,7 +43,7 @@ const UserSignInPage = () => {
       if (response.success) {
         localStorage.setItem("DDUserEmail", email);
         localStorage.setItem("isAuthenticated", response.token);
-        history.push("/profile");
+        history.push("/dashboard");
       } else {
         setErrorMsg(response.message);
       }
@@ -68,7 +68,8 @@ const UserSignInPage = () => {
           <div className="relative">
             <div className="w-full max-w-xl xl:w-full xl:mx-auto xl:pr-24 xl:max-w-xl">
               <h3 className="text-4xl font-bold text-white">
-                Register and attend various workshops, have a chance to work with DriveDock R&D projects
+                Register and attend various workshops, have a chance to work
+                with DriveDock R&D projects
               </h3>
             </div>
           </div>
