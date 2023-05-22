@@ -9,7 +9,6 @@ import "./index.css";
 export const AuthContext = createContext(null);
 
 function App() {
-  const isAuthenticated = localStorage.getItem("isAuthenticated");
   return (
     <>
       <AuthContext.Provider value={{ isAuthenticated: true }}>
@@ -25,7 +24,7 @@ function App() {
           <Route path="/signup" exact>
             <UserSignUpPage />
           </Route>
-          {isAuthenticated && <DashboardPage />}
+          <DashboardPage />
 
           <Route path="*" exact>
             {"No Data"}

@@ -35,21 +35,6 @@ function DashboardPage() {
     setPageDecide(value);
   };
 
-  const renderActiveTab = () => {
-    switch (pageDecide) {
-      case "dashboard":
-        return <DashboardTab handlePage={handlePage} />;
-      case "workshops":
-        return <WorkshopsListPage />;
-      case "meetExperts":
-        return <MeetExperts />;
-      case "profileSetting":
-        return <ProfileSettings />;
-      default:
-        return <DashboardTab handlePage={handlePage} />;
-    }
-  };
-
   return (
     <section className="">
       <div className="flex">
