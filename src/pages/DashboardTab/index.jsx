@@ -1,5 +1,6 @@
 import React from "react";
 import { InfoBanner } from "../../components/InfoBanner";
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
 const Data = [
   {
@@ -9,7 +10,7 @@ const Data = [
       "https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, debitis?",
-    link: "#",
+    link: "/dashboard/status",
   },
   {
     id: 2,
@@ -18,7 +19,7 @@ const Data = [
       "https://images.unsplash.com/photo-1543508282-6319a3e2621f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDd8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, debitis?",
-    link: "#",
+    link: "/dashboard/workshops",
   },
   {
     id: 3,
@@ -27,7 +28,7 @@ const Data = [
       "https://images.unsplash.com/photo-1512374382149-233c42b6a83b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDN8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, debitis?",
-    link: "#",
+    link: "/dashboard/idea-dropbox",
   },
   {
     id: 4,
@@ -36,13 +37,21 @@ const Data = [
       "https://images.unsplash.com/photo-1512374382149-233c42b6a83b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDN8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, debitis?",
-    link: "#",
+    link: "/dashboard/r-and-d-projects",
   },
 ];
 
 const DashboardTab = ({ handlePage }) => {
+  const history = useHistory();
+
+  const handleNavigation = (link) => {
+    if (link) {
+      history.push(link);
+    }
+  };
+
   return (
-    <section className="flex flex-col  h-80 p-5 w-full">
+    <>
       <InfoBanner />
       <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
         {Data.map((item) => (
@@ -50,7 +59,7 @@ const DashboardTab = ({ handlePage }) => {
             key={item.id}
             className="col-span-6 flex flex-col items-center text-center lg:col-span-1 lg:items-start lg:text-left rounded"
             style={{ height: 250, backgroundColor: "gray" }}
-            onClick={() => handlePage("workshops")}
+            onClick={() => handleNavigation(item.link)}
           >
             <div
               className="flex  h-full w-full flex-col justify-end rounded-md relative overflow-hidden"
@@ -81,7 +90,7 @@ const DashboardTab = ({ handlePage }) => {
           </div>
         ))}
       </div>
-    </section>
+    </>
   );
 };
 

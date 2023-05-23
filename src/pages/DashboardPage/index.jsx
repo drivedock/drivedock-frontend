@@ -9,6 +9,9 @@ import AdditionalDetailsModal from "../../components/AdditionalDetailsModal/Addi
 
 import "./profile.css";
 import { getProfileStatus } from "../../api/profile";
+import IdeaDropBoxPage from "../IdeaDropBoxPage";
+import StatusTrackerPage from "../StatusTrackerPage";
+import RAndDProjectsPage from "../RAndDProjectsPage";
 
 function DashboardPage() {
   // to make the useeffect to be called once
@@ -41,22 +44,39 @@ function DashboardPage() {
       <div className="flex">
         <SideNavBar handlePage={handlePage} />
         {showDetailsModal && <AdditionalDetailsModal />}
-        <ProtectedRoute path="/dashboard/home" component={DashboardTab} />
-        <ProtectedRoute
-          path="/dashboard/workshops"
-          exact
-          component={WorkshopsListPage}
-        />
-        <ProtectedRoute
-          path="/dashboard/meetExperts"
-          exact
-          component={MeetExperts}
-        />
-        <ProtectedRoute
-          path="/dashboard/profileSettings"
-          exact
-          component={ProfileSettings}
-        />
+        <section className="flex flex-col  h-80 p-5 w-full">
+          <ProtectedRoute path="/dashboard/home" component={DashboardTab} />
+          <ProtectedRoute
+            path="/dashboard/status"
+            exact
+            component={StatusTrackerPage}
+          />
+          <ProtectedRoute
+            path="/dashboard/workshops"
+            exact
+            component={WorkshopsListPage}
+          />
+          <ProtectedRoute
+            path="/dashboard/idea-dropbox"
+            exact
+            component={IdeaDropBoxPage}
+          />
+          <ProtectedRoute
+            path="/dashboard/r-and-d-projects"
+            exact
+            component={RAndDProjectsPage}
+          />
+          <ProtectedRoute
+            path="/dashboard/meet-experts"
+            exact
+            component={MeetExperts}
+          />
+          <ProtectedRoute
+            path="/dashboard/profile-settings"
+            exact
+            component={ProfileSettings}
+          />
+        </section>
       </div>
     </section>
   );
