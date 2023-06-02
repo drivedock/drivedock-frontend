@@ -41,10 +41,15 @@ const UserSignInPage = () => {
     try {
       const response = await loginUser(inputs);
       if (response.success) {
+        const { userType, token } = response;
         localStorage.setItem("DDUserEmail", email);
-        localStorage.setItem("userType", response.userType);
-        localStorage.setItem("isAuthenticated", response.token);
-        history.push("/dashboard/home");
+        localStorage.setItem("userType", userType);
+        localStorage.setItem("isAuthenticated", token);
+        if (userType === "admin") {
+          history.push("/admin/home");
+        } else {
+          history.push("/dashboard/home");
+        }
       } else {
         setErrorMsg(response.message);
       }

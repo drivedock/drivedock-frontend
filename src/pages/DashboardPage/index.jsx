@@ -15,13 +15,16 @@ import { getProfileStatus } from "../../api/profile";
 import IdeaDropBoxPage from "../IdeaDropBoxPage";
 import StatusTrackerPage from "../StatusTrackerPage";
 import RAndDProjectsPage from "../RAndDProjectsPage";
+import AdminPage from "../AdminPage";
+import AdminSideNavBar from "../AdminSideNavBar";
 
 function DashboardPage() {
   // to make the useeffect to be called once
   let initialized = false;
-  let [pageDecide, setPageDecide] = useState("dashboard");
   const history = useHistory();
   const isAuthenticated = localStorage.getItem("isAuthenticated");
+  const userType = localStorage.getItem("userType");
+  const isAdmin = userType === "admin";
   const [showDetailsModal, setShowDetailsModal] = useState(false);
 
   const makeProfileAPI = async () => {
@@ -45,15 +48,18 @@ function DashboardPage() {
     return () => {};
   }, []);
 
-  const handlePage = (value) => {
-    setPageDecide(value);
+  const renderSideNavBar = () => {
+    if (isAdmin) {
+      return <AdminSideNavBar />;
+    }
+    return <SideNavBar />;
   };
 
   return (
     <section className="">
       <div className="flex">
-        <SideNavBar handlePage={handlePage} />
-        {showDetailsModal && <AdditionalDetailsModal />}
+        {renderSideNavBar()}
+        {showDetailsModal && !isAdmin && <AdditionalDetailsModal />}
         <section className="flex flex-col  h-80 p-5 w-full">
           <ProtectedRoute path="/dashboard/home" component={DashboardTab} />
           <ProtectedRoute
@@ -86,11 +92,8 @@ function DashboardPage() {
             exact
             component={ProfileSettings}
           />
-          <Route path="*" exact>
-            <div className="flex m-10">
-              <h3>404 - Page not found</h3>
-            </div>
-          </Route>
+
+          <ProtectedRoute path="/admin/home" component={AdminPage} />
         </section>
       </div>
     </section>

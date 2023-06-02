@@ -3,55 +3,15 @@ import { NavLink, useHistory } from "react-router-dom";
 
 import "../SideNavBar/SideNavBar.css";
 import LogoImg from "../../assets/logo.png";
-// import ProductLogo from "../../../assets/logo.png";
-import MenuImg from "../SideNavBar/assets/menu.png";
-import RibbonImg from "../SideNavBar/assets/ribbon.png";
-import NotePadImg from "../SideNavBar/assets/notepad.png";
-import ChatImg from "../SideNavBar/assets/chat.png";
-import TodoImg from "../SideNavBar/assets/todo.png";
-import ProfileImg from "../SideNavBar/assets/user.png";
 import dummyUserImg from "../SideNavBar/assets/dummy_user_profile_pic.png";
-import SettingImg from "../SideNavBar/assets/settings.png";
-import SideEndLogoImg from "../SideNavBar/assets/sideEndLogo.png";
 
 function SideNavBar(props) {
-  const { handlePage } = props;
   let userEmail = localStorage.getItem("DDUserEmail");
   if (userEmail) {
     userEmail = userEmail.split("@")[0];
   }
 
   const history = useHistory();
-  let sideNavBarArray = [
-    {
-      name: "Dashboard",
-      image: MenuImg,
-    },
-    {
-      name: "Cource",
-      image: RibbonImg,
-    },
-    {
-      name: "Resources",
-      image: NotePadImg,
-    },
-    {
-      name: "Chat",
-      image: ChatImg,
-    },
-    {
-      name: "Schedule",
-      image: TodoImg,
-    },
-    {
-      name: "Profile",
-      image: ProfileImg,
-    },
-    {
-      name: "Setting",
-      image: SettingImg,
-    },
-  ];
 
   const handleLogOut = () => {
     localStorage.removeItem("isAuthenticated");
