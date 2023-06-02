@@ -41,7 +41,7 @@ function DashboardPage() {
   }, [isAuthenticated]);
 
   useEffect(() => {
-    if (!showDetailsModal && !initialized && isAuthenticated) {
+    if (!showDetailsModal && !initialized && isAuthenticated && !isAdmin) {
       initialized = true;
       makeProfileAPI();
     }
@@ -93,7 +93,18 @@ function DashboardPage() {
             component={ProfileSettings}
           />
 
-          <ProtectedRoute path="/admin/home" component={AdminPage} />
+          <ProtectedRoute path="/admin/home" exact component={AdminPage} />
+          <ProtectedRoute path="/admin/workshops" exact component={AdminPage} />
+          <ProtectedRoute
+            path="/admin/create-professionals"
+            exact
+            component={AdminPage}
+          />
+          <ProtectedRoute
+            path="/admin/create-projects"
+            exact
+            component={AdminPage}
+          />
         </section>
       </div>
     </section>
