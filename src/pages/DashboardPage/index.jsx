@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Route } from "react-router-dom";
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
+
 import ProtectedRoute from "../../components/auth/ProtectedRoute";
 import SideNavBar from "../SideNavBar";
 import ProfileSettings from "./ProfileSettings";
@@ -17,6 +20,7 @@ function DashboardPage() {
   // to make the useeffect to be called once
   let initialized = false;
   let [pageDecide, setPageDecide] = useState("dashboard");
+  const history = useHistory();
   const isAuthenticated = localStorage.getItem("isAuthenticated");
   const [showDetailsModal, setShowDetailsModal] = useState(false);
 
@@ -26,6 +30,12 @@ function DashboardPage() {
       setShowDetailsModal(!response.results);
     }
   };
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      history.push("/signin");
+    }
+  }, [isAuthenticated]);
 
   useEffect(() => {
     if (!showDetailsModal && !initialized && isAuthenticated) {
@@ -76,6 +86,11 @@ function DashboardPage() {
             exact
             component={ProfileSettings}
           />
+          <Route path="*" exact>
+            <div className="flex m-10">
+              <h3>404 - Page not found</h3>
+            </div>
+          </Route>
         </section>
       </div>
     </section>
