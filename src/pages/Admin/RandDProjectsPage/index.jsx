@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
 import { DEPARTMENTS } from "../../../constants";
+import { createRandDProject } from "../../../api/admin";
 function RandDProjectsPage() {
   let history = useHistory();
   const [inputs, setInputs] = useState({
@@ -19,16 +20,16 @@ function RandDProjectsPage() {
       return;
     }
     e.preventDefault();
-    // try {
-    //   const response = await createWorkshop(inputs);
-    //   if (response.success) {
-    //     history.replace("/admin/workshops");
-    //   } else {
-    //     setErrorMsg("Something went wrong! Please try again later");
-    //   }
-    // } catch (e) {
-    //   setErrorMsg("Something went wrong! Please try again later");
-    // }
+    try {
+      const response = await createRandDProject(inputs);
+      if (response.success) {
+        history.replace("/admin/workshops");
+      } else {
+        setErrorMsg("Something went wrong! Please try again later");
+      }
+    } catch (e) {
+      setErrorMsg("Something went wrong! Please try again later");
+    }
   };
 
   const handleChange = (event) => {
