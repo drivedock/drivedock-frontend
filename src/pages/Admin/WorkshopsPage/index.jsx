@@ -48,28 +48,28 @@ function WorkshopsPage() {
         </button>
       </div>
       <div className="mt-3">
-        <table class="table border-collapse border border-slate-300">
+        <table className="table border-collapse border border-slate-300">
           <thead>
-            <tr class="bg-indigo-400 text-white">
-              <td class="p-2">Name of the Workshop</td>
-              <td class="p-2">Location</td>
-              <td class="p-2">Start date</td>
-              <td class="p-2">End date</td>
+            <tr className="bg-indigo-400 text-white">
+              <td className="p-2">Name of the Workshop</td>
+              <td className="p-2">Location</td>
+              <td className="p-2">Start date</td>
+              <td className="p-2">End date</td>
             </tr>
           </thead>
           <tbody>
-            {workshops.map((workshop) => {
+            {workshops.map((workshop, index) => {
               const { workshopName, workshopLocation, startDate, endDate } =
                 workshop;
               return (
-                <tr class="even:bg-gray-200 odd:bg-white-300">
-                  <td class="p-2">{workshopName}</td>
-                  <td class="p-2">{workshopLocation}</td>
+                <tr key={index} className="even:bg-gray-200 odd:bg-white-300">
+                  <td className="p-2">{workshopName}</td>
+                  <td className="p-2">{workshopLocation}</td>
                   <td>
                     {startDate &&
                       new Date(startDate).toISOString().slice(0, 10)}
                   </td>
-                  <td class="p-2">
+                  <td className="p-2">
                     {endDate && new Date(endDate).toISOString().slice(0, 10)}
                   </td>
                 </tr>

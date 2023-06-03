@@ -122,9 +122,6 @@ function RandDProjectsPage() {
                   id="cars"
                   onChange={handleChange}
                 >
-                  <option value="" disabled selected>
-                    Select corresponding department
-                  </option>
                   {DEPARTMENTS.map((dept) => {
                     return (
                       <option key={dept} value={dept}>
