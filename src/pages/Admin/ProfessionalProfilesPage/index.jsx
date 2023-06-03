@@ -11,6 +11,7 @@ function ProfessionalProfilesPage() {
   const [inputs, setInputs] = useState({
     email: "",
     name: "",
+    mobileNumber: "",
     desc: "",
     location: "",
     dept: "",
@@ -80,6 +81,27 @@ function ProfessionalProfilesPage() {
                   type="email"
                   placeholder="Email"
                   name="email"
+                  onChange={handleChange}
+                  required
+                ></input>
+              </div>
+            </div>
+
+            <div>
+              <label
+                htmlFor="number"
+                className="text-base font-medium text-gray-900"
+              >
+                {" "}
+                Mobile Number{" "}
+              </label>
+              <div className="mt-2.5">
+                <input
+                  className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                  type="tel"
+                  name="mobileNumber"
+                  placeholder="Mobile Number"
+                  id="MobileNumber"
                   onChange={handleChange}
                   required
                 ></input>
