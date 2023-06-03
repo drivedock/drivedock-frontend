@@ -19,6 +19,7 @@ import WorkshopsPage from "../Admin/WorkshopsPage";
 import ProfessionalProfilesPage from "../Admin/ProfessionalProfilesPage";
 import RandDProjectsPage from "../Admin/RandDProjectsPage/index";
 import CreateWorkshop from "../Admin/WorkshopsPage/CreateWorkshop";
+import ExpertPage from "../MeetExperts/ExpertPage";
 
 function DashboardPage() {
   // to make the useeffect to be called once
@@ -89,6 +90,13 @@ function DashboardPage() {
             exact
             component={MeetExperts}
           />
+
+          <ProtectedRoute
+            path="/dashboard/meet-experts/:id"
+            exact
+            component={ExpertPage}
+          />
+
           <ProtectedRoute
             path="/dashboard/profile-settings"
             exact

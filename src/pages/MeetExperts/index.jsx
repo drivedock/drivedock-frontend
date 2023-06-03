@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 import { getProfessionalProfiles } from "../../api/dashboard";
 import ProfessionalProfileCard from "./ProfessionalProfileCard";
 
 export default function MeetExperts() {
   let mounted = false;
+  let history = useHistory();
   const [professionals, setProfessionals] = useState([]);
 
   useEffect(() => {
@@ -19,7 +21,8 @@ export default function MeetExperts() {
   }, []);
 
   const navigateToProProfile = (selectedProfessional) => {
-    console.log("Clicked on", selectedProfessional);
+    const { professionalEmail } = selectedProfessional;
+    history.replace("/dashboard/meet-experts/" + professionalEmail);
   };
 
   return (
@@ -27,7 +30,7 @@ export default function MeetExperts() {
       <section>
         <h4>Meet Experts</h4>
         <div className="d-flex mt-4 flex-wrap">
-          {professionals.map((pro) => {
+          {professionals.map((pro, index) => {
             return (
               <ProfessionalProfileCard
                 professional={pro}
