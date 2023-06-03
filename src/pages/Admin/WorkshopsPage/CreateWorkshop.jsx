@@ -18,7 +18,12 @@ function CreateWorkshop() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await createWorkshop(inputs);
+      const dataToSend = {
+        ...inputs,
+        isCertified: isCertified ? 1 : 0,
+      };
+      console.log("Data to send", dataToSend);
+      const response = await createWorkshop(dataToSend);
       if (response.success) {
         history.replace("/admin/workshops");
       } else {
