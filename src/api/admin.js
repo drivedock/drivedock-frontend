@@ -23,8 +23,8 @@ export const createWorkshop = async (dataToSend) => {
 export const createProfessionalProfile = async (dataToSend) => {
   const token = localStorage.getItem("isAuthenticated");
   axios.defaults.headers.common = { token: token };
-  const response = await axios.get(
-    `${API_URL}/admin/createProfessional`,
+  const response = await axios.post(
+    `${API_URL}/admin/createprofessional`,
     dataToSend
   );
   return response.data;
