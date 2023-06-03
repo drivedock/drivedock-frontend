@@ -17,7 +17,8 @@ import RAndDProjectsPage from "../RAndDProjectsPage";
 import AdminSideNavBar from "../AdminSideNavBar";
 import WorkshopsPage from "../Admin/WorkshopsPage";
 import ProfessionalProfilesPage from "../Admin/ProfessionalProfilesPage";
-import RandDProjectsPage from "../Admin/RandDProjectsPage/Index";
+import RandDProjectsPage from "../Admin/RandDProjectsPage/index";
+import CreateWorkshop from "../Admin/WorkshopsPage/CreateWorkshop";
 
 function DashboardPage() {
   // to make the useeffect to be called once
@@ -98,6 +99,11 @@ function DashboardPage() {
             path="/admin/workshops"
             exact
             component={WorkshopsPage}
+          />
+          <ProtectedRoute
+            path="/admin/workshops/create"
+            exact
+            component={CreateWorkshop}
           />
           <ProtectedRoute
             path="/admin/create-professionals"
