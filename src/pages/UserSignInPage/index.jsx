@@ -46,7 +46,7 @@ const UserSignInPage = () => {
         localStorage.setItem("userType", userType);
         localStorage.setItem("isAuthenticated", token);
         if (userType === "admin") {
-          history.push("/admin/home");
+          history.push("/admin/workshops");
         } else {
           history.push("/dashboard/home");
         }

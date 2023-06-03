@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Route } from "react-router-dom";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
 import ProtectedRoute from "../../components/auth/ProtectedRoute";
@@ -15,8 +14,10 @@ import { getProfileStatus } from "../../api/profile";
 import IdeaDropBoxPage from "../IdeaDropBoxPage";
 import StatusTrackerPage from "../StatusTrackerPage";
 import RAndDProjectsPage from "../RAndDProjectsPage";
-import AdminPage from "../AdminPage";
 import AdminSideNavBar from "../AdminSideNavBar";
+import WorkshopsPage from "../Admin/WorkshopsPage";
+import ProfessionalProfilesPage from "../Admin/ProfessionalProfilesPage";
+import RandDProjectsPage from "../Admin/RandDProjectsPage/Index";
 
 function DashboardPage() {
   // to make the useeffect to be called once
@@ -93,17 +94,20 @@ function DashboardPage() {
             component={ProfileSettings}
           />
 
-          <ProtectedRoute path="/admin/home" exact component={AdminPage} />
-          <ProtectedRoute path="/admin/workshops" exact component={AdminPage} />
+          <ProtectedRoute
+            path="/admin/workshops"
+            exact
+            component={WorkshopsPage}
+          />
           <ProtectedRoute
             path="/admin/create-professionals"
             exact
-            component={AdminPage}
+            component={ProfessionalProfilesPage}
           />
           <ProtectedRoute
             path="/admin/create-projects"
             exact
-            component={AdminPage}
+            component={RandDProjectsPage}
           />
         </section>
       </div>
