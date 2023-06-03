@@ -16,3 +16,12 @@ export const getIndividualProfile = async (email) => {
   const response = await axios.get(`${API_URL}/professionals/${email}`);
   return response.data;
 };
+
+export const getAllWorkshops = async () => {
+  const token = localStorage.getItem("isAuthenticated");
+  axios.defaults.headers.common = { token: token };
+  const response = await axios.get(
+    `${API_URL}/workshops?offset=${0}&limit=${25}`
+  );
+  return response.data;
+};
