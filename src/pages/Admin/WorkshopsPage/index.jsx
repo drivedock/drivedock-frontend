@@ -32,7 +32,6 @@ function WorkshopsPage() {
   useEffect(() => {
     async function fetchData() {
       const res = await getWorkshops();
-      console.log(res);
       setWorkshops(res.workshops);
     }
     fetchData();
@@ -54,18 +53,25 @@ function WorkshopsPage() {
             <tr class="bg-indigo-400 text-white">
               <td class="p-2">Name of the Workshop</td>
               <td class="p-2">Location</td>
-              <td class="p-2">Desc</td>
+              <td class="p-2">Start date</td>
               <td class="p-2">End date</td>
             </tr>
           </thead>
           <tbody>
             {workshops.map((workshop) => {
+              const { workshopName, workshopLocation, startDate, endDate } =
+                workshop;
               return (
                 <tr class="even:bg-gray-200 odd:bg-white-300">
-                  <td class="p-2">{workshop.workshopName}</td>
-                  <td class="p-2">{workshop.workshopLocation}</td>
-                  <td class="p-2">{workshop.worshopDesc}</td>
-                  <td class="p-2">{workshop.endDate}</td>
+                  <td class="p-2">{workshopName}</td>
+                  <td class="p-2">{workshopLocation}</td>
+                  <td>
+                    {startDate &&
+                      new Date(startDate).toISOString().slice(0, 10)}
+                  </td>
+                  <td class="p-2">
+                    {endDate && new Date(endDate).toISOString().slice(0, 10)}
+                  </td>
                 </tr>
               );
             })}
