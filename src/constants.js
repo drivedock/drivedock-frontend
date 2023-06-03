@@ -4,7 +4,7 @@ export const EMAIL_REGEX =
 export const API_URL = "http://localhost:3000/api";
 // "https://busi8jyxcd.execute-api.ap-south-1.amazonaws.com/prod/api";
 
-export const PROFESSIONAL_DEPTS = [
+export const DEPARTMENTS = [
   "Mechanical",
   "Computer Science & IT",
   "Electrical",

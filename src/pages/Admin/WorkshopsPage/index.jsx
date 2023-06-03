@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import { getWorkshops } from "../../../api/admin";
 
 const dummyWorkshopsData = [
   {
@@ -28,6 +29,15 @@ function WorkshopsPage() {
   let history = useHistory();
   const [workshops, setWorkshops] = useState(dummyWorkshopsData);
 
+  useEffect(() => {
+    async function fetchData() {
+      const res = await getWorkshops();
+      console.log(res);
+      setWorkshops(res.workshops);
+    }
+    fetchData();
+  }, []);
+
   return (
     <div>
       <div>
@@ -44,16 +54,18 @@ function WorkshopsPage() {
             <tr class="bg-indigo-400 text-white">
               <td class="p-2">Name of the Workshop</td>
               <td class="p-2">Location</td>
-              <td class="p-2">Status</td>
+              <td class="p-2">Desc</td>
+              <td class="p-2">End date</td>
             </tr>
           </thead>
           <tbody>
             {workshops.map((workshop) => {
               return (
                 <tr class="even:bg-gray-200 odd:bg-white-300">
-                  <td class="p-2">{workshop.workshopTitle}</td>
-                  <td class="p-2">{workshop.location}</td>
-                  <td class="p-2">{workshop.status}</td>
+                  <td class="p-2">{workshop.workshopName}</td>
+                  <td class="p-2">{workshop.workshopLocation}</td>
+                  <td class="p-2">{workshop.worshopDesc}</td>
+                  <td class="p-2">{workshop.endDate}</td>
                 </tr>
               );
             })}

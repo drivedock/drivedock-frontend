@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
-import { PROFESSIONAL_DEPTS } from "../../../constants";
+import { DEPARTMENTS } from "../../../constants";
 
 function ProfessionalProfilesPage() {
   let history = useHistory();
@@ -143,7 +143,7 @@ function ProfessionalProfilesPage() {
                   <option value="" disabled selected>
                     Select corresponding department
                   </option>
-                  {PROFESSIONAL_DEPTS.map((dept) => {
+                  {DEPARTMENTS.map((dept) => {
                     return (
                       <option key={dept} value={dept}>
                         {dept}
