@@ -143,7 +143,7 @@ function RandDProjectsPage() {
                 type="submit"
                 className="w-50 inline-flex items-center justify-center rounded-md bg-indigo-600 px-3.5 py-2.5 text-base font-semibold leading-7 text-white"
               >
-                Create Profile
+                Create Project
               </button>
             </div>
           </div>
