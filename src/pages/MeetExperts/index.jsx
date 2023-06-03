@@ -26,7 +26,7 @@ export default function MeetExperts() {
     <div>
       <section>
         <h4>Meet Experts</h4>
-        <div className="d-flex mt-4">
+        <div className="d-flex mt-4 flex-wrap">
           {professionals.map((pro) => {
             return (
               <ProfessionalProfileCard

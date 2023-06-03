@@ -22,10 +22,10 @@ function ProfessionalProfileCard({ professional, handleOnClick }) {
       md={6}
       lg={3}
       key={professionalEmail}
-      className="mr-10"
+      className="mr-10 mb-6"
       onClick={() => handleOnClick(professional)}
     >
-      <MDBCard>
+      <MDBCard className="h-100">
         <MDBCardImage
           src="https://mdbootstrap.com/img/new/standard/nature/184.webp"
           position="top"
