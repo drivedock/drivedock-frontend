@@ -8,7 +8,7 @@ function AdminSideNavBar(props) {
   const history = useHistory();
 
   const handleLogOut = () => {
-    localStorage.removeItem("isAuthenticated");
+    localStorage.clear();
     history.push("/signin");
   };
 
