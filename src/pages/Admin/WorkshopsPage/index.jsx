@@ -27,6 +27,7 @@ const dummyWorkshopsData = [
 
 function WorkshopsPage() {
   let history = useHistory();
+  let mounted = false;
   const [workshops, setWorkshops] = useState(dummyWorkshopsData);
 
   useEffect(() => {
@@ -34,7 +35,10 @@ function WorkshopsPage() {
       const res = await getWorkshops();
       setWorkshops(res.workshops);
     }
-    fetchData();
+    if (!mounted) {
+      mounted = true;
+      fetchData();
+    }
   }, []);
 
   return (
