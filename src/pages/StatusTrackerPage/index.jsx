@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { getTaskStatus } from "../../api/dashboard";
 
 const dummyInteractionsData = [
   {
@@ -27,57 +28,47 @@ const dummyInteractionsData = [
   },
 ];
 
-const dummyWorkshopsData = [
-  {
-    workshopTitle: "Robotics workshop",
-    location: "CBIT, Hyderabad",
-    status: "Upcoming",
-    statusCode: 0,
-  },
-  {
-    workshopTitle: "Hands on ML",
-    location: "IIIT-H",
-    status: "Completed",
-    statusCode: 1,
-  },
-  {
-    workshopTitle: "Johnny Depp",
-    location: "HCU",
-    status: "Upcoming",
-    statusCode: 0,
-  },
-  {
-    workshopTitle: "Will Smith",
-    location: "Vasavi Engineering College",
-    status: "Completed",
-    statusCode: 1,
-  },
-];
-
 export default function StatusTrackerPage() {
-  const [activeTab, setActiveTab] = useState("interaction");
+  let mounted = false;
+  const [activeTab, setActiveTab] = useState("workshops");
   const [interactionData, setInteractionData] = useState(dummyInteractionsData);
-  const [workshopsData, setWorkshopsData] = useState(dummyWorkshopsData);
+  const [workshopsData, setWorkshopsData] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const res = await getTaskStatus(activeTab);
+      if (activeTab == "workshops") {
+        setWorkshopsData(res.results);
+      } else {
+        setInteractionData(res.results);
+      }
+    }
+
+    if (!mounted) {
+      mounted = true;
+      fetchData();
+    }
+  }, []);
 
   const renderActiveTabData = (activeTabType) => {
-    if (activeTabType === "interaction") {
+    if (activeTabType === "interactions") {
       return (
         <>
-          <table class="table border-collapse border border-slate-300">
+          <table className="table border-collapse border border-slate-300">
             <thead>
-              <tr class="bg-indigo-400 text-white">
-                <td class="p-2">Name of the Professional</td>
-                <td class="p-2">Date of interaction</td>
-                <td class="p-2">Status</td>
+              <tr className="bg-indigo-400 text-white">
+                <td className="p-2">Name of the Professional</td>
+                <td className="p-2">Date of interaction</td>
+                <td className="p-2">Status</td>
               </tr>
             </thead>
             <tbody>
-              {interactionData.map((interaction) => {
+              {interactionData.map((interaction, index) => {
                 return (
-                  <tr class="even:bg-gray-200 odd:bg-white-300">
-                    <td class="p-2">{interaction.professionalName}</td>
-                    <td class="p-2">{interaction.dateOfInteraction}</td>
-                    <td class="p-2">{interaction.status}</td>
+                  <tr key={index} className="even:bg-gray-200 odd:bg-white-300">
+                    <td className="p-2">{interaction.professionalName}</td>
+                    <td className="p-2">{interaction.dateOfInteraction}</td>
+                    <td className="p-2">{interaction.status}</td>
                   </tr>
                 );
               })}
@@ -88,21 +79,29 @@ export default function StatusTrackerPage() {
     } else {
       return (
         <>
-          <table class="table border-collapse border border-slate-300">
+          <table className="table border-collapse border border-slate-300">
             <thead>
-              <tr class="bg-indigo-400 text-white">
-                <td class="p-2">Name of the Workshop</td>
-                <td class="p-2">Location</td>
-                <td class="p-2">Status</td>
+              <tr className="bg-indigo-400 text-white">
+                <td className="p-2">Name of the Workshop</td>
+                <td className="p-2">Location</td>
+                <td className="p-2">Status</td>
+                <td className="p-2">Attendee</td>
               </tr>
             </thead>
             <tbody>
-              {workshopsData.map((workshop) => {
+              {workshopsData.map((workshop, index) => {
+                const {
+                  workshopName,
+                  numberOfStudents,
+                  workshopStatus,
+                  workshopLocation,
+                } = workshop;
                 return (
-                  <tr class="even:bg-gray-200 odd:bg-white-300">
-                    <td class="p-2">{workshop.workshopTitle}</td>
-                    <td class="p-2">{workshop.location}</td>
-                    <td class="p-2">{workshop.status}</td>
+                  <tr key={index} className="even:bg-gray-200 odd:bg-white-300">
+                    <td className="p-2">{workshopName}</td>
+                    <td className="p-2">{workshopLocation}</td>
+                    <td className="p-2">{workshopStatus}</td>
+                    <td className="p-2">{numberOfStudents}</td>
                   </tr>
                 );
               })}

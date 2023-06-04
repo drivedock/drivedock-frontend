@@ -35,3 +35,10 @@ export const registerForWorkshop = async (dataToSend) => {
   );
   return response.data;
 };
+
+export const getTaskStatus = async (taskType) => {
+  const token = localStorage.getItem("isAuthenticated");
+  axios.defaults.headers.common = { token: token };
+  const response = await axios.get(`${API_URL}/profile/status/${taskType}`);
+  return response.data;
+};
