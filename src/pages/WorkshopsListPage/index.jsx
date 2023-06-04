@@ -19,7 +19,7 @@ import {
   MDBInput,
   MDBSpinner,
 } from "mdb-react-ui-kit";
-import { getAllWorkshops } from "../../api/dashboard";
+import { getAllWorkshops, registerForWorkshop } from "../../api/dashboard";
 
 const WorkshopsListPage = () => {
   let mounted = false;
@@ -29,6 +29,8 @@ const WorkshopsListPage = () => {
   const [inputs, setInputs] = useState({
     numberOfStudents: "",
   });
+
+  const [showSuccessMsg, setShowSuccessMsg] = useState(false);
 
   const [errors, setErrors] = useState({
     numberOfStudents: "",
@@ -53,10 +55,17 @@ const WorkshopsListPage = () => {
     setErrors((values) => ({ ...values, [name]: "" }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setShowModal(false);
     // api call
     console.log(inputs);
+    try {
+      const { workshopId } = selectedWorkshop;
+      const res = await registerForWorkshop({ ...inputs, id: workshopId });
+      if (res.success) {
+        setShowSuccessMsg(true);
+      }
+    } catch (e) {}
   };
 
   const renderModal = () => {
@@ -114,6 +123,11 @@ const WorkshopsListPage = () => {
             <MDBSpinner role="status">
               <span className="visually-hidden">Loading...</span>
             </MDBSpinner>
+          </div>
+        )}
+        {showSuccessMsg && (
+          <div className="my-2 text-green">
+            Your request submitted successfully
           </div>
         )}
         {workshops.map((workshop, index) => {

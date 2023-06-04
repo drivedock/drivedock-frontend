@@ -25,3 +25,13 @@ export const getAllWorkshops = async () => {
   );
   return response.data;
 };
+
+export const registerForWorkshop = async (dataToSend) => {
+  const token = localStorage.getItem("isAuthenticated");
+  axios.defaults.headers.common = { token: token };
+  const response = await axios.post(
+    `${API_URL}/workshops/register`,
+    dataToSend
+  );
+  return response.data;
+};
