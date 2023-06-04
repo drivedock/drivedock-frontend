@@ -22,3 +22,9 @@ export const DEPARTMENTS = [
   "Human Resource",
   "Agriculture",
 ];
+
+export const PROJECT_APPLICANT_TYPES = [
+  "Full time intern",
+  "Part time intern",
+  "Student in practice",
+];

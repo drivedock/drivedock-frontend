@@ -42,3 +42,19 @@ export const getTaskStatus = async (taskType) => {
   const response = await axios.get(`${API_URL}/profile/status/${taskType}`);
   return response.data;
 };
+
+export const getAllResearchProjects = async () => {
+  const token = localStorage.getItem("isAuthenticated");
+  axios.defaults.headers.common = { token: token };
+  const response = await axios.get(
+    `${API_URL}/research?offset=${0}&limit=${25}`
+  );
+  return response.data;
+};
+
+export const applyForProject = async (dataToSend) => {
+  const token = localStorage.getItem("isAuthenticated");
+  axios.defaults.headers.common = { token: token };
+  const response = await axios.post(`${API_URL}/research/register`, dataToSend);
+  return response.data;
+};
