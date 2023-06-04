@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import TagsInput from "react-tagsinput";
 
 import { DEPARTMENTS } from "../../../constants";
 import { createRandDProject } from "../../../api/admin";
@@ -13,6 +14,8 @@ function RandDProjectsPage() {
     duration: "",
   });
 
+  const [professionalEmails, setProfessionalEmails] = useState([]);
+
   const [errorMsg, setErrorMsg] = useState("");
 
   const handleSubmit = async (e) => {
@@ -22,7 +25,10 @@ function RandDProjectsPage() {
       return;
     }
     try {
-      const response = await createRandDProject(inputs);
+      const response = await createRandDProject({
+        ...inputs,
+        professionalEmails,
+      });
       if (response.success) {
         history.replace("/admin/workshops");
       } else {
@@ -152,6 +158,28 @@ function RandDProjectsPage() {
                   onChange={handleChange}
                   required
                 ></input>
+              </div>
+            </div>
+            <div>
+              <div className="flex items-center justify-between">
+                <label
+                  htmlFor=""
+                  className="text-base font-medium text-gray-900"
+                >
+                  {" "}
+                  Professional Emails{" "}
+                </label>
+              </div>
+              <div className="mt-2.5 w-full">
+                <TagsInput
+                  value={professionalEmails}
+                  inputProps={{
+                    placeholder: "Add a topic",
+                  }}
+                  onChange={(professionalEmails) =>
+                    setProfessionalEmails(professionalEmails)
+                  }
+                />
               </div>
             </div>
             {errorMsg && (
