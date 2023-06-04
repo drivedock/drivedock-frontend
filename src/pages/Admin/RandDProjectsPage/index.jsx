@@ -12,6 +12,7 @@ function RandDProjectsPage() {
     location: "",
     dept: "",
     duration: "",
+    linkedInLink: "",
   });
 
   const [professionalEmails, setProfessionalEmails] = useState([]);
@@ -167,6 +168,27 @@ function RandDProjectsPage() {
                   className="text-base font-medium text-gray-900"
                 >
                   {" "}
+                  LinkedIn Job URL{" "}
+                </label>
+              </div>
+              <div className="mt-2.5">
+                <input
+                  className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                  type="text"
+                  placeholder="Please enter linkedIn Job URL"
+                  name="linkedInLink"
+                  onChange={handleChange}
+                  required
+                ></input>
+              </div>
+            </div>
+            <div>
+              <div className="flex items-center justify-between">
+                <label
+                  htmlFor=""
+                  className="text-base font-medium text-gray-900"
+                >
+                  {" "}
                   Professional Emails{" "}
                 </label>
               </div>
@@ -174,7 +196,7 @@ function RandDProjectsPage() {
                 <TagsInput
                   value={professionalEmails}
                   inputProps={{
-                    placeholder: "Add a topic",
+                    placeholder: "Add an email",
                   }}
                   onChange={(professionalEmails) =>
                     setProfessionalEmails(professionalEmails)
