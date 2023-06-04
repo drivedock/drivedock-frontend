@@ -9,12 +9,31 @@ import {
   MDBCardText,
   MDBBtn,
   MDBIcon,
+  MDBModal,
+  MDBModalDialog,
+  MDBModalContent,
+  MDBModalHeader,
+  MDBModalTitle,
+  MDBModalBody,
+  MDBModalFooter,
+  MDBInput,
+  MDBSpinner,
 } from "mdb-react-ui-kit";
 import { getAllWorkshops } from "../../api/dashboard";
 
 const WorkshopsListPage = () => {
   let mounted = false;
   const [workshops, setWorkshops] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedWorkshop, setSelectedWorkshop] = useState({});
+  const [inputs, setInputs] = useState({
+    numberOfStudents: "",
+  });
+
+  const [errors, setErrors] = useState({
+    numberOfStudents: "",
+  });
+
   useEffect(() => {
     async function fetchData() {
       const res = await getAllWorkshops();
@@ -26,10 +45,77 @@ const WorkshopsListPage = () => {
       fetchData();
     }
   }, []);
+
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs((values) => ({ ...values, [name]: value }));
+    setErrors((values) => ({ ...values, [name]: "" }));
+  };
+
+  const handleSubmit = () => {
+    setShowModal(false);
+    // api call
+    console.log(inputs);
+  };
+
+  const renderModal = () => {
+    return (
+      <>
+        <MDBModal show={showModal} setShow={setShowModal} tabIndex="-1">
+          <MDBModalDialog>
+            <MDBModalContent>
+              <MDBModalHeader>
+                <MDBModalTitle>
+                  Please provide your attendee details
+                </MDBModalTitle>
+              </MDBModalHeader>
+              <MDBModalBody>
+                <div className="mb-3">
+                  <MDBInput
+                    label="Number of Students attending"
+                    type="number"
+                    name="numberOfStudents"
+                    onChange={handleChange}
+                  />
+                  {errors["numberOfStudents"] && (
+                    <div className="mt-0.5 text-red-400 text-sm">
+                      {errors["numberOfStudents"]}
+                    </div>
+                  )}
+                </div>
+
+                <div>
+                  {errors["backendError"] && (
+                    <div className="mt-1 text-red-400 text-sm">
+                      {errors["backendError"]}
+                    </div>
+                  )}
+                </div>
+              </MDBModalBody>
+
+              <MDBModalFooter>
+                <MDBBtn onClick={handleSubmit}>Submit</MDBBtn>
+              </MDBModalFooter>
+            </MDBModalContent>
+          </MDBModalDialog>
+        </MDBModal>
+      </>
+    );
+  };
+
   return (
     <div>
       <h4>List of Workshops</h4>
+      {renderModal()}
       <div className="mt-4">
+        {workshops.length === 0 && (
+          <div className="d-flex justify-center">
+            <MDBSpinner role="status">
+              <span className="visually-hidden">Loading...</span>
+            </MDBSpinner>
+          </div>
+        )}
         {workshops.map((workshop, index) => {
           const {
             workshopName,
@@ -71,7 +157,15 @@ const WorkshopsListPage = () => {
                       )}
                     </MDBCol>
                   </MDBRow>
-                  <MDBBtn href="#">Register</MDBBtn>
+                  <MDBBtn
+                    onClick={() => {
+                      setSelectedWorkshop(workshop);
+                      setShowModal(true);
+                      console.log("inside on click");
+                    }}
+                  >
+                    Register
+                  </MDBBtn>
                 </MDBCardBody>
               </MDBCard>
             </MDBRow>
