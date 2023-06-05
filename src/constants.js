@@ -28,3 +28,7 @@ export const PROJECT_APPLICANT_TYPES = [
   "Part time intern",
   "Student in practice",
 ];
+
+export const IDEA_STATUS = ["Idea Phase", "Prototype Level", "Documented"];
+
+export const IDEA_TYPE = ["Service based", "Product based"];
