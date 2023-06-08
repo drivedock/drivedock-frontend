@@ -20,9 +20,13 @@ export default function MeetExperts() {
     }
   }, []);
 
-  const navigateToProProfile = (selectedProfessional) => {
+  const navigateToProProfile = (selectedProfessional, index) => {
     const { professionalEmail } = selectedProfessional;
-    history.replace("/dashboard/meet-experts/" + professionalEmail);
+
+    history.replace({
+      pathname: "/dashboard/meet-experts/" + index,
+      params: selectedProfessional,
+    });
   };
 
   return (
@@ -34,7 +38,7 @@ export default function MeetExperts() {
             return (
               <ProfessionalProfileCard
                 professional={pro}
-                handleOnClick={navigateToProProfile}
+                handleOnClick={(p) => navigateToProProfile(p, index)}
               />
             );
           })}
