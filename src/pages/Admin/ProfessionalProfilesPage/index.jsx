@@ -14,6 +14,7 @@ function ProfessionalProfilesPage() {
     mobileNumber: "",
     desc: "",
     location: "",
+    currentRole: "",
     dept: "",
     education: "",
   });
@@ -125,6 +126,29 @@ function ProfessionalProfilesPage() {
                   type="text"
                   placeholder="Please add description here"
                   name="desc"
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
+
+            <div>
+              <div className="flex items-center justify-between">
+                <label
+                  htmlFor=""
+                  className="text-base font-medium text-gray-900"
+                  required
+                >
+                  {" "}
+                  Current Role{" "}
+                </label>
+              </div>
+              <div className="mt-2.5">
+                <textarea
+                  className="flex h-30 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                  type="text"
+                  placeholder="Please add description here"
+                  name="currentRole"
                   onChange={handleChange}
                   required
                 />
