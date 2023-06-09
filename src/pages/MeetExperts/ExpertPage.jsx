@@ -1,6 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
-import { MDBListGroup, MDBListGroupItem, MDBBtn } from "mdb-react-ui-kit";
+import {
+  MDBListGroup,
+  MDBListGroupItem,
+  MDBBtn,
+  MDBModal,
+  MDBModalDialog,
+  MDBModalContent,
+  MDBModalHeader,
+  MDBModalTitle,
+  MDBModalBody,
+  MDBModalFooter,
+  MDBInput,
+} from "mdb-react-ui-kit";
 // import { getIndividualProfile } from "../../api/dashboard";
 
 const TOPICS = [
@@ -16,6 +28,16 @@ function ExpertPage() {
     location.params || []
   );
 
+  const [inputs, setInputs] = useState({
+    date: "",
+  });
+
+  const [errors, setErrors] = useState({
+    date: "",
+  });
+
+  const [showModal, setShowModal] = useState(false);
+
   useEffect(() => {
     async function fetchData() {
       // const res = await getIndividualProfile();
@@ -28,8 +50,67 @@ function ExpertPage() {
       fetchData();
     }
   }, []);
+
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs((values) => ({ ...values, [name]: value }));
+    setErrors((values) => ({ ...values, [name]: "" }));
+  };
+
+  const handleSubmit = () => {
+    // make a post call
+  };
+
+  const renderModal = () => {
+    return (
+      <>
+        <MDBModal show={showModal} setShow={setShowModal} tabIndex="-1">
+          <MDBModalDialog>
+            <MDBModalContent>
+              <MDBModalHeader>
+                <MDBModalTitle>
+                  Please provide your attendee details
+                </MDBModalTitle>
+              </MDBModalHeader>
+              <MDBModalBody>
+                <div className="mb-3">
+                  <MDBInput
+                    label="Number of Students attending"
+                    type="date"
+                    name="date"
+                    min={new Date().toISOString().slice(0, 10)}
+                    onChange={handleChange}
+                  />
+                  {errors["date"] && (
+                    <div className="mt-0.5 text-red-400 text-sm">
+                      {errors["date"]}
+                    </div>
+                  )}
+                </div>
+
+                <div>
+                  {errors["backendError"] && (
+                    <div className="mt-1 text-red-400 text-sm">
+                      {errors["backendError"]}
+                    </div>
+                  )}
+                </div>
+              </MDBModalBody>
+
+              <MDBModalFooter>
+                <MDBBtn onClick={handleSubmit}>Submit</MDBBtn>
+              </MDBModalFooter>
+            </MDBModalContent>
+          </MDBModalDialog>
+        </MDBModal>
+      </>
+    );
+  };
+
   return (
     <div>
+      {showModal && renderModal()}
       <div className="grid grid-cols-4">
         <div className="col-span-2">
           <img
@@ -40,8 +121,10 @@ function ExpertPage() {
         <div className="d-flex justify-center align-items-center">
           <div>
             <h3>John Doe</h3>
-            <h5>Mechanical & Robotics</h5>
-            <h5>Hyderabad, India</h5>
+            <h5 className="mb-3">Mechanical & Robotics</h5>
+            <MDBBtn onClick={() => setShowModal(true)}>
+              Request for interaction
+            </MDBBtn>
           </div>
         </div>
       </div>
@@ -68,9 +151,6 @@ function ExpertPage() {
                   <MDBListGroupItem>
                     <div className="grid grid-cols-2">
                       <div>{topic}</div>
-                      <div>
-                        <MDBBtn>Request for interaction</MDBBtn>
-                      </div>
                     </div>
                   </MDBListGroupItem>
                 );
