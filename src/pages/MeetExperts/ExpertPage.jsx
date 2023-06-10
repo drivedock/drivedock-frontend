@@ -12,6 +12,11 @@ import {
   MDBModalBody,
   MDBModalFooter,
   MDBInput,
+  MDBDropdown,
+  MDBDropdownMenu,
+  MDBDropdownToggle,
+  MDBDropdownItem,
+  MDBTextArea,
 } from "mdb-react-ui-kit";
 // import { getIndividualProfile } from "../../api/dashboard";
 
@@ -29,11 +34,15 @@ function ExpertPage() {
   );
 
   const [inputs, setInputs] = useState({
+    selectedTopic: "",
     date: "",
+    desc: "",
   });
 
   const [errors, setErrors] = useState({
+    selectedTopic: "",
     date: "",
+    desc: "",
   });
 
   const [showModal, setShowModal] = useState(false);
@@ -60,44 +69,45 @@ function ExpertPage() {
 
   const handleSubmit = () => {
     // make a post call
+    console.log(inputs);
   };
 
   const renderModal = () => {
     return (
       <>
         <MDBModal show={showModal} setShow={setShowModal} tabIndex="-1">
-          <MDBModalDialog>
+          <MDBModalDialog className="modal-dialog-centered ">
             <MDBModalContent>
               <MDBModalHeader>
                 <MDBModalTitle>
-                  Please provide your attendee details
+                  Please provide details for interaction
                 </MDBModalTitle>
               </MDBModalHeader>
               <MDBModalBody>
-                <div className="mb-3">
-                  <MDBInput
-                    label="Number of Students attending"
-                    type="date"
-                    name="date"
-                    min={new Date().toISOString().slice(0, 10)}
-                    onChange={handleChange}
-                  />
-                  {errors["date"] && (
-                    <div className="mt-0.5 text-red-400 text-sm">
-                      {errors["date"]}
-                    </div>
-                  )}
+                <div className="flex items-center justify-between mb-2">
+                  <label
+                    htmlFor=""
+                    className="text-base font-medium text-gray-900"
+                  >
+                    {" "}
+                    Choose a topic{" "}
+                  </label>
                 </div>
-
-                <div>
-                  {errors["backendError"] && (
-                    <div className="mt-1 text-red-400 text-sm">
-                      {errors["backendError"]}
-                    </div>
-                  )}
-                </div>
+                <select
+                  className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                  name="selectedTopic"
+                  id="topics"
+                  onChange={handleChange}
+                >
+                  {TOPICS.map((topic) => {
+                    return (
+                      <option key={topic} value={topic}>
+                        {topic}
+                      </option>
+                    );
+                  })}
+                </select>
               </MDBModalBody>
-
               <MDBModalFooter>
                 <MDBBtn onClick={handleSubmit}>Submit</MDBBtn>
               </MDBModalFooter>
