@@ -6,6 +6,7 @@ import UserSignUpPage from "./pages/UserSignUpPage";
 import DashboardPage from "./pages/DashboardPage";
 
 import "./index.css";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 export const AuthContext = createContext(null);
 
 function App() {
@@ -19,6 +20,10 @@ function App() {
 
           <Route path="/signin" exact>
             <UserSignInPage />
+          </Route>
+
+          <Route path="/forgot-password" exact>
+            <ForgotPasswordPage />
           </Route>
 
           <Route path="/signup" exact>

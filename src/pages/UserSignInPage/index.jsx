@@ -147,14 +147,14 @@ const UserSignInPage = () => {
                       Password{" "}
                     </label>
 
-                    <a
-                      href="#"
+                    <Link
+                      to="/forgot-password"
                       title=""
                       className="text-sm font-medium text-indigo-600 hover:underline hover:text-indigo-700 focus:text-indigo-700"
                     >
                       {" "}
                       Forgot password?{" "}
-                    </a>
+                    </Link>
                   </div>
                   <div className="mt-2.5">
                     <input
