@@ -117,15 +117,15 @@ function ProfessionalProfilesPage() {
                   required
                 >
                   {" "}
-                  Description{" "}
+                  Current Role{" "}
                 </label>
               </div>
               <div className="mt-2.5">
-                <textarea
+                <input
                   className="flex h-30 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                   type="text"
-                  placeholder="Please add description here"
-                  name="desc"
+                  placeholder="Please add your current role"
+                  name="currentRole"
                   onChange={handleChange}
                   required
                 />
@@ -140,15 +140,15 @@ function ProfessionalProfilesPage() {
                   required
                 >
                   {" "}
-                  Current Role{" "}
+                  Description{" "}
                 </label>
               </div>
               <div className="mt-2.5">
                 <textarea
                   className="flex h-30 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                   type="text"
-                  placeholder="Please add description here"
-                  name="currentRole"
+                  placeholder="Quick intro about you"
+                  name="desc"
                   onChange={handleChange}
                   required
                 />

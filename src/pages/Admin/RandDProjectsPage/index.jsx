@@ -197,11 +197,15 @@ function RandDProjectsPage() {
                   value={professionalEmails}
                   inputProps={{
                     placeholder: "Add an email",
+                    className: "react-tagsinput-input w-100",
                   }}
                   onChange={(professionalEmails) =>
                     setProfessionalEmails(professionalEmails)
                   }
                 />
+                <div className="mt-0.5">
+                  Add an email and press 'Enter' key to add more
+                </div>
               </div>
             </div>
             {errorMsg && (
