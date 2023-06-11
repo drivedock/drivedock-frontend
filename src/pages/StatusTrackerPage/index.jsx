@@ -29,8 +29,7 @@ const dummyInteractionsData = [
 ];
 
 export default function StatusTrackerPage() {
-  let mounted = false;
-  const [activeTab, setActiveTab] = useState("workshops");
+  const [activeTab, setActiveTab] = useState("interactions");
   const [interactionData, setInteractionData] = useState(dummyInteractionsData);
   const [workshopsData, setWorkshopsData] = useState([]);
 
@@ -40,15 +39,11 @@ export default function StatusTrackerPage() {
       if (activeTab == "workshops") {
         setWorkshopsData(res.results);
       } else {
-        setInteractionData(res.results);
+        // setInteractionData(res.results);
       }
     }
-
-    if (!mounted) {
-      mounted = true;
-      fetchData();
-    }
-  }, []);
+    fetchData();
+  }, [activeTab]);
 
   const renderActiveTabData = (activeTabType) => {
     if (activeTabType === "interactions") {
@@ -123,9 +118,9 @@ export default function StatusTrackerPage() {
             <li className="py-2">
               <button
                 role="tab"
-                onClick={() => setActiveTab("interaction")}
+                onClick={() => setActiveTab("interactions")}
                 className={`py-2.5 px-4 rounded-lg duration-150 hover:text-green-500 hover:bg-white active:bg-white/50 font-medium ${
-                  activeTab === "interaction" &&
+                  activeTab === "interactions" &&
                   "bg-white text-green-600 shadow-sm"
                 }`}
               >
@@ -148,9 +143,9 @@ export default function StatusTrackerPage() {
         </div>
         <div className="py-2 px-1 md:px-8">
           <div>
-            {activeTab === "interaction"
-              ? renderActiveTabData("interaction")
-              : renderActiveTabData("workshop")}
+            {activeTab === "interactions"
+              ? renderActiveTabData("interactions")
+              : renderActiveTabData("workshops")}
           </div>
         </div>
       </section>
