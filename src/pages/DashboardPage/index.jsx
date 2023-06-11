@@ -20,6 +20,9 @@ import ProfessionalProfilesPage from "../Admin/ProfessionalProfilesPage";
 import RandDProjectsPage from "../Admin/RandDProjectsPage/index";
 import CreateWorkshop from "../Admin/WorkshopsPage/CreateWorkshop";
 import ExpertPage from "../MeetExperts/ExpertPage";
+import ProfessionalSideNavBar from "../ProfessionalView/ProfessionalSideNavBar";
+import ProfessionalRequestsPage from "../ProfessionalView/ProfessionalRequestsPage";
+import ProfessionalProfilePage from "../ProfessionalView/ProfessionalProfilePage";
 
 function DashboardPage() {
   // to make the useeffect to be called once
@@ -28,6 +31,8 @@ function DashboardPage() {
   const isAuthenticated = localStorage.getItem("isAuthenticated");
   const userType = localStorage.getItem("userType");
   const isAdmin = userType === "admin";
+  const isProfessional = userType === "professional";
+
   const [showDetailsModal, setShowDetailsModal] = useState(false);
 
   const makeProfileAPI = async () => {
@@ -54,6 +59,8 @@ function DashboardPage() {
   const renderSideNavBar = () => {
     if (isAdmin) {
       return <AdminSideNavBar />;
+    } else if (isProfessional) {
+      return <ProfessionalSideNavBar />;
     }
     return <SideNavBar />;
   };
@@ -122,6 +129,17 @@ function DashboardPage() {
             path="/admin/create-projects"
             exact
             component={RandDProjectsPage}
+          />
+
+          <ProtectedRoute
+            path="/professional/requests"
+            exact
+            component={ProfessionalRequestsPage}
+          />
+          <ProtectedRoute
+            path="/professional/profile"
+            exact
+            component={ProfessionalProfilePage}
           />
         </section>
       </div>
