@@ -11,12 +11,6 @@ import {
   MDBModalTitle,
   MDBModalBody,
   MDBModalFooter,
-  MDBInput,
-  MDBDropdown,
-  MDBDropdownMenu,
-  MDBDropdownToggle,
-  MDBDropdownItem,
-  MDBTextArea,
 } from "mdb-react-ui-kit";
 // import { getIndividualProfile } from "../../api/dashboard";
 
