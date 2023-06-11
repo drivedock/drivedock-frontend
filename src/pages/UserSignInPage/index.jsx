@@ -47,6 +47,8 @@ const UserSignInPage = () => {
         localStorage.setItem("isAuthenticated", token);
         if (userType === "admin") {
           history.push("/admin/workshops");
+        } else if (userType === "professional") {
+          history.push("/professional/requests");
         } else {
           history.push("/dashboard/home");
         }
