@@ -203,7 +203,7 @@ function RandDProjectsPage() {
                     setProfessionalEmails(professionalEmails)
                   }
                 />
-                <div className="mt-0.5">
+                <div className="mt-0.5 text-sm text-gray-500">
                   Add an email and press 'Enter' key to add more
                 </div>
               </div>
