@@ -84,29 +84,69 @@ function ExpertPage() {
                 </MDBModalTitle>
               </MDBModalHeader>
               <MDBModalBody>
-                <div className="flex items-center justify-between mb-2">
-                  <label
-                    htmlFor=""
-                    className="text-base font-medium text-gray-900"
+                <div className="mb-2">
+                  <div className="flex items-center justify-between mb-2">
+                    <label
+                      htmlFor=""
+                      className="text-base font-medium text-gray-900"
+                    >
+                      {" "}
+                      Choose a topic{" "}
+                    </label>
+                  </div>
+                  <select
+                    className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                    name="selectedTopic"
+                    id="topics"
+                    onChange={handleChange}
                   >
-                    {" "}
-                    Choose a topic{" "}
-                  </label>
+                    {TOPICS.map((topic) => {
+                      return (
+                        <option key={topic} value={topic}>
+                          {topic}
+                        </option>
+                      );
+                    })}
+                  </select>
                 </div>
-                <select
-                  className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                  name="selectedTopic"
-                  id="topics"
-                  onChange={handleChange}
-                >
-                  {TOPICS.map((topic) => {
-                    return (
-                      <option key={topic} value={topic}>
-                        {topic}
-                      </option>
-                    );
-                  })}
-                </select>
+                <div className="mb-2">
+                  <div className="flex items-center justify-between mb-2">
+                    <label
+                      htmlFor=""
+                      className="text-base font-medium text-gray-900"
+                    >
+                      {" "}
+                      Preferred Date{" "}
+                    </label>
+                  </div>
+                  <input
+                    type="date"
+                    min={new Date().toISOString().slice(0, 10)}
+                    className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                    name="startDate"
+                    onChange={handleChange}
+                    required
+                  ></input>
+                </div>
+                <div className="mb-2">
+                  <div className="flex items-center justify-between mb-2">
+                    <label
+                      htmlFor=""
+                      className="text-base font-medium text-gray-900"
+                    >
+                      {" "}
+                      Drop your query{" "}
+                    </label>
+                  </div>
+                  <textarea
+                    type="text"
+                    className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                    name="desc"
+                    onChange={handleChange}
+                    required
+                    rows={2}
+                  ></textarea>
+                </div>
               </MDBModalBody>
               <MDBModalFooter>
                 <MDBBtn onClick={handleSubmit}>Submit</MDBBtn>
