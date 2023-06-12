@@ -14,6 +14,7 @@ function CreateWorkshop() {
   });
 
   const [isCertified, setIsCertified] = useState(false);
+  const [triggerEmailer, setTriggerEmailer] = useState(false);
 
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -23,8 +24,8 @@ function CreateWorkshop() {
       const dataToSend = {
         ...inputs,
         isCertified: isCertified ? 1 : 0,
+        triggerEmailer: triggerEmailer ? 1 : 0,
       };
-      console.log("Data to send", dataToSend);
       const response = await createWorkshop(dataToSend);
       if (response.success) {
         history.replace("/admin/workshops");
@@ -187,7 +188,6 @@ function CreateWorkshop() {
               <input
                 type="checkbox"
                 name="isCertified"
-                value="true"
                 checked={isCertified}
                 onChange={() => setIsCertified(!isCertified)}
               />
@@ -197,6 +197,21 @@ function CreateWorkshop() {
               >
                 {" "}
                 Will audience get a certificate?
+              </label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                name="triggerEmailer"
+                checked={triggerEmailer}
+                onChange={() => setTriggerEmailer(!isCertified)}
+              />
+              <label
+                htmlFor=""
+                className="ml-2 text-base font-medium text-gray-900"
+              >
+                {" "}
+                Notify users through email?
               </label>
             </div>
             {errorMsg && (
