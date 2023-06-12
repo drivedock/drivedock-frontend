@@ -41,11 +41,7 @@ function ProfessionalRequestsPage() {
   const [selectedRequest, setSelectedRequest] = useState({});
   const [inputs, setInputs] = useState({
     confirmedDate: "",
-    meetingLink: "",
-  });
-
-  const [errors, setErrors] = useState({
-    confirmedDate: "",
+    confirmedTime: "09:00",
     meetingLink: "",
   });
 
@@ -74,44 +70,47 @@ function ProfessionalRequestsPage() {
         <MDBModal show={showModal} setShow={setShowModal} tabIndex="-1">
           <MDBModalDialog>
             <MDBModalContent>
-              <MDBModalHeader>
-                <MDBModalTitle>Please give the meeting details</MDBModalTitle>
-              </MDBModalHeader>
-              <MDBModalBody>
-                <div className="mb-3">
-                  <MDBInput
-                    label="Meeting Link"
-                    type="text"
-                    name="meetingLink"
-                    onChange={handleChange}
-                    className="mb-4"
-                  />
-                  <MDBInput
-                    label="Date of interaction"
-                    type="date"
-                    name="confirmedDate"
-                    onChange={handleChange}
-                  />
+              <form onSubmit={handleSubmit}>
+                <MDBModalHeader>
+                  <MDBModalTitle>
+                    Please provide the meeting details
+                  </MDBModalTitle>
+                </MDBModalHeader>
+                <MDBModalBody>
+                  <div className="mb-3">
+                    <MDBInput
+                      label="Meeting Link"
+                      type="text"
+                      name="meetingLink"
+                      onChange={handleChange}
+                      className="mb-4"
+                      required
+                    />
+                    <MDBInput
+                      label="Date"
+                      type="date"
+                      name="confirmedDate"
+                      onChange={handleChange}
+                      className="mb-4"
+                      required
+                    />
 
-                  {errors["confirmedDate"] && (
-                    <div className="mt-0.5 text-red-400 text-sm">
-                      {errors["confirmedDate"]}
-                    </div>
-                  )}
-                </div>
+                    <MDBInput
+                      label="Time"
+                      id="time"
+                      type="time"
+                      name="confirmedTime"
+                      value={inputs.confirmedTime}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                </MDBModalBody>
 
-                <div>
-                  {errors["backendError"] && (
-                    <div className="mt-1 text-red-400 text-sm">
-                      {errors["backendError"]}
-                    </div>
-                  )}
-                </div>
-              </MDBModalBody>
-
-              <MDBModalFooter>
-                <MDBBtn onClick={handleSubmit}>Confirm</MDBBtn>
-              </MDBModalFooter>
+                <MDBModalFooter>
+                  <MDBBtn type="submit">Confirm</MDBBtn>
+                </MDBModalFooter>
+              </form>
             </MDBModalContent>
           </MDBModalDialog>
         </MDBModal>
@@ -148,7 +147,6 @@ function ProfessionalRequestsPage() {
                       onClick={() => {
                         setSelectedRequest(workshop);
                         setShowModal(true);
-                        console.log("inside on click");
                       }}
                     >
                       Accept
@@ -159,7 +157,6 @@ function ProfessionalRequestsPage() {
                       onClick={() => {
                         setSelectedRequest(workshop);
                         setShowModal(true);
-                        console.log("inside on click");
                       }}
                       color="secondary"
                     >
