@@ -175,7 +175,6 @@ const WorkshopsListPage = () => {
                     onClick={() => {
                       setSelectedWorkshop(workshop);
                       setShowModal(true);
-                      console.log("inside on click");
                     }}
                   >
                     Register
