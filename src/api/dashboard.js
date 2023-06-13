@@ -5,7 +5,7 @@ export const getProfessionalProfiles = async (offset) => {
   const token = localStorage.getItem("isAuthenticated");
   axios.defaults.headers.common = { token: token };
   const response = await axios.get(
-    `${API_URL}/professionals?offset=${offset}&limit=${25}`
+    `${API_URL}/professionals?offset=${offset}&limit=${15}`
   );
   return response.data;
 };

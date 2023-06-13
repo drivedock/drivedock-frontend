@@ -12,29 +12,34 @@ import ProfessionalProfileCard from "./ProfessionalProfileCard";
 export default function MeetExperts() {
   let mounted = false;
   let history = useHistory();
-  const totalPages = Array.from(Array(5).keys());
+  const [totalPages, setTotalPages] = useState(Array.from(Array(5).keys()));
   const [professionals, setProfessionals] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
 
-  async function fetchData() {
-    const res = await getProfessionalProfiles(currentPage);
-    setProfessionals(res.professionals);
-  }
+  // async function fetchData() {
+  //   const res = await getProfessionalProfiles(currentPage);
+  //   setProfessionals(res.professionals);
+  // }
+
+  // useEffect(() => {
+  //   fetchData();
+  // }, [currentPage]);
 
   useEffect(() => {
-    fetchData();
-  }, [currentPage]);
-
-  useEffect(() => {
+    async function fetchInitialData() {
+      const res = await getProfessionalProfiles(0);
+      setProfessionals(res.professionals);
+      if (res?.totalProfessionalsCount) {
+        setTotalPages(res?.totalProfessionalsCount);
+      }
+    }
     if (!mounted) {
       mounted = true;
-      fetchData();
+      fetchInitialData();
     }
   }, []);
 
   const navigateToProProfile = (selectedProfessional, index) => {
-    const { professionalEmail } = selectedProfessional;
-
     history.replace({
       pathname: "/dashboard/meet-experts/" + index,
       params: selectedProfessional,
@@ -53,6 +58,7 @@ export default function MeetExperts() {
           {professionals.map((pro, index) => {
             return (
               <ProfessionalProfileCard
+                key={index}
                 professional={pro}
                 handleOnClick={(p) => navigateToProProfile(p, index)}
               />
@@ -74,6 +80,7 @@ export default function MeetExperts() {
             {totalPages.map((pageNumber) => {
               return (
                 <MDBPaginationItem
+                  key={pageNumber}
                   active={pageNumber === currentPage}
                   onClick={() => handlePaginate(pageNumber)}
                 >
