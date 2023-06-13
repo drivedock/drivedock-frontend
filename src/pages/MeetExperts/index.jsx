@@ -4,17 +4,22 @@ import {
   MDBPagination,
   MDBPaginationItem,
   MDBPaginationLink,
+  MDBSpinner,
 } from "mdb-react-ui-kit";
 
-import { getProfessionalProfiles } from "../../api/dashboard";
+import {
+  getProfessionalProfiles,
+  getTotalProfilesCount,
+} from "../../api/dashboard";
 import ProfessionalProfileCard from "./ProfessionalProfileCard";
 
 export default function MeetExperts() {
   let mounted = false;
   let history = useHistory();
-  const [totalPages, setTotalPages] = useState(Array.from(Array(5).keys()));
+  const [totalPages, setTotalPages] = useState([1]);
   const [professionals, setProfessionals] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
+  const [showLoader, setShowLoader] = useState(true);
 
   // async function fetchData() {
   //   const res = await getProfessionalProfiles(currentPage);
@@ -27,11 +32,15 @@ export default function MeetExperts() {
 
   useEffect(() => {
     async function fetchInitialData() {
+      const totalCountResponse = await getTotalProfilesCount();
       const res = await getProfessionalProfiles(0);
       setProfessionals(res.professionals);
-      if (res?.totalProfessionalsCount) {
-        setTotalPages(res?.totalProfessionalsCount);
+      if (totalCountResponse?.results) {
+        // setTotalPages(
+        //   Array.from(Array(totalCountResponse?.results / 9).keys())
+        // );
       }
+      setShowLoader(false);
     }
     if (!mounted) {
       mounted = true;
@@ -49,6 +58,16 @@ export default function MeetExperts() {
   const handlePaginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
+  if (showLoader) {
+    return (
+      <div className="d-flex justify-center">
+        <MDBSpinner role="status">
+          <span className="visually-hidden">Loading...</span>
+        </MDBSpinner>
+      </div>
+    );
+  }
 
   return (
     <div>

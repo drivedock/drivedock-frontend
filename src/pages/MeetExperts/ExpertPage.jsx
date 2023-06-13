@@ -12,7 +12,7 @@ import {
   MDBModalBody,
   MDBModalFooter,
 } from "mdb-react-ui-kit";
-// import { getIndividualProfile } from "../../api/dashboard";
+import { getIndividualProfile } from "../../api/dashboard";
 
 const TOPICS = [
   "Battery Management",
@@ -23,9 +23,15 @@ const TOPICS = [
 function ExpertPage() {
   let mounted = false;
   const location = useLocation();
-  const [professionalData, setProfessionalData] = useState(
-    location.params || []
-  );
+  const professionalData = location.params;
+  const {
+    professionalEmail,
+    professionalName,
+    professionalDept,
+    professionalLocation,
+    signedURL,
+  } = professionalData;
+  const [professionalExtraData, setProfessionalExtraData] = useState({});
 
   const [inputs, setInputs] = useState({
     selectedTopic: "",
@@ -43,13 +49,11 @@ function ExpertPage() {
 
   useEffect(() => {
     async function fetchData() {
-      // const res = await getIndividualProfile();
-      // console.log(res);
-      // setProfessionalData(res.professionals);
+      const res = await getIndividualProfile(professionalEmail);
+      setProfessionalExtraData(res.professional[0]);
     }
     if (!mounted) {
       mounted = true;
-      console.log(professionalData);
       fetchData();
     }
   }, []);
@@ -159,14 +163,19 @@ function ExpertPage() {
       <div className="grid grid-cols-4">
         <div className="col-span-2">
           <img
-            src="https://mdbootstrap.com/img/new/standard/nature/184.webp"
-            style={{ borderRadius: "50%", height: 200, width: 210 }}
+            src={
+              signedURL
+                ? signedURL
+                : "https://mdbootstrap.com/img/new/standard/nature/184.webp"
+            }
+            style={{ borderRadius: "50%", height: 200, width: 190 }}
           />
         </div>
         <div className="d-flex justify-center align-items-center">
           <div>
-            <h3>John Doe</h3>
-            <h5 className="mb-3">Mechanical & Robotics</h5>
+            <h3>{professionalName}</h3>
+            <h5 className="mb-2">{professionalDept}</h5>
+            <h6 className="mb-2">{professionalLocation}</h6>
             <MDBBtn onClick={() => setShowModal(true)}>
               Request for interaction
             </MDBBtn>
@@ -176,33 +185,32 @@ function ExpertPage() {
       <div className="mt-3 p-10">
         <div>
           <h4>Quick Intro</h4>
-          <div>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo conseq
-          </div>
+          <div>{professionalExtraData.professionalDesc}</div>
         </div>
         <div className="mt-4">
           <h4>Education</h4>
-          <div>Masters in Mechanical Engineering</div>
+          <div>{professionalExtraData.professionalEducation}</div>
         </div>
-        <div className="mt-4">
-          <h4>List of Topics</h4>
-          <div>
-            <MDBListGroup style={{ minWidthL: "22rem" }} light>
-              {TOPICS.map((topic) => {
-                return (
-                  <MDBListGroupItem>
-                    <div className="grid grid-cols-2">
-                      <div>{topic}</div>
-                    </div>
-                  </MDBListGroupItem>
-                );
-              })}
-            </MDBListGroup>
+        {professionalExtraData.professionalTopics && (
+          <div className="mt-4">
+            <h4>List of Topics</h4>
+            <div>
+              <MDBListGroup style={{ minWidthL: "22rem" }} light>
+                {professionalExtraData.professionalTopics
+                  .split(",")
+                  .map((topic) => {
+                    return (
+                      <MDBListGroupItem>
+                        <div className="grid grid-cols-2">
+                          <div>{topic}</div>
+                        </div>
+                      </MDBListGroupItem>
+                    );
+                  })}
+              </MDBListGroup>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

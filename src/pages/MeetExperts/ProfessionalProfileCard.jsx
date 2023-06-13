@@ -15,6 +15,7 @@ function ProfessionalProfileCard({ professional, handleOnClick }) {
     professionalDesc,
     professionalDept,
     professionalEmail,
+    signedURL,
   } = professional;
   return (
     <MDBCol
@@ -27,7 +28,11 @@ function ProfessionalProfileCard({ professional, handleOnClick }) {
     >
       <MDBCard className="h-100">
         <MDBCardImage
-          src="https://mdbootstrap.com/img/new/standard/nature/184.webp"
+          src={
+            signedURL
+              ? signedURL
+              : "https://mdbootstrap.com/img/new/standard/nature/184.webp"
+          }
           position="top"
           alt="..."
         />
