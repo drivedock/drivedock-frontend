@@ -39,7 +39,9 @@ export default function StatusTrackerPage() {
                 return (
                   <tr key={index} className="even:bg-gray-200 odd:bg-white-300">
                     <td className="p-2">{interaction.professionalName}</td>
-                    <td className="p-2">{interaction.requestedDate}</td>
+                    <td className="p-2">
+                      {new Date(interaction.requestedDate).toLocaleDateString()}
+                    </td>
                     <td className="p-2">{interaction.status}</td>
                   </tr>
                 );
