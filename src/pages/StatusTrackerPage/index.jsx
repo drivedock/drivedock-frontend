@@ -1,36 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { getTaskStatus } from "../../api/dashboard";
 
-const dummyInteractionsData = [
-  {
-    professionalName: "John Doe",
-    dateOfInteraction: "20/11/23",
-    status: "Pending",
-    statusCode: 0,
-  },
-  {
-    professionalName: "Tom Cruise",
-    dateOfInteraction: "21/12/23",
-    status: "Accepted",
-    statusCode: 1,
-  },
-  {
-    professionalName: "Johnny Depp",
-    dateOfInteraction: "21/12/23",
-    status: "Rejected",
-    statusCode: 2,
-  },
-  {
-    professionalName: "Will Smith",
-    dateOfInteraction: "21/12/23",
-    status: "Completed",
-    statusCode: 3,
-  },
-];
-
 export default function StatusTrackerPage() {
+  let mounted = false;
   const [activeTab, setActiveTab] = useState("interactions");
-  const [interactionData, setInteractionData] = useState(dummyInteractionsData);
+  const [interactionData, setInteractionData] = useState([]);
   const [workshopsData, setWorkshopsData] = useState([]);
 
   useEffect(() => {
@@ -39,10 +13,13 @@ export default function StatusTrackerPage() {
       if (activeTab == "workshops") {
         setWorkshopsData(res.results);
       } else {
-        // setInteractionData(res.results);
+        setInteractionData(res.results);
       }
     }
-    fetchData();
+    if (!mounted) {
+      mounted = true;
+      fetchData();
+    }
   }, [activeTab]);
 
   const renderActiveTabData = (activeTabType) => {
@@ -62,7 +39,7 @@ export default function StatusTrackerPage() {
                 return (
                   <tr key={index} className="even:bg-gray-200 odd:bg-white-300">
                     <td className="p-2">{interaction.professionalName}</td>
-                    <td className="p-2">{interaction.dateOfInteraction}</td>
+                    <td className="p-2">{interaction.requestedDate}</td>
                     <td className="p-2">{interaction.status}</td>
                   </tr>
                 );
