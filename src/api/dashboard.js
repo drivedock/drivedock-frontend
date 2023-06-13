@@ -24,6 +24,13 @@ export const getIndividualProfile = async (email) => {
   return response.data;
 };
 
+export const createInteractionRequest = async (body) => {
+  const token = localStorage.getItem("isAuthenticated");
+  axios.defaults.headers.common = { token: token };
+  const response = await axios.post(`${API_URL}/professionals/request`, body);
+  return response.data;
+};
+
 export const getAllWorkshops = async () => {
   const token = localStorage.getItem("isAuthenticated");
   axios.defaults.headers.common = { token: token };
