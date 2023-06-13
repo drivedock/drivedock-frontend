@@ -5,6 +5,7 @@ import TagsInput from "react-tagsinput";
 import "react-tagsinput/react-tagsinput.css";
 import { DEPARTMENTS } from "../../../constants";
 import { createProfessionalProfile } from "../../../api/admin";
+import { InfoBanner } from "../../../components/InfoBanner";
 
 function ProfessionalProfilesPage() {
   let history = useHistory();
@@ -15,30 +16,73 @@ function ProfessionalProfilesPage() {
     desc: "",
     location: "",
     currentRole: "",
-    dept: "",
+    dept: "Mechanical", //default for dropdown
     education: "",
   });
 
   const [topics, setTopics] = useState([]);
-
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [showSuccessMsg, setSuccessMsg] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
     if (inputs.dept.length === 0) {
       setErrorMsg("Please select department");
       return;
     }
-    e.preventDefault();
+    if (!selectedFile) {
+      setErrorMsg("Please select a user image");
+      return;
+    }
+    if (!selectedFile?.type.includes("image")) {
+      setErrorMsg("Please select a valid image file - jpeg / png");
+      return;
+    }
     try {
-      const response = await createProfessionalProfile({ ...inputs, topics });
+      const { type, name } = selectedFile;
+      const response = await createProfessionalProfile({
+        ...inputs,
+        topics,
+        contentType: type,
+        filename: name,
+      });
       if (response.success) {
-        history.replace("/admin/workshops");
+        if (response.uploadUrl) {
+          const fileUploadResponse = await fetch(response.uploadUrl, {
+            method: "PUT",
+            body: selectedFile,
+          });
+          if (fileUploadResponse.status === 200) {
+            setSuccessMsg(true);
+            resetForm();
+          } else {
+            setErrorMsg("Something went wrong! Please try again later");
+          }
+        } else {
+          setErrorMsg("Something went wrong! Please try again later");
+        }
       } else {
         setErrorMsg("Something went wrong! Please try again later");
       }
     } catch (e) {
       setErrorMsg("Something went wrong! Please try again later");
     }
+  };
+
+  const resetForm = () => {
+    setInputs({
+      email: "",
+      name: "",
+      mobileNumber: "",
+      desc: "",
+      location: "",
+      currentRole: "",
+      dept: "",
+      education: "",
+    });
+    setTopics([]);
+    setSelectedFile(null);
   };
 
   const handleChange = (event) => {
@@ -54,6 +98,9 @@ function ProfessionalProfilesPage() {
       <div>
         <form action="#" onSubmit={handleSubmit} className="mt-8 w-50">
           <div className="space-y-5">
+            {showSuccessMsg && (
+              <p className="mb-2">Profile created successfully</p>
+            )}
             <div>
               <label htmlFor="" className="text-base font-medium text-gray-900">
                 {" "}
@@ -65,6 +112,7 @@ function ProfessionalProfilesPage() {
                   type="text"
                   placeholder="Name"
                   name="name"
+                  value={inputs.name}
                   onChange={handleChange}
                   required
                 ></input>
@@ -82,6 +130,7 @@ function ProfessionalProfilesPage() {
                   type="email"
                   placeholder="Email"
                   name="email"
+                  value={inputs.email}
                   onChange={handleChange}
                   required
                 ></input>
@@ -103,6 +152,7 @@ function ProfessionalProfilesPage() {
                   name="mobileNumber"
                   placeholder="Mobile Number"
                   id="MobileNumber"
+                  value={inputs.mobileNumber}
                   onChange={handleChange}
                   required
                 ></input>
@@ -126,6 +176,7 @@ function ProfessionalProfilesPage() {
                   type="text"
                   placeholder="Please add your current role"
                   name="currentRole"
+                  value={inputs.currentRole}
                   onChange={handleChange}
                   required
                 />
@@ -149,6 +200,7 @@ function ProfessionalProfilesPage() {
                   type="text"
                   placeholder="Quick intro about you"
                   name="desc"
+                  value={inputs.desc}
                   onChange={handleChange}
                   required
                 />
@@ -171,6 +223,7 @@ function ProfessionalProfilesPage() {
                   type="text"
                   placeholder="Location"
                   name="location"
+                  value={inputs.location}
                   onChange={handleChange}
                   required
                 ></input>
@@ -191,6 +244,7 @@ function ProfessionalProfilesPage() {
                   className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                   name="dept"
                   id="cars"
+                  value={inputs.dept}
                   onChange={handleChange}
                 >
                   {DEPARTMENTS.map((dept) => {
@@ -219,6 +273,7 @@ function ProfessionalProfilesPage() {
                   type="text"
                   placeholder="Highest degree"
                   name="education"
+                  value={inputs.education}
                   onChange={handleChange}
                   required
                 ></input>
@@ -244,6 +299,23 @@ function ProfessionalProfilesPage() {
                   onChange={(topics) => setTopics(topics)}
                 />
               </div>
+            </div>
+
+            <div className="mt-3">
+              <div className="flex items-center justify-between">
+                <label
+                  htmlFor=""
+                  className="text-base font-medium text-gray-900"
+                >
+                  {" "}
+                  Upload profile image{" "}
+                </label>
+              </div>
+              <input
+                type="file"
+                className="mt-2.5"
+                onChange={(event) => setSelectedFile(event.target.files[0])}
+              />
             </div>
 
             {errorMsg && (
