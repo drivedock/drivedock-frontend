@@ -93,7 +93,9 @@ function ExpertPage() {
               </MDBModalHeader>
               <MDBModalBody>
                 {successMsg ? (
-                  <div>Request submitted successfully</div>
+                  <div className="text-green-600">
+                    Request submitted successfully
+                  </div>
                 ) : (
                   <>
                     <div className="mb-2">
@@ -168,7 +170,7 @@ function ExpertPage() {
                   <MDBBtn
                     onClick={() => {
                       setSuccessMsg(false);
-                      showModal(false);
+                      setShowModal(false);
                     }}
                   >
                     Close
