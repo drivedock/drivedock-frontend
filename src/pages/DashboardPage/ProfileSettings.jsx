@@ -29,7 +29,7 @@ const dummyProjectsData = [
 function ProfileSettings() {
   let mounted = false;
   const [activeTab, setActiveTab] = useState("profile");
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState(null);
   const [projectsData, setProjectsData] = useState(dummyProjectsData);
 
   useEffect(() => {
@@ -77,7 +77,7 @@ function ProfileSettings() {
         </ul>
       </div>
       {activeTab == "profile" ? (
-        <ProfileForm userData={userData} />
+        userData && <ProfileForm userData={userData} />
       ) : (
         <>
           <table className="table border-collapse border border-slate-300">
