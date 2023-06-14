@@ -40,8 +40,7 @@ function ProfessionalRequestsPage() {
   const [showModal, setShowModal] = useState(false);
   const [selectedRequest, setSelectedRequest] = useState({});
   const [inputs, setInputs] = useState({
-    confirmedDate: "",
-    confirmedTime: "09:00",
+    confirmedDateTime: "",
     meetingLink: "",
   });
 
@@ -88,20 +87,12 @@ function ProfessionalRequestsPage() {
                     />
                     <MDBInput
                       label="Date"
-                      type="date"
-                      name="confirmedDate"
+                      type="datetime-local"
+                      name="confirmedDateTime"
                       onChange={handleChange}
+                      min={new Date().toISOString().slice(0, 10)}
+                      value={new Date().toISOString().slice(0, 10)}
                       className="mb-4"
-                      required
-                    />
-
-                    <MDBInput
-                      label="Time"
-                      id="time"
-                      type="time"
-                      name="confirmedTime"
-                      value={inputs.confirmedTime}
-                      onChange={handleChange}
                       required
                     />
                   </div>

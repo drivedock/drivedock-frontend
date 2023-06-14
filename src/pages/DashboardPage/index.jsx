@@ -23,6 +23,7 @@ import ExpertPage from "../MeetExperts/ExpertPage";
 import ProfessionalSideNavBar from "../ProfessionalView/ProfessionalSideNavBar";
 import ProfessionalRequestsPage from "../ProfessionalView/ProfessionalRequestsPage";
 import ProfessionalProfilePage from "../ProfessionalView/ProfessionalProfilePage";
+import ProfessionalAcceptedRequestspage from "../ProfessionalView/ProfessionalAcceptedRequestsPage";
 
 function DashboardPage() {
   // to make the useeffect to be called once
@@ -135,6 +136,11 @@ function DashboardPage() {
             path="/professional/requests"
             exact
             component={ProfessionalRequestsPage}
+          />
+          <ProtectedRoute
+            path="/professional/accepted"
+            exact
+            component={ProfessionalAcceptedRequestspage}
           />
           <ProtectedRoute
             path="/professional/profile"
