@@ -21,23 +21,20 @@ export default function MeetExperts() {
   const [currentPage, setCurrentPage] = useState(0);
   const [showLoader, setShowLoader] = useState(true);
 
-  // async function fetchData() {
-  //   const res = await getProfessionalProfiles(currentPage);
-  //   setProfessionals(res.professionals);
-  // }
-
-  // useEffect(() => {
-  //   fetchData();
-  // }, [currentPage]);
+  async function fetchData(offset) {
+    const res = await getProfessionalProfiles(offset);
+    setProfessionals(res.professionals);
+  }
 
   useEffect(() => {
     async function fetchInitialData() {
       const totalCountResponse = await getTotalProfilesCount();
       const res = await getProfessionalProfiles(0);
       setProfessionals(res.professionals);
-      if (totalCountResponse?.results) {
-        // setTotalPages();
-        // Array.from(Array(Math.floor(totalCountResponse?.results / 9)).keys())
+      if (totalCountResponse?.results && totalCountResponse?.results > 9) {
+        const noOfPages = Math.floor(totalCountResponse?.results / 9);
+        const arr = Array.from(Array(noOfPages).keys());
+        setTotalPages(arr);
       }
       setShowLoader(false);
     }
@@ -55,7 +52,11 @@ export default function MeetExperts() {
   };
 
   const handlePaginate = (pageNumber) => {
-    setCurrentPage(pageNumber);
+    if (pageNumber < 0 || pageNumber > totalPages.length - 1) {
+      return;
+    }
+    if (pageNumber) setCurrentPage(pageNumber);
+    fetchData(pageNumber);
   };
 
   if (showLoader) {
