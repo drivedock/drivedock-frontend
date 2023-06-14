@@ -77,7 +77,7 @@ function ProfileForm({ userData }) {
             />
           </div>
           {isResumeUploaded && (
-            <div className="mt-2 ml-2 d-flex align-items-center">
+            <div className="mt-2 ml-2 pt-2 d-flex align-items-center">
               <input
                 type="checkbox"
                 name="isCertified"
