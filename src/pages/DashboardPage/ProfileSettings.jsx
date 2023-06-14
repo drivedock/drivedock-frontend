@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./profile.css";
 import ProfileForm from "./ProfileForm";
+import { getProfileDetails } from "../../api/profile";
 
 const dummyProjectsData = [
   {
@@ -28,7 +29,22 @@ const dummyProjectsData = [
 function ProfileSettings() {
   let mounted = false;
   const [activeTab, setActiveTab] = useState("profile");
+  const [userData, setUserData] = useState({});
   const [projectsData, setProjectsData] = useState(dummyProjectsData);
+
+  useEffect(() => {
+    async function fetchData() {
+      const res = await getProfileDetails();
+      if (res.success) {
+        setUserData(res.profile);
+      }
+    }
+
+    if (!mounted) {
+      mounted = true;
+      fetchData();
+    }
+  }, []);
   return (
     <section className="flex flex-col  h-80 p-5 w-full">
       <div className="py-2 px-1 md:px-8">
@@ -61,7 +77,7 @@ function ProfileSettings() {
         </ul>
       </div>
       {activeTab == "profile" ? (
-        <ProfileForm />
+        <ProfileForm userData={userData} />
       ) : (
         <>
           <table className="table border-collapse border border-slate-300">

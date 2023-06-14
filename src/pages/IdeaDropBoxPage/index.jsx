@@ -89,7 +89,9 @@ export default function IdeaDropBoxPage() {
       <h4>Drop your Idea</h4>
       <div>
         {" "}
-        {showSuccessMsg && <p className="mb-2">Idea submitted successfully</p>}
+        {showSuccessMsg && (
+          <p className="mb-2 text-green-600">Idea submitted successfully</p>
+        )}
         <form action="#" onSubmit={handleSubmit} className="mt-8 w-50">
           <div className="space-y-5">
             <div>

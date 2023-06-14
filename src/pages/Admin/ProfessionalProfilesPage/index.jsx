@@ -100,7 +100,9 @@ function ProfessionalProfilesPage() {
         <form action="#" onSubmit={handleSubmit} className="mt-8 w-50">
           <div className="space-y-5">
             {showSuccessMsg && (
-              <p className="mb-2">Profile created successfully</p>
+              <p className="mb-2 text-green-600">
+                Profile created successfully
+              </p>
             )}
             <div>
               <label htmlFor="" className="text-base font-medium text-gray-900">

@@ -14,3 +14,17 @@ export const updateProfileStatus = async () => {
   const response = await axios.post(`${API_URL}/profile/additionalinfo`);
   return response.data;
 };
+
+export const updateProfileResume = async (dataToSend) => {
+  const token = localStorage.getItem("isAuthenticated");
+  axios.defaults.headers.common = { token: token };
+  const response = await axios.post(`${API_URL}/profile/upload`, dataToSend);
+  return response.data;
+};
+
+export const getProfileDetails = async () => {
+  const token = localStorage.getItem("isAuthenticated");
+  axios.defaults.headers.common = { token: token };
+  const response = await axios.get(`${API_URL}/profile`);
+  return response.data;
+};

@@ -16,7 +16,7 @@ import ProfessionalProfileCard from "./ProfessionalProfileCard";
 export default function MeetExperts() {
   let mounted = false;
   let history = useHistory();
-  const [totalPages, setTotalPages] = useState([1]);
+  const [totalPages, setTotalPages] = useState([0]);
   const [professionals, setProfessionals] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [showLoader, setShowLoader] = useState(true);
@@ -36,9 +36,8 @@ export default function MeetExperts() {
       const res = await getProfessionalProfiles(0);
       setProfessionals(res.professionals);
       if (totalCountResponse?.results) {
-        // setTotalPages(
-        //   Array.from(Array(totalCountResponse?.results / 9).keys())
-        // );
+        // setTotalPages();
+        // Array.from(Array(Math.floor(totalCountResponse?.results / 9)).keys())
       }
       setShowLoader(false);
     }

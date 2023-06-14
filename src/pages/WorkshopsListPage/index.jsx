@@ -126,7 +126,7 @@ const WorkshopsListPage = () => {
           </div>
         )}
         {showSuccessMsg && (
-          <div className="my-2 text-green">
+          <div className="mb-2 text-green-600">
             Your request submitted successfully
           </div>
         )}

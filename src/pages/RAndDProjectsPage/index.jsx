@@ -21,14 +21,14 @@ import {
 } from "mdb-react-ui-kit";
 import { getAllResearchProjects, applyForProject } from "../../api/dashboard";
 import { PROJECT_APPLICANT_TYPES } from "../../constants";
-
-// {researchId: 1, researchName: 'R&D Project 1', researchDesc: 'R&D Project 1 desc lorem posem', researchType: 'Mech'}
+import { getProfileDetails } from "../../api/profile";
 
 const RAndDProjectsPage = () => {
   let mounted = false;
   const [projects, setProjects] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedProject, setSelectedProject] = useState({});
+  const [isResumeUploaded, setIsResumeUploaded] = useState(false);
   const [inputs, setInputs] = useState({
     applyingAs: "",
   });
@@ -39,10 +39,23 @@ const RAndDProjectsPage = () => {
     applyingAs: "",
   });
 
+  const fetchProjects = async () => {
+    const res = await getAllResearchProjects();
+    setProjects(res.researchprojects || []);
+  };
+
   useEffect(() => {
     async function fetchData() {
+      const resumeUploadedStatus = await getProfileDetails();
+      console.log(resumeUploadedStatus);
+      if (
+        resumeUploadedStatus.success &&
+        resumeUploadedStatus.profile?.isResumeAvailable === 1
+      ) {
+        setIsResumeUploaded(true);
+      }
       const res = await getAllResearchProjects();
-      setProjects(res.researchprojects);
+      setProjects(res.researchprojects || []);
     }
 
     if (!mounted) {
@@ -59,9 +72,16 @@ const RAndDProjectsPage = () => {
   };
 
   const handleSubmit = async () => {
+    if (!isResumeUploaded) {
+      setErrors({
+        backendError: "Please upload your resume in profile settings",
+      });
+      return;
+    }
+
     if (inputs.applyingAs.length === 0) {
       setErrors({
-        applyingAs: "Please select an option",
+        backendError: "Please select an option",
       });
       return;
     }
@@ -71,6 +91,7 @@ const RAndDProjectsPage = () => {
       const res = await applyForProject({ ...inputs, id: researchId });
       if (res.success) {
         setShowSuccessMsg(true);
+        fetchProjects();
       }
     } catch (e) {}
   };
@@ -131,7 +152,7 @@ const RAndDProjectsPage = () => {
           </div>
         )}
         {showSuccessMsg && (
-          <div className="my-2 text-green">
+          <div className="mb-2 text-green-600">
             Your request submitted successfully
           </div>
         )}
