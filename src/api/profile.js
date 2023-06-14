@@ -28,3 +28,10 @@ export const getProfileDetails = async () => {
   const response = await axios.get(`${API_URL}/profile`);
   return response.data;
 };
+
+export const getProjectsApplied = async () => {
+  const token = localStorage.getItem("isAuthenticated");
+  axios.defaults.headers.common = { token: token };
+  const response = await axios.get(`${API_URL}/profile/projects`);
+  return response.data;
+};

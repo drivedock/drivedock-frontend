@@ -1,42 +1,23 @@
 import React, { useEffect, useState } from "react";
 import "./profile.css";
 import ProfileForm from "./ProfileForm";
-import { getProfileDetails } from "../../api/profile";
-
-const dummyProjectsData = [
-  {
-    projectName: "John Doe",
-    dateOfInteraction: "20/11/23",
-    status: "Pending",
-  },
-  {
-    projectName: "Tom Cruise",
-    dateOfInteraction: "21/12/23",
-    status: "Accepted",
-  },
-  {
-    projectName: "Johnny Depp",
-    dateOfInteraction: "21/12/23",
-    status: "Rejected",
-  },
-  {
-    projectName: "Will Smith",
-    dateOfInteraction: "21/12/23",
-    status: "Completed",
-  },
-];
+import { getProfileDetails, getProjectsApplied } from "../../api/profile";
 
 function ProfileSettings() {
   let mounted = false;
   const [activeTab, setActiveTab] = useState("profile");
   const [userData, setUserData] = useState(null);
-  const [projectsData, setProjectsData] = useState(dummyProjectsData);
+  const [projectsData, setProjectsData] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
       const res = await getProfileDetails();
       if (res.success) {
         setUserData(res.profile);
+      }
+      const projectsResponse = await getProjectsApplied();
+      if (projectsResponse.success) {
+        setProjectsData(projectsResponse.results);
       }
     }
 
@@ -84,17 +65,15 @@ function ProfileSettings() {
             <thead>
               <tr className="bg-indigo-400 text-white">
                 <td className="p-2">Name of the Professional</td>
-                <td className="p-2">Date of interaction</td>
-                <td className="p-2">Status</td>
+                <td className="p-2">Applied As</td>
               </tr>
             </thead>
             <tbody>
-              {projectsData.map((interaction, index) => {
+              {projectsData.map((project, index) => {
                 return (
                   <tr key={index} className="even:bg-gray-200 odd:bg-white-300">
-                    <td className="p-2">{interaction.projectName}</td>
-                    <td className="p-2">{interaction.dateOfInteraction}</td>
-                    <td className="p-2">{interaction.status}</td>
+                    <td className="p-2">{project.projectName}</td>
+                    <td className="p-2">{project.applyingAs}</td>
                   </tr>
                 );
               })}
