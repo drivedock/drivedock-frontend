@@ -4,9 +4,9 @@ import { updateProfileResume } from "../../api/profile";
 function ProfileForm({ userData }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [isResumeUploaded, setIsResumeUploaded] = useState(
-    userData?.isResumeAvailable === 1
+    userData?.isResumeAvailable == 1
   );
-  const [errorMsg, setErrorMsg] = useState("testing");
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleUploadResume = async () => {
     const { type, name } = selectedFile;
