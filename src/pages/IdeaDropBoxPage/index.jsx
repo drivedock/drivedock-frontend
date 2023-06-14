@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { IDEA_STATUS, IDEA_TYPE } from "../../constants";
+import { dropYourIdea } from "../../api/dashboard";
 
 export default function IdeaDropBoxPage() {
   let history = useHistory();
@@ -14,27 +15,63 @@ export default function IdeaDropBoxPage() {
     status: "",
     targetAudience: "",
     ideaType: "",
-    acceptTerms: false,
+    fundValue: 0,
   });
 
   const [fundingNeeded, setFundingNeeded] = useState(false);
   const [acceptTerms, setAcceptTerms] = useState(true);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [showSuccessMsg, setSuccessMsg] = useState(false);
 
   const [errorMsg, setErrorMsg] = useState("");
 
+  const resetForm = () => {
+    setInputs({
+      title: "",
+      desc: "",
+      problemStatement: "",
+      solution: "",
+      teamSize: "",
+      status: "",
+      targetAudience: "",
+      ideaType: "",
+      fundValue: 0,
+      acceptTerms: true,
+    });
+    setSelectedFile(null);
+    setErrorMsg("");
+  };
+
   const handleSubmit = async (e) => {
-    if (acceptTerms) {
+    e.preventDefault();
+    if (!acceptTerms) {
       setErrorMsg("Please accept the note");
       return;
     }
-    e.preventDefault();
     try {
-      // const response = await createProfessionalProfile({ ...inputs, topics });
-      // if (response.success) {
-      //   history.replace("/admin/workshops");
-      // } else {
-      //   setErrorMsg("Something went wrong! Please try again later");
-      // }
+      console.log(inputs);
+      const { type, name } = selectedFile;
+      const response = await dropYourIdea({
+        ...inputs,
+        acceptTerms,
+        fundingNeeded,
+        contentType: type,
+        filename: name,
+      });
+      if (response.success) {
+        const fileUploadResponse = await fetch(response.uploadURL, {
+          method: "PUT",
+          body: selectedFile,
+        });
+        if (fileUploadResponse.status === 200) {
+          setSuccessMsg(true);
+          resetForm();
+        } else {
+          setErrorMsg("Something went wrong! Please try again later");
+        }
+      } else {
+        setErrorMsg("Something went wrong! Please try again later");
+      }
     } catch (e) {
       setErrorMsg("Something went wrong! Please try again later");
     }
@@ -51,6 +88,8 @@ export default function IdeaDropBoxPage() {
     <div>
       <h4>Drop your Idea</h4>
       <div>
+        {" "}
+        {showSuccessMsg && <p className="mb-2">Idea submitted successfully</p>}
         <form action="#" onSubmit={handleSubmit} className="mt-8 w-50">
           <div className="space-y-5">
             <div>
@@ -220,6 +259,23 @@ export default function IdeaDropBoxPage() {
               </div>
             </div>
 
+            <div className="mt-3">
+              <div className="flex items-center justify-between">
+                <label
+                  htmlFor=""
+                  className="text-base font-medium text-gray-900"
+                >
+                  {" "}
+                  Share your proposal document{" "}
+                </label>
+              </div>
+              <input
+                type="file"
+                className="mt-2.5"
+                onChange={(event) => setSelectedFile(event.target.files[0])}
+              />
+            </div>
+
             <div className="d-flex">
               <input
                 type="checkbox"
@@ -249,7 +305,7 @@ export default function IdeaDropBoxPage() {
                     className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                     type="number"
                     placeholder="Please enter the funding required"
-                    name="funding"
+                    name="fundValue"
                     onChange={handleChange}
                     required
                   ></input>

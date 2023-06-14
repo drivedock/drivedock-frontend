@@ -83,6 +83,7 @@ function ProfessionalProfilesPage() {
     });
     setTopics([]);
     setSelectedFile(null);
+    setErrorMsg("");
   };
 
   const handleChange = (event) => {
