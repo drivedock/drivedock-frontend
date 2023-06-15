@@ -84,38 +84,40 @@ export default function MeetExperts() {
             );
           })}
         </div>
-        <nav
-          aria-label="Page navigation example"
-          className="d-flex justify-center"
-        >
-          <MDBPagination className="mb-0">
-            <MDBPaginationItem
-              className="mr-2"
-              onClick={() => handlePaginate(currentPage - 1)}
-              disabled={currentPage === 0}
-            >
-              <MDBPaginationLink>Previous</MDBPaginationLink>
-            </MDBPaginationItem>
-            {totalPages.map((pageNumber) => {
-              return (
-                <MDBPaginationItem
-                  key={pageNumber}
-                  active={pageNumber === currentPage}
-                  onClick={() => handlePaginate(pageNumber)}
-                >
-                  <MDBPaginationLink>{pageNumber + 1}</MDBPaginationLink>
-                </MDBPaginationItem>
-              );
-            })}
-            <MDBPaginationItem
-              className="ml-2"
-              onClick={() => handlePaginate(currentPage + 1)}
-              disabled={totalPages.length - 1 === currentPage}
-            >
-              <MDBPaginationLink>Next</MDBPaginationLink>
-            </MDBPaginationItem>
-          </MDBPagination>
-        </nav>
+        {totalPages.length > 1 && (
+          <nav
+            aria-label="Page navigation example"
+            className="d-flex justify-center"
+          >
+            <MDBPagination className="mb-0">
+              <MDBPaginationItem
+                className="mr-2"
+                onClick={() => handlePaginate(currentPage - 1)}
+                disabled={currentPage === 0}
+              >
+                <MDBPaginationLink>Previous</MDBPaginationLink>
+              </MDBPaginationItem>
+              {totalPages.map((pageNumber) => {
+                return (
+                  <MDBPaginationItem
+                    key={pageNumber}
+                    active={pageNumber === currentPage}
+                    onClick={() => handlePaginate(pageNumber)}
+                  >
+                    <MDBPaginationLink>{pageNumber + 1}</MDBPaginationLink>
+                  </MDBPaginationItem>
+                );
+              })}
+              <MDBPaginationItem
+                className="ml-2"
+                onClick={() => handlePaginate(currentPage + 1)}
+                disabled={totalPages.length - 1 === currentPage}
+              >
+                <MDBPaginationLink>Next</MDBPaginationLink>
+              </MDBPaginationItem>
+            </MDBPagination>
+          </nav>
+        )}
       </section>
     </div>
   );
