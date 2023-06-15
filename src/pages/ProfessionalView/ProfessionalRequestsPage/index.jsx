@@ -82,6 +82,8 @@ function ProfessionalRequestsPage() {
       const dataToSend = {
         connectId,
         status: "rejected",
+        requestedDate: "1999-01-01T00:00",
+        meetingLink: "",
       };
       const res = await acceptORRejectRequest(dataToSend);
       if (res.success) {

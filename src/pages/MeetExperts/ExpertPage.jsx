@@ -72,7 +72,7 @@ function ExpertPage() {
     // make a post call
     const dataToSend = {
       ...inputs,
-      professionalEmail,
+      id: professionalEmail,
     };
     const res = await createInteractionRequest(dataToSend);
     if (res.success) {
