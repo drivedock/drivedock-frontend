@@ -1,10 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { getProfileDetails } from "../../../api/profile";
 
 function ProfessionalProfilePage() {
+  let mounted = false;
   let [userDetails, setUserDetails] = useState({
-    fullName: "",
+    name: "",
     mobileNumber: "",
     email: "",
+  });
+
+  useEffect(() => {
+    async function getUserData() {
+      const res = await getProfileDetails();
+      if (res.success) {
+        setUserDetails(res.profile);
+      }
+    }
+    if (!mounted) {
+      mounted = true;
+      getUserData();
+    }
   });
 
   return (
@@ -18,7 +33,7 @@ function ProfessionalProfilePage() {
             <input
               type="text"
               id="first_name"
-              value={"John Doe"}
+              value={userDetails?.name}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="John"
               required
@@ -32,7 +47,7 @@ function ProfessionalProfilePage() {
             <input
               type="tel"
               id="phone"
-              value={"9123456789"}
+              value={userDetails?.mobileNumber}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="123-45-678"
               pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
@@ -48,7 +63,7 @@ function ProfessionalProfilePage() {
               type="email"
               id="email"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              value="john.doe@company.com"
+              value={userDetails?.email}
               required
               readOnly
             />
