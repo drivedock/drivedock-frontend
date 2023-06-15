@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   MDBRow,
@@ -19,30 +19,35 @@ import {
   MDBModalFooter,
   MDBInput,
 } from "mdb-react-ui-kit";
-
-const requests = [
-  {
-    candidateName: "John Doe",
-    preferredDate: "12/06/2023",
-    requestedTopic: "Battery Management",
-    query:
-      "I would like to more on this topic and interested to get some guidance from you",
-  },
-  {
-    candidateName: "Tom Cruise",
-    preferredDate: "12/07/2023",
-    requestedTopic: "Career Guidance",
-    query: "I would like to get a One on One mentoring",
-  },
-];
+import {
+  acceptORRejectRequest,
+  getInteractions,
+} from "../../../api/professionalView";
 
 function ProfessionalRequestsPage() {
+  let mounted = false;
   const [showModal, setShowModal] = useState(false);
+  const [showSuccessMsg, setShowSuccessMsg] = useState(false);
+  const [requestsData, setRequestsData] = useState([]);
   const [selectedRequest, setSelectedRequest] = useState({});
   const [inputs, setInputs] = useState({
     confirmedDateTime: "",
     meetingLink: "",
   });
+
+  async function getInteractionsData() {
+    const response = await getInteractions("pending");
+    if (response.success) {
+      setRequestsData(response.results);
+    }
+  }
+
+  useEffect(() => {
+    if (!mounted) {
+      mounted = true;
+      getInteractionsData();
+    }
+  }, []);
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -50,17 +55,39 @@ function ProfessionalRequestsPage() {
     setInputs((values) => ({ ...values, [name]: value }));
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     setShowModal(false);
     // api call
-    console.log(inputs);
-    // try {
-    //   const { workshopId } = selectedWorkshop;
-    //   const res = await registerForWorkshop({ ...inputs, id: workshopId });
-    //   if (res.success) {
-    //     setShowSuccessMsg(true);
-    //   }
-    // } catch (e) {}
+    const { confirmedDateTime, meetingLink } = inputs;
+    try {
+      const { connectId } = selectedRequest;
+      const dataToSend = {
+        connectId,
+        status: "accepted",
+        requestedDate: confirmedDateTime,
+        meetingLink,
+      };
+      const res = await acceptORRejectRequest(dataToSend);
+      if (res.success) {
+        setShowSuccessMsg(true);
+        getInteractionsData();
+      }
+    } catch (e) {}
+  };
+
+  const handleReject = async (requestSelected) => {
+    try {
+      const { connectId } = requestSelected;
+      const dataToSend = {
+        connectId,
+        status: "rejected",
+      };
+      const res = await acceptORRejectRequest(dataToSend);
+      if (res.success) {
+        getInteractionsData();
+      }
+    } catch (e) {}
   };
 
   const renderModal = () => {
@@ -85,16 +112,26 @@ function ProfessionalRequestsPage() {
                       className="mb-4"
                       required
                     />
-                    <MDBInput
-                      label="Date"
-                      type="datetime-local"
-                      name="confirmedDateTime"
-                      onChange={handleChange}
-                      min={new Date().toISOString().slice(0, 10)}
-                      value={new Date().toISOString().slice(0, 10)}
-                      className="mb-4"
-                      required
-                    />
+                    <div>
+                      <label className="text-base">
+                        Please select date and time
+                      </label>
+                      <input
+                        label="Date"
+                        type="datetime-local"
+                        name="confirmedDateTime"
+                        onChange={handleChange}
+                        value={inputs?.confirmedDateTime}
+                        min={new Date().toISOString().slice(0, 10)}
+                        className="ml-3 mb-4 p-1"
+                        required
+                        style={{
+                          borderWidth: 2,
+                          borderColor: "black",
+                          borderRadius: 8,
+                        }}
+                      />
+                    </div>
                   </div>
                 </MDBModalBody>
 
@@ -110,10 +147,18 @@ function ProfessionalRequestsPage() {
   };
   return (
     <div>
-      {renderModal()}
-      {requests.map((workshop, index) => {
-        const { candidateName, requestedTopic, preferredDate, query } =
-          workshop;
+      {renderModal()}{" "}
+      {showSuccessMsg && (
+        <p className="mb-2 text-green-600">Request accepted successfully</p>
+      )}
+      {requestsData.length == 0 && <h5>No pending requests</h5>}
+      {requestsData.map((request, index) => {
+        const {
+          StudentName: candidateName,
+          topicName: requestedTopic,
+          requestedDate: preferredDate,
+          connectDesc: query,
+        } = request;
         let dateObj = preferredDate ? new Date(preferredDate) : new Date();
         return (
           <MDBRow key={index} className="mb-4">
@@ -136,7 +181,7 @@ function ProfessionalRequestsPage() {
                   <MDBCol size={2}>
                     <MDBBtn
                       onClick={() => {
-                        setSelectedRequest(workshop);
+                        setSelectedRequest(request);
                         setShowModal(true);
                       }}
                     >
@@ -146,8 +191,7 @@ function ProfessionalRequestsPage() {
                   <MDBCol size={2}>
                     <MDBBtn
                       onClick={() => {
-                        setSelectedRequest(workshop);
-                        setShowModal(true);
+                        handleReject(request);
                       }}
                       color="secondary"
                     >
