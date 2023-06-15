@@ -30,19 +30,26 @@ export default function StatusTrackerPage() {
             <thead>
               <tr className="bg-indigo-400 text-white">
                 <td className="p-2">Name of the Professional</td>
-                <td className="p-2">Date of interaction</td>
+                <td className="p-2">Interaction Date & Time</td>
                 <td className="p-2">Status</td>
+                <td className="p-2">Meeting Link</td>
               </tr>
             </thead>
             <tbody>
               {interactionData.map((interaction, index) => {
+                const { meetingLink } = interaction;
                 return (
                   <tr key={index} className="even:bg-gray-200 odd:bg-white-300">
                     <td className="p-2">{interaction.professionalName}</td>
                     <td className="p-2">
-                      {new Date(interaction.requestedDate).toLocaleDateString()}
+                      {new Date(interaction.requestedDate).toLocaleString()}
                     </td>
-                    <td className="p-2">{interaction.status}</td>
+                    <td className="p-2 capitalize">{interaction.status}</td>
+                    {meetingLink && (
+                      <td className="p-2">
+                        <a href={meetingLink}>Link</a>
+                      </td>
+                    )}
                   </tr>
                 );
               })}
