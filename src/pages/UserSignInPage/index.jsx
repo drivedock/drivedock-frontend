@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, NavLink, useHistory } from "react-router-dom";
+import { Link, NavLink, useHistory, useLocation } from "react-router-dom";
 import { loginUser } from "../../api/auth";
 
 const UserSignInPage = () => {
@@ -10,6 +10,7 @@ const UserSignInPage = () => {
 
   const [errorMsg, setErrorMsg] = useState("");
   let history = useHistory();
+  const location = useLocation();
 
   useEffect(() => {
     const token = localStorage.getItem("isAuthenticated");
@@ -108,6 +109,13 @@ const UserSignInPage = () => {
             <h2 className="text-3xl font-bold leading-tight text-black  sm:text-4xl">
               Sign in
             </h2>
+            {location.params?.fromForgotPassword && (
+              <div className="mb-2 text-green-600">
+                <p className="">
+                  Your password is successfully reset! Please login
+                </p>
+              </div>
+            )}
             <Link to="/signup">
               <p className="mt-2 text-base text-gray-600">
                 Don&apos;t have an account?{" "}
@@ -117,7 +125,6 @@ const UserSignInPage = () => {
                 </span>
               </p>
             </Link>
-
             <form action="#" onSubmit={handleSignIn} className="mt-8">
               <div className="space-y-5">
                 <div>

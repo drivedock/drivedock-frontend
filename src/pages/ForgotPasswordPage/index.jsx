@@ -59,7 +59,7 @@ const ForgotPasswordPage = () => {
         history.replace({
           pathname: "/signin",
           params: {
-            source: "forgot-password",
+            fromForgotPassword: true,
           },
         });
       } else {
