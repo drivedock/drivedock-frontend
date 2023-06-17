@@ -1,19 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { getTaskStatus } from "../../api/dashboard";
+import { MDBBadge } from "mdb-react-ui-kit";
+import {
+  getConnectedProfessionalsCount,
+  getTaskStatus,
+} from "../../api/dashboard";
 
 export default function StatusTrackerPage() {
   let mounted = false;
   const [activeTab, setActiveTab] = useState("interactions");
+  const [connectedCount, setConnectedCount] = useState(0);
   const [interactionData, setInteractionData] = useState([]);
   const [workshopsData, setWorkshopsData] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
       const res = await getTaskStatus(activeTab);
+      const countRes = await getConnectedProfessionalsCount("accepted");
       if (activeTab == "workshops") {
         setWorkshopsData(res.results);
       } else {
         setInteractionData(res.results);
+      }
+
+      if (countRes.success) {
+        setConnectedCount(countRes.count);
       }
     }
     if (!mounted) {
@@ -26,6 +36,11 @@ export default function StatusTrackerPage() {
     if (activeTabType === "interactions") {
       return (
         <>
+          {connectedCount > 0 && (
+            <h6 className="mb-3">
+              Experts connected so far - <MDBBadge>{connectedCount}</MDBBadge>
+            </h6>
+          )}
           <table className="table border-collapse border border-slate-300">
             <thead>
               <tr className="bg-indigo-400 text-white">

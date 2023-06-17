@@ -64,6 +64,13 @@ export const getTaskStatus = async (taskType) => {
   return response.data;
 };
 
+export const getConnectedProfessionalsCount = async (type) => {
+  const token = localStorage.getItem("isAuthenticated");
+  axios.defaults.headers.common = { token: token };
+  const response = await axios.get(`${API_URL}/profile/count/${type}`);
+  return response.data;
+};
+
 export const getAllResearchProjects = async () => {
   const token = localStorage.getItem("isAuthenticated");
   axios.defaults.headers.common = { token: token };
