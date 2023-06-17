@@ -87,9 +87,12 @@ const RAndDProjectsPage = () => {
     }
     setShowModal(false);
     try {
-      const { researchId } = selectedProject;
+      const { researchId, linkedInLink } = selectedProject;
       const res = await applyForProject({ ...inputs, id: researchId });
       if (res.success) {
+        if (linkedInLink) {
+          window.open(linkedInLink, "_blank", "noopener,noreferrer");
+        }
         setShowSuccessMsg(true);
         fetchProjects();
       }
