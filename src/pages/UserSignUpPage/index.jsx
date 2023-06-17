@@ -25,7 +25,7 @@ const UserSignUpPage = () => {
   useEffect(() => {
     const token = localStorage.getItem("isAuthenticated");
     if (token) {
-      history.push("/dashboard/home");
+      history.push("/");
     }
   }, []);
 
@@ -79,7 +79,7 @@ const UserSignUpPage = () => {
       if (response.success) {
         localStorage.setItem("DDUserEmail", email);
         localStorage.setItem("isAuthenticated", response.token);
-        history.push("/dashboard/home");
+        history.push("/");
       } else {
         setErrors((values) => ({
           ...values,

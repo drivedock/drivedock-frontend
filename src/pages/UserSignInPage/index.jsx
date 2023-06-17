@@ -15,7 +15,7 @@ const UserSignInPage = () => {
   useEffect(() => {
     const token = localStorage.getItem("isAuthenticated");
     if (token) {
-      history.push("/dashboard/home");
+      history.push("/");
     }
   }, []);
 

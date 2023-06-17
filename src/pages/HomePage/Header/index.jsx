@@ -4,7 +4,7 @@ import ProductLogo from "../../../assets/logo.png";
 
 function Header() {
   const navNames = ["Home", "Career", "Features", "About Us"];
-  const LoginValues = ["Login", "SignUp"];
+  const isAuthenticated = localStorage.getItem("isAuthenticated");
   return (
     <header className="container">
       <div>
@@ -44,18 +44,20 @@ function Header() {
             ))}
           </ul>
 
-          <div className="space-x-2 lg:block">
-            <Link to="/signin">
-              <button className="rounded-md border border-green-500 px-3.5 py-0.5 text-base font-semibold leading-7 text-green-500 hover:text-white hover:bg-green-500">
-                Login
-              </button>
-            </Link>
-            <Link to="/signup">
-              <button className="rounded-md  bg-green-500 px-3.5 py-0.5 text-base font-semibold leading-7 text-white">
-                SignUp
-              </button>
-            </Link>
-          </div>
+          {!isAuthenticated && (
+            <div className="space-x-2 lg:block">
+              <Link to="/signin">
+                <button className="rounded-md border border-green-500 px-3.5 py-0.5 text-base font-semibold leading-7 text-green-500 hover:text-white hover:bg-green-500">
+                  Login
+                </button>
+              </Link>
+              <Link to="/signup">
+                <button className="rounded-md  bg-green-500 px-3.5 py-0.5 text-base font-semibold leading-7 text-white">
+                  SignUp
+                </button>
+              </Link>
+            </div>
+          )}
         </nav>
       </div>
     </header>
