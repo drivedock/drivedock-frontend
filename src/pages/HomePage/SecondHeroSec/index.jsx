@@ -19,7 +19,7 @@ function SecondHeroSec() {
             {content}
           </p> */}
           <a
-            href="#"
+            href="/dashboard/home"
             className="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-green-500 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
           >
             Get started
