@@ -58,7 +58,6 @@ const WorkshopsListPage = () => {
   const handleSubmit = async () => {
     setShowModal(false);
     // api call
-    console.log(inputs);
     try {
       const { workshopId } = selectedWorkshop;
       const res = await registerForWorkshop({ ...inputs, id: workshopId });

@@ -47,7 +47,6 @@ const RAndDProjectsPage = () => {
   useEffect(() => {
     async function fetchData() {
       const resumeUploadedStatus = await getProfileDetails();
-      console.log(resumeUploadedStatus);
       if (
         resumeUploadedStatus.success &&
         resumeUploadedStatus.profile?.isResumeAvailable === 1

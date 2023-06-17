@@ -49,7 +49,6 @@ export default function IdeaDropBoxPage() {
       return;
     }
     try {
-      console.log(inputs);
       const { type, name } = selectedFile;
       const response = await dropYourIdea({
         ...inputs,
