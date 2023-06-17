@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink, useHistory } from "react-router-dom";
 import Header from "../HomePage/Header";
+import { getOTPToResetPassword, resetPassword } from "../../api/auth";
+import { isValidPassword } from "../../helper";
 
 const ForgotPasswordPage = () => {
+  let history = useHistory();
   const [ctaText, setCTAText] = useState("Get Verification Code");
   const [showEmailField, setShowEmailField] = useState(true);
   const [inputs, setInputs] = useState({
@@ -12,22 +15,56 @@ const ForgotPasswordPage = () => {
     confirmPassword: "",
   });
 
+  const [errorMsg, setErrorMsg] = useState("");
+
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (showEmailField) {
       // make api call for get otp
       // after response show the password fileds
-      setShowEmailField(false);
-      setCTAText("Reset Password");
+      const otpResponse = await getOTPToResetPassword({ user: inputs.email });
+      if (otpResponse.success) {
+        setShowEmailField(false);
+        setCTAText("Reset Password");
+      } else {
+        setErrorMsg("Something went wrong! Please try again later.");
+      }
     } else {
-      // reset password api call and redirect to dashboard
-      console.log(inputs);
+      // reset password api call and redirect to login
+      const { verificationCode, email, password, confirmPassword } = inputs;
+      if (password && !isValidPassword(password)) {
+        setErrorMsg(
+          "Password must contain atleast one upper case, one lower case and special character"
+        );
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        setErrorMsg("Password and Confirm Password should be same");
+        return;
+      }
+
+      const resetPasswordResponse = await resetPassword({
+        otp: verificationCode,
+        email,
+        password,
+      });
+      if (resetPasswordResponse.success) {
+        history.replace({
+          pathname: "/signin",
+          params: {
+            source: "forgot-password",
+          },
+        });
+      } else {
+        setErrorMsg("Something went wrong! Please try again later.");
+      }
     }
   };
 
@@ -108,7 +145,7 @@ const ForgotPasswordPage = () => {
                       Confirm password
                     </label>
                     <input
-                      type="confirm-password"
+                      type="password"
                       name="confirmPassword"
                       id="confirm-password"
                       placeholder="••••••••"
@@ -118,6 +155,9 @@ const ForgotPasswordPage = () => {
                     />
                   </div>
                 </>
+              )}
+              {errorMsg && (
+                <div className="my-1.5 text-red-400 text-sm">{errorMsg}</div>
               )}
               <button
                 type="submit"
