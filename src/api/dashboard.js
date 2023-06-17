@@ -1,19 +1,26 @@
 import axios from "axios";
 import { API_URL } from "../constants";
 
-export const getProfessionalProfiles = async (offset) => {
+export const getProfessionalProfiles = async (offset, dept = undefined) => {
   const token = localStorage.getItem("isAuthenticated");
   axios.defaults.headers.common = { token: token };
-  const response = await axios.get(
-    `${API_URL}/professionals?offset=${offset}&limit=${9}`
-  );
+  let apiWithParams = `${API_URL}/professionals?offset=${offset}&limit=${9}`;
+  if (dept) {
+    apiWithParams += `&value=${dept}`;
+  }
+
+  const response = await axios.get(`${apiWithParams}`);
   return response.data;
 };
 
-export const getTotalProfilesCount = async () => {
+export const getTotalProfilesCount = async (dept = undefined) => {
   const token = localStorage.getItem("isAuthenticated");
   axios.defaults.headers.common = { token: token };
-  const response = await axios.get(`${API_URL}/professionals/count`);
+  let apiWithParams = `${API_URL}/professionals/count`;
+  if (dept) {
+    apiWithParams += `?value=${dept}`;
+  }
+  const response = await axios.get(apiWithParams);
   return response.data;
 };
 
