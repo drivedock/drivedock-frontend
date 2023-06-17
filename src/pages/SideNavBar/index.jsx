@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { NavLink, useHistory } from "react-router-dom";
 
 import "../SideNavBar/SideNavBar.css";
@@ -14,6 +15,7 @@ function SideNavBar(props) {
   const history = useHistory();
 
   const handleLogOut = () => {
+    delete axios.defaults.headers.common["token"];
     localStorage.clear();
     history.push("/signin");
   };
