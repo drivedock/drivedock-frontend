@@ -11,6 +11,7 @@ import {
   MDBInput,
 } from "mdb-react-ui-kit";
 import { updateProfileStatus } from "../../api/profile";
+import { COURSE_STREAMS } from "../../constants";
 
 export default function Modal() {
   const [basicModal, setBasicModal] = useState(true);
@@ -108,7 +109,9 @@ export default function Modal() {
                   label="Name of the college"
                   type="text"
                   name="collegeName"
+                  value={inputs?.collegeName}
                   onChange={handleChange}
+                  required
                 />
                 {errors["collegeName"] && (
                   <div className="mt-0.5 text-red-400 text-sm">
@@ -117,12 +120,29 @@ export default function Modal() {
                 )}
               </div>
               <div className="mb-3">
-                <MDBInput
-                  label="Branch"
-                  type="text"
+                <select
+                  className="flex h-10 w-full rounded-md bg-transparent p-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                   name="branch"
+                  id="cars"
+                  value={inputs.branch}
+                  style={{
+                    border: "1px solid #bdbdbd",
+                  }}
+                  defaultValue={COURSE_STREAMS[0]}
                   onChange={handleChange}
-                />
+                  required
+                >
+                  <option value="" disabled selected>
+                    Choose your branch
+                  </option>
+                  {COURSE_STREAMS.map((branch) => {
+                    return (
+                      <option key={branch} value={branch}>
+                        {branch}
+                      </option>
+                    );
+                  })}
+                </select>
                 {errors["branch"] && (
                   <div className="mt-0.5 text-red-400 text-sm">
                     {errors["branch"]}
@@ -134,7 +154,9 @@ export default function Modal() {
                   label="Semester"
                   type="text"
                   name="semester"
+                  value={inputs?.semester}
                   onChange={handleChange}
+                  required
                 />
                 {errors["semester"] && (
                   <div className="mt-0.5 text-red-400 text-sm">
@@ -147,7 +169,9 @@ export default function Modal() {
                   label="Passout year"
                   type="text"
                   name="passoutYear"
+                  value={inputs?.passoutYear}
                   onChange={handleChange}
+                  required
                 />
                 {errors["passoutYear"] && (
                   <div className="mt-0.5 text-red-400 text-sm">

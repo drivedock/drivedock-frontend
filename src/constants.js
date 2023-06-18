@@ -60,6 +60,19 @@ export const DEPARTMENTS_ID_TO_NAME_MAPPING = {
   16: "Agriculture",
 };
 
+export const COURSE_STREAMS = [
+  "Mechanical",
+  "Robotics",
+  "Electrical",
+  "Electronics and Communication",
+  "Computer Science & IT",
+  "Automobile",
+  "Civil",
+  "MBBS",
+  "BDS",
+  "Other",
+];
+
 export const PROJECT_APPLICANT_TYPES = [
   "Full time intern",
   "Part time intern",
