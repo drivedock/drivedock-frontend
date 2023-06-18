@@ -124,7 +124,7 @@ function ProfessionalRequestsPage() {
                         name="confirmedDateTime"
                         onChange={handleChange}
                         value={inputs?.confirmedDateTime}
-                        min={new Date().toISOString().slice(0, 10)}
+                        min={new Date().toISOString().slice(0, -8)}
                         className="ml-3 mb-4 p-1"
                         required
                         style={{

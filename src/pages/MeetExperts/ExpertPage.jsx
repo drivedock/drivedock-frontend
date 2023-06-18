@@ -52,7 +52,13 @@ function ExpertPage() {
       setProfessionalExtraData(res.professional[0]);
       if (res.professional[0].professionalTopics) {
         const { professionalTopics } = res.professional[0];
-        setTopics(professionalTopics.split(","));
+        if (professionalTopics) {
+          const topicsArr = professionalTopics.split(",");
+          setTopics(topicsArr);
+          if (topicsArr.length > 0) {
+            setInputs((values) => ({ ...values, selectedTopic: topicsArr[0] }));
+          }
+        }
       }
     }
     if (!mounted) {
@@ -74,10 +80,11 @@ function ExpertPage() {
       ...inputs,
       id: professionalEmail,
     };
-    const res = await createInteractionRequest(dataToSend);
-    if (res.success) {
-      setSuccessMsg(true);
-    }
+    console.log(dataToSend);
+    // const res = await createInteractionRequest(dataToSend);
+    // if (res.success) {
+    //   setSuccessMsg(true);
+    // }
   };
 
   const renderModal = () => {
@@ -112,6 +119,7 @@ function ExpertPage() {
                         className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                         name="selectedTopic"
                         id="topics"
+                        value={inputs?.selectedTopic}
                         onChange={handleChange}
                       >
                         {topics.map((topic) => {
@@ -134,8 +142,8 @@ function ExpertPage() {
                         </label>
                       </div>
                       <input
-                        type="date"
-                        min={new Date().toISOString().slice(0, 10)}
+                        type="datetime-local"
+                        min={new Date().toISOString().slice(0, -8)}
                         className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                         name="requestedDate"
                         onChange={handleChange}
