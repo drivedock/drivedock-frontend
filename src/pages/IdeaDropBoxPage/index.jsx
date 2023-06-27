@@ -39,6 +39,7 @@ export default function IdeaDropBoxPage() {
       acceptTerms: true,
     });
     setSelectedFile(null);
+    setFundingNeeded(false);
     setErrorMsg("");
   };
 
@@ -105,6 +106,7 @@ export default function IdeaDropBoxPage() {
                   placeholder="Title"
                   name="title"
                   onChange={handleChange}
+                  value={inputs.title}
                   required
                 ></input>
               </div>
@@ -121,6 +123,7 @@ export default function IdeaDropBoxPage() {
                   placeholder="Explain the idea in 250 words"
                   name="desc"
                   onChange={handleChange}
+                  value={inputs.desc}
                   required
                 ></textarea>
               </div>
@@ -138,6 +141,7 @@ export default function IdeaDropBoxPage() {
                   name="problemStatement"
                   placeholder="Problem Statement"
                   onChange={handleChange}
+                  value={inputs.problemStatement}
                   required
                 ></input>
               </div>
@@ -161,6 +165,7 @@ export default function IdeaDropBoxPage() {
                   placeholder="Please add solution here in 250 words"
                   name="solution"
                   onChange={handleChange}
+                  value={inputs.solution}
                   required
                 />
               </div>
@@ -183,6 +188,7 @@ export default function IdeaDropBoxPage() {
                   placeholder="please enter team size"
                   name="teamSize"
                   onChange={handleChange}
+                  value={inputs.teamSize}
                   required
                 ></input>
               </div>
@@ -227,6 +233,7 @@ export default function IdeaDropBoxPage() {
                   placeholder="Who are the target audience?"
                   name="targetAudience"
                   onChange={handleChange}
+                  value={inputs.targetAudience}
                   required
                 ></input>
               </div>
@@ -308,6 +315,7 @@ export default function IdeaDropBoxPage() {
                     placeholder="Please enter the funding required"
                     name="fundValue"
                     onChange={handleChange}
+                    value={inputs.fundValue}
                     required
                   ></input>
                 </div>
