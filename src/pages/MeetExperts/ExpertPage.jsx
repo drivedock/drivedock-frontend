@@ -80,11 +80,11 @@ function ExpertPage() {
       ...inputs,
       id: professionalEmail,
     };
-    console.log(dataToSend);
-    // const res = await createInteractionRequest(dataToSend);
-    // if (res.success) {
-    //   setSuccessMsg(true);
-    // }
+
+    const res = await createInteractionRequest(dataToSend);
+    if (res.success) {
+      setSuccessMsg(true);
+    }
   };
 
   const renderModal = () => {
