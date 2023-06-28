@@ -35,6 +35,7 @@ function ProfessionalProfileCard({ professional, handleOnClick }) {
           }
           position="top"
           alt="..."
+          style={{ maxHeight: 400 }}
         />
         <MDBCardBody>
           <MDBCardTitle>{professionalName}</MDBCardTitle>
