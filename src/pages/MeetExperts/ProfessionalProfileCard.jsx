@@ -1,48 +1,37 @@
 import React from "react";
-import {
-  MDBCard,
-  MDBCardBody,
-  MDBCardTitle,
-  MDBCardText,
-  MDBCardImage,
-  MDBBtn,
-  MDBCol,
-} from "mdb-react-ui-kit";
+import { MDBCol } from "mdb-react-ui-kit";
 
 function ProfessionalProfileCard({ professional, handleOnClick }) {
-  const {
-    professionalName,
-    professionalDesc,
-    professionalDept,
-    professionalEmail,
-    signedURL,
-  } = professional;
+  const { professionalName, professionalDept, professionalEmail, signedURL } =
+    professional;
   return (
     <MDBCol
       size={3}
       md={6}
       lg={3}
       key={professionalEmail}
-      className="mr-10 mb-6"
-      onClick={() => handleOnClick(professional)}
+      className="mr-5 mb-3 d-flex justify-content-center"
     >
-      <MDBCard className="h-100">
-        <MDBCardImage
+      <div
+        className="cursor-pointer"
+        onClick={() => handleOnClick(professional)}
+      >
+        <img
           src={
             signedURL
               ? signedURL
               : "https://mdbootstrap.com/img/new/standard/nature/184.webp"
           }
-          position="top"
           alt="..."
-          style={{ maxHeight: 400 }}
+          style={{ height: 200, width: 200, borderRadius: 8 }}
         />
-        <MDBCardBody>
-          <MDBCardTitle>{professionalName}</MDBCardTitle>
-          <MDBCardText>{professionalDept}</MDBCardText>
-          <MDBCardText>{professionalDesc}</MDBCardText>
-        </MDBCardBody>
-      </MDBCard>
+        <div style={{ padding: 15 }}>
+          <h6 style={{ textTransform: "capitalize", color: "#0067dd" }}>
+            {professionalName}
+          </h6>
+          <p style={{ fontSize: 14 }}>{professionalDept}</p>
+        </div>
+      </div>
     </MDBCol>
   );
 }
