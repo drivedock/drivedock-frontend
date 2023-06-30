@@ -116,7 +116,7 @@ function ProfessionalRequestsPage() {
                     />
                     <div>
                       <label className="text-base">
-                        Please select date and time
+                        Select date and time(IST)
                       </label>
                       <input
                         label="Date"
@@ -128,9 +128,9 @@ function ProfessionalRequestsPage() {
                         className="ml-3 mb-4 p-1"
                         required
                         style={{
-                          borderWidth: 2,
-                          borderColor: "black",
-                          borderRadius: 8,
+                          borderWidth: 1,
+                          borderColor: "#bdbdbd",
+                          borderRadius: 4,
                         }}
                       />
                     </div>

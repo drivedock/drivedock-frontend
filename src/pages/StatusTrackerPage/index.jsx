@@ -32,6 +32,13 @@ export default function StatusTrackerPage() {
     }
   }, [activeTab]);
 
+  const getFormattedDateTime = (dateTimeString) => {
+    if (!dateTimeString) return null;
+    const dateTimeArr = dateTimeString.split("T");
+    const timeArr = dateTimeArr[1].split(".");
+    return dateTimeArr[0] + " " + timeArr[0];
+  };
+
   const renderActiveTabData = (activeTabType) => {
     if (activeTabType === "interactions") {
       return (
@@ -45,7 +52,7 @@ export default function StatusTrackerPage() {
             <thead>
               <tr className="bg-indigo-400 text-white">
                 <td className="p-2">Name of the Professional</td>
-                <td className="p-2">Interaction Date & Time</td>
+                <td className="p-2">Interaction Date & Time (IST)</td>
                 <td className="p-2">Status</td>
                 <td className="p-2">Meeting Link</td>
               </tr>
@@ -57,7 +64,8 @@ export default function StatusTrackerPage() {
                   <tr key={index} className="even:bg-gray-200 odd:bg-white-300">
                     <td className="p-2">{interaction.professionalName}</td>
                     <td className="p-2">
-                      {new Date(interaction.requestedDate).toLocaleString()}
+                      {interaction.requestedDate &&
+                        getFormattedDateTime(interaction.requestedDate)}
                     </td>
                     <td className="p-2 capitalize">{interaction.status}</td>
                     {meetingLink && (

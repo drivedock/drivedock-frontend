@@ -19,6 +19,12 @@ function ProfessionalAcceptedRequestspage() {
     }
   }, []);
 
+  const getFormattedDateTime = (dateTimeString) => {
+    const dateTimeArr = dateTimeString.split("T");
+    const timeArr = dateTimeArr[1].split(".");
+    return dateTimeArr[0] + " " + timeArr[0];
+  };
+
   return (
     <div>
       <h2>Accepted Requests</h2>
@@ -28,7 +34,7 @@ function ProfessionalAcceptedRequestspage() {
             <td className="p-2">Name of the Candidate</td>
             <td className="p-2">Meeting Link</td>
             <td className="p-2">Topic</td>
-            <td className="p-2">Date</td>
+            <td className="p-2">Date & Time (IST)</td>
           </tr>
         </thead>
         <tbody>
@@ -42,9 +48,7 @@ function ProfessionalAcceptedRequestspage() {
                   <a href={meetingLink}>Link</a>
                 </td>
                 <td className="p-2">{topicName}</td>
-                <td>
-                  {requestedDate && new Date(requestedDate).toLocaleString()}
-                </td>
+                <td>{requestedDate && getFormattedDateTime(requestedDate)}</td>
               </tr>
             );
           })}
