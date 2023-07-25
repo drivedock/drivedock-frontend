@@ -64,7 +64,7 @@ function ProfileSettings() {
           <table className="table border-collapse border border-slate-300">
             <thead>
               <tr className="bg-indigo-400 text-white">
-                <td className="p-2">Name of the Professional</td>
+                <td className="p-2">Name of the Project</td>
                 <td className="p-2">Applied As</td>
               </tr>
             </thead>
