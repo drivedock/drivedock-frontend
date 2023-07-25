@@ -319,7 +319,6 @@ function ProfessionalProfilesPage() {
                 className="mt-2.5"
                 onChange={(event) => {
                   setSelectedFile(event.target.files[0]);
-                  event.target.value = null;
                 }}
               />
             </div>
